@@ -1220,7 +1220,6 @@
                                     }
                                     return value;
                                 }
-                            }
                 }
             });
         }
@@ -1377,76 +1376,75 @@
         <img src="https://steeve-pires.com/cv-rtbf/Le_Grand_Cactus_logo.png" alt="Le Grand Cactus Logo">
         <h1>Le direct continue sur Auvio</h1>
       </div>
-    </div>
-    <div class="side-panel">
-      <div class="chat-box">
-        <header class="chat-box__header">
-          <h2>Chat en direct</h2>
-          <div id="viewers"></div>
-        </header>
-        <div class="chat-box__log" id="chat-log"></div>
-        <div class="chat-box__input">
-          <input type="text" id="chat-text" placeholder="Votre message...">
-          <button id="chat-send">Envoyer</button>
+      <div class="side-panel">
+        <div class="chat-box">
+          <header class="chat-box__header">
+            <h2>Chat en direct</h2>
+            <div id="viewers"></div>
+          </header>
+          <div class="chat-box__log" id="chat-log"></div>
+          <div class="chat-box__input">
+            <input type="text" id="chat-text" placeholder="Votre message...">
+            <button id="chat-send">Envoyer</button>
+          </div>
         </div>
+        <div class="stats-box">
+          <div class="stat-row">
+            <h3>Buzz du moment</h3>
+            <span id="buzzTxt">46%</span>
+          </div>
+          <div class="bar"><div class="bar-value" id="buzzVal" style="width:46%;"></div></div>
       </div>
-      <div class="stats-box">
-        <div class="stat-row">
-          <h3>Buzz du moment</h3>
-          <span id="buzzTxt">46%</span>
-        </div>
-        <div class="bar"><div class="bar-value" id="buzzVal" style="width:46%;"></div></div>
       </div>
     </div>
-  </div>
-  <script>
-    const log = document.getElementById('chat-log');
-    const text = document.getElementById('chat-text');
-    const send = document.getElementById('chat-send');
-    const profiles = [{name:'Modérateur', badge:true}, {name:'Lola22'}, {name:'FanDeJérôme'}, {name:'CactusForever'}, {name:'David_Bxl'}, {name:'SophieH'}];
-    const lines = ["Excellent ce sketch !", "Hahaha j'en peux plus 😂", "Qui est l'invité de ce soir ?", "C'est mon émission préférée !", "Tellement vrai ce qu'ils disent 🤣", "Vivement la séquence de James & Dédé !"];
-    const system = ["N'oubliez pas de réagir avec le #GrandCactus sur les réseaux !", "Votez pour votre séquence préférée sur notre site !"];
-    function pushMessage(p, txt){
-      const msg = document.createElement('div');
-      msg.className = 'msg';
-      let nameHTML = `<span class="name">${p.name}`;
-      if(p.badge){ nameHTML += `<span class="badge">MODO</span>`; }
-      nameHTML += `</span>`;
-      msg.innerHTML = \`<div class="avatar"></div><div>\${nameHTML}<div class="text">\${txt}</div></div>\`;
-      log.appendChild(msg);
-      log.scrollTop = log.scrollHeight;
-    }
-    pushMessage(profiles[0], 'Bienvenue ! Restez respectueux et votez pour votre sketch préféré 👉 à droite.');
-    function loop(){
-      const delay = 700 + Math.random()*700;
-      setTimeout(()=>{
-        if(Math.random()<0.16){
-          pushMessage(profiles[0], system[Math.floor(Math.random()*system.length)]);
-        } else {
-          const p = profiles[1 + Math.floor(Math.random()*(profiles.length-1))];
-          const msg = lines[Math.floor(Math.random()*lines.length)];
-          pushMessage(p, msg);
-        }
-        bumpBuzz(); bumpViewers();
-        loop();
-      }, delay);
-    }
-    loop();
-    send.addEventListener('click', () => {
-      const v = (text.value||'').trim(); if(!v) return;
-      pushMessage({name:'Vous'}, v); text.value='';
-    });
-    text.addEventListener('keydown', e=>{ if(e.key==='Enter'){ send.click(); }});
-    const buzzBar = document.getElementById('buzzVal');
-    const buzzTxt = document.getElementById('buzzTxt');
-    let buzz = 46;
-    function bumpBuzz(){ const d = (Math.random()*6-2); buzz = Math.max(15, Math.min(100, buzz + d));
-      if(buzzBar){buzzBar.style.width = buzz.toFixed(0)+'%';} if(buzzTxt){buzzTxt.textContent = buzz.toFixed(0)+'%';} }
-    const viewersEl = document.getElementById('viewers');
-    let viewers = 18450;
-    function bumpViewers(){ const d = Math.floor(Math.random()*200-95); viewers += d; if(viewersEl){viewersEl.textContent = `${viewers.toLocaleString('fr-BE')} spectateurs`;} }
-    bumpViewers();
-  <\/script>
+    <script>
+      const log = document.getElementById('chat-log');
+      const text = document.getElementById('chat-text');
+      const send = document.getElementById('chat-send');
+      const profiles = [{name:'Modérateur', badge:true}, {name:'Lola22'}, {name:'FanDeJérôme'}, {name:'CactusForever'}, {name:'David_Bxl'}, {name:'SophieH'}];
+      const lines = ["Excellent ce sketch !", "Hahaha j'en peux plus 😂", "Qui est l'invité de ce soir ?", "C'est mon émission préférée !", "Tellement vrai ce qu'ils disent 🤣", "Vivement la séquence de James & Dédé !"];
+      const system = ["N'oubliez pas de réagir avec le #GrandCactus sur les réseaux !", "Votez pour votre séquence préférée sur notre site !"];
+      function pushMessage(p, txt){
+        const msg = document.createElement('div');
+        msg.className = 'msg';
+        let nameHTML = `<span class="name">${p.name}`;
+        if(p.badge){ nameHTML += `<span class="badge">MODO</span>`; }
+        nameHTML += `</span>`;
+        msg.innerHTML = \`<div class="avatar"></div><div>\${nameHTML}<div class="text">\${txt}</div></div>\`;
+        log.appendChild(msg);
+        log.scrollTop = log.scrollHeight;
+      }
+      pushMessage(profiles[0], 'Bienvenue ! Restez respectueux et votez pour votre sketch préféré 👉 à droite.');
+      function loop(){
+        const delay = 700 + Math.random()*700;
+        setTimeout(()=>{
+          if(Math.random()<0.16){
+            pushMessage(profiles[0], system[Math.floor(Math.random()*system.length)]);
+          } else {
+            const p = profiles[1 + Math.floor(Math.random()*(profiles.length-1))];
+            const msg = lines[Math.floor(Math.random()*lines.length)];
+            pushMessage(p, msg);
+          }
+          bumpBuzz(); bumpViewers();
+          loop();
+        }, delay);
+      }
+      loop();
+      send.addEventListener('click', () => {
+        const v = (text.value||'').trim(); if(!v) return;
+        pushMessage({name:'Vous'}, v); text.value='';
+      });
+      text.addEventListener('keydown', e=>{ if(e.key==='Enter'){ send.click(); }});
+      const buzzBar = document.getElementById('buzzVal');
+      const buzzTxt = document.getElementById('buzzTxt');
+      let buzz = 46;
+      function bumpBuzz(){ const d = (Math.random()*6-2); buzz = Math.max(15, Math.min(100, buzz + d));
+        if(buzzBar){buzzBar.style.width = buzz.toFixed(0)+'%';} if(buzzTxt){buzzTxt.textContent = buzz.toFixed(0)+'%';} }
+      const viewersEl = document.getElementById('viewers');
+      let viewers = 18450;
+      function bumpViewers(){ const d = Math.floor(Math.random()*200-95); viewers += d; if(viewersEl){viewersEl.textContent = `${viewers.toLocaleString('fr-BE')} spectateurs`;} }
+      bumpViewers();
+    <\/script>
 </body>
 </html>`,
             info: `<!DOCTYPE html>
@@ -1634,7 +1632,6 @@
                 resultsContainer.innerHTML = `
                     <div class="result-card md:col-span-2">
                         <h4>📧 Sujet de l'e-mail</h4>
-                        <p>${campaignAssets.email_subject}</p>
                     </div>
                     <div class="result-card md:col-span-2">
                         <h4>✉️ Corps de l'e-mail</h4>
