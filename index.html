@@ -469,6 +469,17 @@
         animation: bounce 2s infinite;
     }
 
+    #hub-modal .modal-content {
+        max-width: 900px;
+        text-align: left;
+    }
+    #hub-modal .card {
+        transition: all 0.3s ease;
+    }
+    #hub-modal .card:hover {
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+    }
+
 </style>
 </head>
 <body class="relative min-h-screen">
@@ -500,27 +511,27 @@
 <p class="font-bold text-lg mb-2 text-fuchsia-400" data-aos="fade-down">Steeve Pires Madeira</p>
 <h1 class="text-4xl md:text-6xl font-black mb-4 text-white" data-aos="fade-down" data-aos-delay="100">Candidature au poste de<br/><span class="neon-gradient-text">Responsable Marketing Digital</span></h1>
 <p class="max-w-3xl mx-auto text-xl mt-4 text-slate-300 leading-relaxed" data-aos="fade-down" data-aos-delay="200">
-    25 ans à la RTBF : vision stratégie + exécution. Je souhaite mettre ma maîtrise des écosystèmes digitaux et ma vision de la data &amp; l'IA au service de la croissance des audiences et de la cohérence de nos marques.
+    25 ans à la RTBF : vision stratégie + exécution. Je souhaite mettre ma maîtrise des écosystèmes digitaux et ma vision de la data &amp; l'IA au service de la croissance des audiences et de la cohérence de nos marques.
 </p>
 <div class="mt-6 flex flex-wrap justify-center gap-2" data-aos="fade-down" data-aos-delay="300">
 <span class="chip">Stratégie 360°</span><span class="chip">SEO</span><span class="chip">Base de contacts</span><span class="chip">Data/IA</span><span class="chip">Gouvernance sociale</span>
 </div>
 <div class="mt-8" data-aos="fade-up" data-aos-delay="400">
-    <div class="intro-block max-w-4xl mx-auto mb-8 text-center" style="background-color: transparent; border: none;">
-        <h3 class="text-2xl font-bold mb-2 text-accent-cyan" style="color: var(--accent-cyan);">Hub de collaboration pour piloter la performance</h3>
-        <p class="text-lg text-slate-400">
-            Pour piloter cette stratégie complexe, la mise en place d'un **tableau de bord de performance centralisé et intelligible** est non négociable.
-            Cet outil agrège les données pour offrir une vue à 360° sur la performance digitale en temps réel.
-        </p>
-    </div>
-    <a class="btn" href="dashboard.html">Voir le Dashboard</a>
+    <div class="intro-block max-w-4xl mx-auto mb-8 text-center" style="background-color: transparent; border: none;">
+        <h3 class="text-2xl font-bold mb-2 text-accent-cyan" style="color: var(--accent-cyan);">Hub de collaboration pour piloter la performance</h3>
+        <p class="text-lg text-slate-400">
+            Pour piloter cette stratégie complexe, la mise en place d'un **tableau de bord de performance centralisé et intelligible** est non négociable.
+            Cet outil agrège les données pour offrir une vue à 360° sur la performance digitale en temps réel.
+        </p>
+    </div>
+    <a class="btn" href="dashboard.html">Voir le Dashboard</a>
 </div>
 </div>
 <div class="scroll-down-arrow">
-  Faites défiler pour en savoir plus
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-  </svg>
+  Faites défiler pour en savoir plus
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+  </svg>
 </div>
 </section>
 <section class="section-wrapper py-20 px-4" id="section-synthese">
@@ -1185,7 +1196,6 @@
                                     return value;
                                 }
                             }
-                        }
                 }
             });
         }
