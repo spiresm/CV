@@ -468,7 +468,6 @@
         color: var(--accent-cyan);
         animation: bounce 2s infinite;
     }
-
 </style>
 </head>
 <body class="relative min-h-screen">
@@ -479,7 +478,7 @@
 <nav class="sticky top-0 z-50">
 <div class="max-w-screen-xl mx-auto px-4">
 <div class="flex items-start justify-between h-20">
-<div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
+<a href="index.html" class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</a>
 <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
 <a class="hover:text-pink-400 transition-colors duration-300" href="dashboard.html">Dashboard</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="hub-digital.html">Hub Digital</a>
@@ -816,32 +815,69 @@
 </div>
 </div>
 </div>
-<div class="modal-overlay" id="skill-detail-modal">
-<div class="modal-content border-cyan-400 text-left max-w-2xl">
+<div class="modal-overlay" id="live-demos-modal">
+<div class="modal-content border-fuchsia-500 text-left">
 <span class="modal-close">×</span>
-<h3 class="text-2xl font-bold text-cyan-400 mb-4" id="skill-modal-title">Titre de la compétence</h3>
-<p class="text-lg text-slate-300 leading-relaxed" id="skill-modal-text">Détail de la compétence et exemple concret ici.</p>
+<h3 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Démos — Live Communities</h3>
+<div class="space-y-3">
+<div class="demo-row">
+<div>
+<div class="demo-title">F1 — Live Communauté (Auvio)</div>
+<p class="demo-desc">Tchat live, réactions, messages officiels (GP de Hongrie).</p>
+</div>
+<a class="demo-btn" href="f1.html">Ouvrir</a>
+</div>
+<div class="demo-row">
+<div>
+<div class="demo-title">Le Grand Cactus — Live Communauté</div>
+<p class="demo-desc">Tchat humoristique, réactions instantanées, annotations.</p>
+</div>
+<a class="demo-btn" href="cactus.html">Ouvrir</a>
+</div>
+<div class="demo-row">
+<div>
+<div class="demo-title">RTBF Info — Live Débat</div>
+<p class="demo-desc">“Envoyer des soldats en Ukraine ?” Tchat continu, sondages &amp; fact-check.</p>
+</div>
+<a class="demo-btn" href="info.html">Ouvrir</a>
 </div>
 </div>
-<div class="modal-overlay" id="vision-modal">
+</div>
+</div>
+<div class="modal-overlay" id="phygital-modal">
 <div class="modal-content">
 <span class="modal-close">×</span>
-<div id="vision-document">
-<div class="cover-page"><h1 class="text-4xl font-black text-gray-800">Projet de Vision Stratégique</h1><p class="text-xl mt-2 text-gray-600">Poste de Responsable Marketing Digital</p><p class="text-2xl mt-12 font-bold text-violet-600">Steeve Pires Madeira</p></div>
+<div id="phygital-document">
+<h2 style="color: var(--lime);">Concept : Expériences Phygitales</h2>
+<p>Créer des ponts entre nos contenus digitaux et le monde réel pour augmenter l'engagement, prolonger l'expérience de nos programmes et créer de la valeur pour nos partenaires et notre public.</p>
 <div class="page-break"></div>
-<h2>Introduction : Relever les défis du service public à l'ère numérique</h2>
-<p>Le paysage médiatique est en pleine mutation. Face à la fragmentation des audiences, la puissance des plateformes internationales et l'émergence de nouveaux usages, la mission du service public doit se réinventer pour rester pertinente et centrale. Mon projet pour la RTBF s'articule autour d'une conviction forte : nous devons passer d'une logique de simple diffusion à une stratégie de **connexion durable et personnalisée** avec nos publics.</p>
-<h3>L'enjeu : une mutation nécessaire des métiers</h3>
-<p>Le succès d'une telle vision passe par la transformation de nos équipes. Les compétences acquises pour la télévision traditionnelle sont un atout, mais doivent être enrichies par une culture digitale forte. Les réalisateurs et monteurs sont nos premiers alliés dans cette évolution.</p>
+<h3>Idée 1 : Le Jardin Extraordinaire - Pokedex GO!</h3>
+<video autoplay loop muted controls class="w-full rounded-xl mb-4">
+    <source src="https://cdn.midjourney.com/video/a38b4eb1-38c3-4524-a932-4081b0ed6203/2.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la balise vidéo.
+</video>
+<ul>
+<li><strong>Concept :</strong> Une application web de Réalité Augmentée (sans téléchargement) qui transforme un parc (ex: Parc de La Boverie à Liège) en un terrain de découverte.</li>
+<li><strong>Mécanisme :</strong> En pointant leur smartphone sur des lieux spécifiques (statue, arbre remarquable), les utilisateurs voient apparaître un animal ou une plante en 3D, tiré des archives de l'émission.</li>
+<li><strong>Engagement :</strong> Chaque "capture" débloque une fiche informative et un extrait vidéo exclusif. Une collection complète permet de participer à un tirage au sort pour une visite des coulisses de l'émission.</li>
+<li><strong>Objectif :</strong> Générer du trafic sur un lieu partenaire, créer une activité familiale engageante et lier le patrimoine audiovisuel de la RTBF à une expérience tangible.</li>
+</ul>
 <div class="page-break"></div>
-<h2>Pilier 1 : Maximiser la Portée et l'Usage de nos Plateformes</h2>
-<p>L'enjeu principal est de renforcer nos plateformes propriétaires (Auvio, RTBF Actus) pour en faire la destination naturelle et privilégiée de nos audiences. Il ne s'agit plus seulement d'attirer des visiteurs, mais de construire des parcours utilisateurs qui encouragent l'exploration, la consommation répétée et la fidélité.</p>
-<h3>La Stratégie de Trafic 360°</h3>
-<p>Il s'agit de créer un écosystème où les différents leviers de trafic (SEO, SEA, Social Media, base de contacts) ne travaillent plus en silos, mais se renforcent mutuellement. Le SEO, en particulier, assure une visibilité de fond durable et crédible.</p>
-<h3>Le Dashboard de Performance Unifié</h3>
-<p>Pour piloter efficacement, il est impératif de disposer d'une vision claire et unifiée de la performance. Je mettrai en place un tableau de bord centralisé qui consolidera les données issues de toutes les sources de trafic pour suivre des KPIs clés comme le coût d'acquisition par canal, la LTV (valeur vie client), et les funnels de conversion.</p>
-<h3>Les "Task Forces SEO"</h3>
-<p>Sur les grands événements, le SEO est notre meilleur allié. Je propose de créer des "Task Forces" temporaires, réunissant des experts du marketing, de la rédaction et de la technique, pour définir et exécuter une stratégie SEO offensive sur ces moments clés.</p>
+<h3>Idée 2 : Viva for Life - La Chasse aux Cubes Solidaires</h3>
+<ul>
+<li><strong>Concept :</strong> Une chasse au trésor géante via QR codes dans la ville hôte de l'événement.</li>
+<li><strong>Mécanisme :</strong> Des QR codes sont disséminés chez les commerçants partenaires, sur les monuments et dans les transports publics. Chaque scan révèle un défi ou une question sur les actions de solidarité de la RTBF.</li>
+<li><strong>Engagement :</strong> Chaque bonne réponse ajoute une somme symbolique (ex: 0,50€, sponsorisée par des partenaires) à un compteur collectif visible par tous. Un classement en direct motive les participants.</li>
+<li><strong>Objectif :</strong> Dynamiser l'événement Viva for Life, augmenter la visibilité des partenaires locaux et matérialiser l'effort collectif de manière ludique.</li>
+</ul>
+<div class="page-break"></div>
+<h3>Idée 3 : Les Ambassadeurs - Parcours d'Investigation</h3>
+<ul>
+<li><strong>Concept :</strong> Un parcours touristique autoguidé dans une ville mise en avant par l'émission, accessible via une web-app.</li>
+<li><strong>Mécanisme :</strong> La carte de la ville indique des points d'intérêt. Une fois sur place (via géolocalisation), l'utilisateur débloque du contenu exclusif : un message audio de l'animateur, une scène coupée au montage, une archive historique.</li>
+<li><strong>Engagement :</strong> Le parcours est scénarisé comme une "mission" pour découvrir les secrets de la ville. Terminer le parcours donne droit à une réduction chez un partenaire local (restaurant, musée) vu dans l'épisode.</li>
+<li><strong>Objectif :</strong> Promouvoir le tourisme local, enrichir l'expérience des téléspectateurs et créer un contenu marketing durable qui vit bien au-delà de la diffusion de l'émission.</li>
+</ul>
 </div>
 </div>
 </div>
