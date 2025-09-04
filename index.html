@@ -659,7 +659,7 @@
 </ul>
 <div class="mt-4 flex items-center justify-between text-sm">
 <span class="chip">+25% engagement live</span>
-<button class="btn" id="live-demos-trigger">Voir les démos</button>
+<a class="btn" href="f1.html">Ouvrir</a>
 </div>
 </div>
 <div class="card p-6 h-indigo" data-aos="fade-up" data-aos-delay="200">
@@ -691,7 +691,7 @@
 </ul>
 <div class="mt-4 flex items-center justify-between text-sm">
 <span class="chip">+20% reach 18–34</span>
-<button class="btn" id="remix-modal-trigger">Voir exemples</button>
+<a class="btn" href="remix.html">Voir exemples</a>
 </div>
 </div>
 <div class="card p-6 h-lime md:col-start-2" data-aos="fade-up" data-aos-delay="100">
@@ -706,7 +706,7 @@
 </ul>
 <div class="mt-4 flex items-center justify-between text-sm">
 <span class="chip">+30% participation</span>
-<button class="btn" id="phygital-modal-trigger">Voir concept</button>
+<a class="btn" href="phygital.html">Voir concept</a>
 </div>
 </div>
 </div>
@@ -1074,7 +1074,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
         const trafficCtx = document.getElementById('trafficChartInModal');
-        if (traffic) {
+        if (trafficCtx) {
             new Chart(trafficCtx.getContext('2d'), {
                 type: 'doughnut',
                 data: {
@@ -1284,6 +1284,123 @@
         setTimeout(() => pushOfficial(msg.name, msg.role, msg.text), 1000 * (i + 1));
     });
     setTimeout(loop, 4000);
+  <\/script>
+</body>
+</html>`,
+            cactus: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Le Grand Cactus — Live + Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{--gc-green:#28e07e; --gc-dark:#0a0f0c; --panel:#101510; --card:#151a16; --border:rgba(255,255,255,.08); --text:#f4fff7; --dim:#cfeedd; --accent:#7bffb8}
+    *{box-sizing:border-box}
+    body{margin:0; font-family:'Montserrat',system-ui,sans-serif; background:radial-gradient(70% 80% at 50% 20%, #0f1511 0%, #0a0f0c 60%, #060906 100%); color:var(--text)}
+    .app{display:grid; grid-template-columns: 1.15fr 0.85fr; gap:16px; height:100svh; padding:16px}
+    .stage{position:relative; border:1px solid var(--border); border-radius:20px; background-image:url(https://steeve-pires.com/cv-rtbf/grand-cactus-bg.jpg); background-size:cover; background-position:center; display:flex; flex-direction:column; justify-content:flex-end; padding:2rem; text-align:center;}
+    .stage::before{content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 60%);}
+    .stage-content{position:relative; z-index:1;}
+    .stage-content img{max-width:250px; margin-bottom:1rem;}
+    .stage-content h1{font-size:clamp(24px, 4vw, 48px); font-weight:900; margin:0; text-shadow:0 4px 20px #000;}
+    .side-panel{display:flex; flex-direction:column; gap:16px;}
+    .chat-box{flex-grow:1; display:flex; flex-direction:column; background:var(--panel); border:1px solid var(--border); border-radius:20px; overflow:hidden;}
+    .chat-box__header{padding:1rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;}
+    .chat-box__header h2{margin:0; font-size:1.2rem; font-weight:700; color:var(--gc-green);}
+    .chat-box__log{flex-grow:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:1rem;}
+    .chat-box__log .msg{display:flex; gap:.75rem;}
+    .chat-box__log .avatar{width:32px; height:32px; border-radius:50%; background:var(--card); flex-shrink:0;}
+    .chat-box__log .name{font-weight:700; font-size:.9rem; color:var(--accent); margin-bottom:.2rem; display:block;}
+    .chat-box__log .name .badge{background:var(--gc-green); color:#000; font-size:.7rem; padding:.1rem .4rem; border-radius:4px; margin-left:.25rem;}
+    .chat-box__log .text{line-height:1.5;}
+    .chat-box__input{padding:1rem; border-top:1px solid var(--border); display:flex; gap:.5rem;}
+    .chat-box__input input{flex-grow:1; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:.5rem .75rem; color:var(--text); font-family:inherit;}
+    .chat-box__input button{background:var(--gc-green); color:#000; border:none; border-radius:8px; padding:0 1rem; font-weight:700; cursor:pointer;}
+    .stats-box{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:1rem;}
+    .stats-box .stat-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;}
+    .stats-box .stat-row h3{margin:0; font-size:1rem;}
+    .stats-box .bar{height:8px; background:var(--card); border-radius:99px; overflow:hidden;}
+    .stats-box .bar-value{height:100%; background:var(--gc-green); border-radius:99px;}
+    @media(max-width:900px){.app{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="stage">
+      <div class="stage-content">
+        <img src="https://steeve-pires.com/cv-rtbf/Le_Grand_Cactus_logo.png" alt="Le Grand Cactus Logo">
+        <h1>Le direct continue sur Auvio</h1>
+      </div>
+    </div>
+    <div class="side-panel">
+      <div class="chat-box">
+        <header class="chat-box__header">
+          <h2>Chat en direct</h2>
+          <div id="viewers"></div>
+        </header>
+        <div class="chat-box__log" id="chat-log"></div>
+        <div class="chat-box__input">
+          <input type="text" id="chat-text" placeholder="Votre message...">
+          <button id="chat-send">Envoyer</button>
+        </div>
+      </div>
+      <div class="stats-box">
+        <div class="stat-row">
+          <h3>Buzz du moment</h3>
+          <span id="buzzTxt">46%</span>
+        </div>
+        <div class="bar"><div class="bar-value" id="buzzVal" style="width:46%;"></div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const log = document.getElementById('chat-log');
+    const text = document.getElementById('chat-text');
+    const send = document.getElementById('chat-send');
+    const profiles = [{name:'Modérateur', badge:true}, {name:'Lola22'}, {name:'FanDeJérôme'}, {name:'CactusForever'}, {name:'David_Bxl'}, {name:'SophieH'}];
+    const lines = ["Excellent ce sketch !", "Hahaha j'en peux plus 😂", "Qui est l'invité de ce soir ?", "C'est mon émission préférée !", "Tellement vrai ce qu'ils disent 🤣", "Vivement la séquence de James & Dédé !"];
+    const system = ["N'oubliez pas de réagir avec le #GrandCactus sur les réseaux !", "Votez pour votre séquence préférée sur notre site !"];
+    function pushMessage(p, txt){
+      const msg = document.createElement('div');
+      msg.className = 'msg';
+      let nameHTML = `<span class="name">${p.name}`;
+      if(p.badge){ nameHTML += `<span class="badge">MODO</span>`; }
+      nameHTML += `</span>`;
+      msg.innerHTML = \`<div class="avatar"></div><div>\${nameHTML}<div class="text">\${txt}</div></div>\`;
+      log.appendChild(msg);
+      log.scrollTop = log.scrollHeight;
+    }
+    pushMessage(profiles[0], 'Bienvenue ! Restez respectueux et votez pour votre sketch préféré 👉 à droite.');
+    function loop(){
+      const delay = 700 + Math.random()*700;
+      setTimeout(()=>{
+        if(Math.random()<0.16){
+          pushMessage(profiles[0], system[Math.floor(Math.random()*system.length)]);
+        } else {
+          const p = profiles[1 + Math.floor(Math.random()*(profiles.length-1))];
+          const msg = lines[Math.floor(Math.random()*lines.length)];
+          pushMessage(p, msg);
+        }
+        bumpBuzz(); bumpViewers();
+        loop();
+      }, delay);
+    }
+    loop();
+    send.addEventListener('click', () => {
+      const v = (text.value||'').trim(); if(!v) return;
+      pushMessage({name:'Vous'}, v); text.value='';
+    });
+    text.addEventListener('keydown', e=>{ if(e.key==='Enter'){ send.click(); }});
+    const buzzBar = document.getElementById('buzzVal');
+    const buzzTxt = document.getElementById('buzzTxt');
+    let buzz = 46;
+    function bumpBuzz(){ const d = (Math.random()*6-2); buzz = Math.max(15, Math.min(100, buzz + d));
+      if(buzzBar){buzzBar.style.width = buzz.toFixed(0)+'%';} if(buzzTxt){buzzTxt.textContent = buzz.toFixed(0)+'%';} }
+    const viewersEl = document.getElementById('viewers');
+    let viewers = 18450;
+    function bumpViewers(){ const d = Math.floor(Math.random()*200-95); viewers += d; if(viewersEl){viewersEl.textContent = `${viewers.toLocaleString('fr-BE')} spectateurs`;} }
+    bumpViewers();
   <\/script>
 </body>
 </html>`,
