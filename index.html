@@ -113,7 +113,7 @@
     #live-demos-modal .demo-row:hover { background-color: rgba(255,255,255,0.05); }
     #live-demos-modal .demo-title { font-weight: 800; margin: 0 0 2px; }
     #live-demos-modal .demo-desc { color: var(--text-secondary); font-size: 0.9rem; margin: 0; }
-    #live-demos-modal .demo-btn { padding: 0.5rem 0.75rem; border-radius: 0.6rem; background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan)); color: #0b1020; font-weight: 800; text-decoration: none; white-space: nowrap; }
+    #live-demos-modal .demo-btn { padding: 0.5rem 0.75rem; border-radius: 0.6rem; background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan)); color: #0b1020; font-weight: 8-00; text-decoration: none; white-space: nowrap; }
 
     /* Gemini AI Modal Styles */
     #gemini-modal .modal-content { max-width: 1000px; text-align: left; }
@@ -497,16 +497,6 @@
       color: var(--text-secondary);
       margin-bottom: 2rem;
       line-height: 1.6;
-    }
-
-    .modal-content.intro-content .scroll-down-arrow {
-      position: static;
-      margin-top: 2rem;
-      transform: none;
-      opacity: 1;
-      animation: none;
-      display: flex;
-      justify-content: center;
     }
 </style>
 </head>
@@ -1697,12 +1687,6 @@
         frameborder="0"
       ></iframe>
     </div>
-    <div class="scroll-down-arrow visible">
-        Faites défiler pour en savoir plus
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-        </svg>
-    </div>
   </div>
 </div>
 <script>
@@ -1710,15 +1694,12 @@
         const modal = document.getElementById('intro-video-modal');
         const closeBtn = modal.querySelector('.modal-close');
         
-        // Affiche automatiquement la modale au chargement
         modal.classList.add('active');
 
-        // Ferme la modale quand on clique sur le bouton
         closeBtn.addEventListener('click', () => {
             modal.classList.remove('active');
         });
 
-        // Ferme aussi si on clique en dehors du contenu
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.remove('active');
