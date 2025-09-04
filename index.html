@@ -691,7 +691,7 @@
 </ul>
 <div class="mt-4 flex items-center justify-between text-sm">
 <span class="chip">+20% reach 18–34</span>
-<a class="btn" href="remix.html">Voir exemples</a>
+<a class="btn" id="remix-modal-trigger">Voir exemples</a>
 </div>
 </div>
 <div class="card p-6 h-lime md:col-start-2" data-aos="fade-up" data-aos-delay="100">
@@ -1641,7 +1641,7 @@
         });
     });
 </script>
-<div class="modal-overlay active" id="intro-video-modal">
+<div class="modal-overlay" id="intro-video-modal">
   <div class="modal-content">
     <span class="modal-close">×</span>
     <h3 class="text-2xl font-bold text-cyan-400 mb-4">Découvrez comment naviguer</h3>
@@ -1659,27 +1659,5 @@
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('intro-video-modal');
-    const closeBtn = modal.querySelector('.modal-close');
-
-    // Affiche automatiquement la modale au chargement
-    modal.classList.add('active');
-
-    // Ferme la modale quand on clique sur le bouton
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-    });
-
-    // Ferme aussi si on clique en dehors du contenu
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-      }
-    });
-  });
-</script>
 </body>
 </html>
