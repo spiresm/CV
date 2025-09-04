@@ -478,7 +478,7 @@
 <nav class="sticky top-0 z-50">
 <div class="max-w-screen-xl mx-auto px-4">
 <div class="flex items-start justify-between h-20">
-<a href="index.html" class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</a>
+<a class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</a>
 <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
 <a class="hover:text-pink-400 transition-colors duration-300" href="dashboard.html">Dashboard</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="hub-digital.html">Hub Digital</a>
@@ -768,6 +768,27 @@
 </div>
 </footer>
 </div>
+<div class="modal-overlay" id="intro-modal">
+    <div class="modal-content">
+        <span class="modal-close">×</span>
+        <div class="text-center">
+            <h3 class="modal-title neon-gradient-text">Bienvenue !</h3>
+            <p class="modal-desc">
+                Ce CV est une expérience interactive. Naviguez avec la souris (ou votre doigt sur mobile) pour découvrir les différentes sections.
+            </p>
+            <div class="my-8">
+                <iframe src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&public_id=capture-ecran_qiek4t&autoplay=true&loop=true&controls=false&mute=true&playsinline=true"
+                    width="100%"
+                    height="auto"
+                    style="aspect-ratio: 16 / 9; border-radius: 12px; border: none;"
+                    allow="autoplay"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <a class="start-btn inline-block text-lg" href="#">Accéder au CV</a>
+        </div>
+    </div>
+</div>
 <div class="modal-overlay" id="secret-modal">
 <div class="modal-content">
 <span class="modal-close">×</span>
@@ -934,6 +955,7 @@
 <option value="jeunes_adultes">Jeunes adultes (18-25 ans)</option>
 <option value="familles">Familles avec enfants</option>
 <option value="passionnes_actu">Passionnés d'actualité</option>
+<option value="amateurs_sport">Amateurs de sport</option>
 </select>
 </div>
 </div>
