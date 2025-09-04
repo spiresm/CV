@@ -131,11 +131,11 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Production Strategy Section Styles */
-    .strategy-card { background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(217,70,239,.06)); border: 1px solid rgba(148,163,184,.2); border-radius: 18px; padding: 28px; }
-    .strategy-card h3 { font-weight: 800; font-size: 1.5rem; color: #e5e7eb; margin-bottom: 10px; }
-    .strategy-card p { color: #cbd5e1; line-height: 1.6; margin-bottom: 1rem; }
-    .strategy-card ul { list-style-type: '👉 '; padding-left: 1.5rem; }
-    .strategy-card li { margin-bottom: 0.5rem; }
+    .synergy-card { background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(217,70,239,.06)); border: 1px solid rgba(148,163,184,.2); border-radius: 18px; padding: 28px; }
+    .synergy-card h3 { font-weight: 800; font-size: 1.5rem; color: #e5e7eb; margin-bottom: 10px; }
+    .synergy-card p { color: #cbd5e1; line-height: 1.6; margin-bottom: 1rem; }
+    .synergy-card ul { list-style-type: '👉 '; padding-left: 1.5rem; }
+    .synergy-card li { margin-bottom: 0.5rem; }
     
     /* Styles pour le dashboard */
     #dashboard-modal .modal-content { max-width: 95vw; height: 95vh; padding: 0; }
@@ -468,6 +468,7 @@
         color: var(--accent-cyan);
         animation: bounce 2s infinite;
     }
+
 </style>
 </head>
 <body class="relative min-h-screen">
@@ -781,12 +782,38 @@
 <div class="modal-content border-indigo-500">
 <span class="modal-close">×</span>
 <h3 class="text-2xl font-bold text-fuchsia-400 mb-4">Mon Profil</h3>
-<div class="max-w-xl mx-auto">
-<canvas id="skillsRadarChartModal"></canvas>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-1 border-r border-violet-500/20 pr-8">
+<h3 class="text-2xl font-bold text-slate-100">Steeve Pires Madeira</h3>
+<p class="text-lg text-slate-300">49 ans</p>
+<p class="text-lg text-slate-400">Huy, Belgique</p>
+<div class="my-6 border-t border-violet-500/20"></div>
+<p class="font-bold text-slate-200">Poste Actuel</p>
+<p class="text-violet-400">Chargé de recherches et développements formats marketing</p>
+<img src="476798929_689213736763427_9105853769662881523_n.jpg" alt="Photo de Steeve Pires Madeira" class="rounded-xl mt-4 max-w-full" />
 </div>
-<p class="mt-6 text-slate-300 max-w-2xl mx-auto">
-    Avec 25 ans d'expérience à la RTBF, ma connaissance interne me rend immédiatement opérationnel. Mon profil équilibré allie une vision stratégique, une expertise technique et managériale, complétée par des compétences avérées en négociation avec les partenaires externes.
-</p>
+<div class="md:col-span-2 max-h-[60vh] overflow-y-auto pr-4 text-left">
+<h3>Mission</h3>
+<p class="text-slate-400">Développer, expérimenter et implémenter des formats innovants. Superviser les projets en assurant le respect du périmètre, des délais, du budget et de la qualité. Être le référent de l’innovation, notamment autour de l’IA, au sein du département.</p>
+<h3>Responsabilités</h3>
+<ul class="list-disc text-slate-400 space-y-2">
+<li>Conduire des projets multimédias innovants du briefing à la livraison.</li>
+<li>Organiser une veille stratégique sur les outils et formats marketing émergents (notamment IA).</li>
+<li>Assurer la cohérence des formats avec la ligne éditoriale de la RTBF.</li>
+<li>Proposer et développer des concepts originaux pour des campagnes ou contenus digitaux.</li>
+<li>Tester et intégrer les usages d’outils d’IA générative (ChatGPT, Midjourney, etc.).</li>
+<li>Former et accompagner les équipes dans l’appropriation de ces outils.</li>
+</ul>
+<h3>Compétences Comportementales</h3>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="chip">Acteur de son développement</span>
+<span class="chip">S’adapter au changement</span>
+<span class="chip">Travailler ensemble</span>
+<span class="chip">Coacher et Développer</span>
+<span class="chip">Présenter et Communiquer</span>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="modal-overlay" id="skill-detail-modal">
@@ -815,110 +842,6 @@
 <p>Pour piloter efficacement, il est impératif de disposer d'une vision claire et unifiée de la performance. Je mettrai en place un tableau de bord centralisé qui consolidera les données issues de toutes les sources de trafic pour suivre des KPIs clés comme le coût d'acquisition par canal, la LTV (valeur vie client), et les funnels de conversion.</p>
 <h3>Les "Task Forces SEO"</h3>
 <p>Sur les grands événements, le SEO est notre meilleur allié. Je propose de créer des "Task Forces" temporaires, réunissant des experts du marketing, de la rédaction et de la technique, pour définir et exécuter une stratégie SEO offensive sur ces moments clés.</p>
-</div>
-</div>
-</div>
-<div class="modal-overlay" id="id-card-modal">
-<div class="modal-content border-violet-500">
-<span class="modal-close">×</span>
-<h2 class="text-3xl font-black mb-6 neon-gradient-text">Carte d'Identité Professionnelle</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="md:col-span-1 border-r border-violet-500/20 pr-8">
-<h3 class="text-2xl font-bold text-slate-100">Steeve Pires Madeira</h3>
-<p class="text-lg text-slate-300">49 ans</p>
-<p class="text-lg text-slate-400">Huy, Belgique</p>
-<div class="my-6 border-t border-violet-500/20"></div>
-<p class="font-bold text-slate-200">Poste Actuel</p>
-<p class="text-violet-400">Chargé de recherches et développements formats marketing</p>
-<img src="476798929_689213736763427_9105853769662881523_n.jpg" alt="Photo de Steeve Pires Madeira" class="rounded-xl mt-4 max-w-[200px] mx-auto" />
-</div>
-<div class="md:col-span-2 max-h-[60vh] overflow-y-auto pr-4 text-left">
-<h3>Mission</h3>
-<p class="text-slate-400">Développer, expérimenter et implémenter des formats innovants. Superviser les projets en assurant le respect du périmètre, des délais, du budget et de la qualité. Être le référent de l’innovation, notamment autour de l’IA, au sein du département.</p>
-<h3>Responsabilités</h3>
-<ul class="list-disc text-slate-400 space-y-2">
-<li>Conduire des projets multimédias innovants du briefing à la livraison.</li>
-<li>Organiser une veille stratégique sur les outils et formats marketing émergents (notamment IA).</li>
-<li>Assurer la cohérence des formats avec la ligne éditoriale de la RTBF.</li>
-<li>Proposer et développer des concepts originaux pour des campagnes ou contenus digitaux.</li>
-<li>Tester et intégrer les usages d’outils d’IA générative (ChatGPT, Midjourney, etc.).</li>
-<li>Former et accompagner les équipes dans l’appropriation de ces outils.</li>
-</ul>
-<h3>Compétences Comportementales</h3>
-<div class="flex flex-wrap gap-2 mt-2">
-<span class="chip">Acteur de son développement</span>
-<span class="chip">S’adapter au changement</span>
-<span class="chip">Travailler ensemble</span>
-<span class="chip">Coacher et Développer</span>
-<span class="chip">Présenter et Communiquer</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="modal-overlay" id="live-demos-modal">
-<div class="modal-content border-fuchsia-500 text-left">
-<span class="modal-close">×</span>
-<h3 class="text-2xl font-bold text-fuchsia-400 mb-6 text-center">Démos — Live Communities</h3>
-<div class="space-y-3">
-<div class="demo-row">
-<div>
-<div class="demo-title">F1 — Live Communauté (Auvio)</div>
-<p class="demo-desc">Tchat live, réactions, messages officiels (GP de Hongrie).</p>
-</div>
-<a class="demo-btn" href="f1.html">Ouvrir</a>
-</div>
-<div class="demo-row">
-<div>
-<div class="demo-title">Le Grand Cactus — Live Communauté</div>
-<p class="demo-desc">Tchat humoristique, réactions instantanées, annotations.</p>
-</div>
-<a class="demo-btn" href="cactus.html">Ouvrir</a>
-</div>
-<div class="demo-row">
-<div>
-<div class="demo-title">RTBF Info — Live Débat</div>
-<p class="demo-desc">“Envoyer des soldats en Ukraine ?” Tchat continu, sondages &amp; fact-check.</p>
-</div>
-<a class="demo-btn" href="info.html">Ouvrir</a>
-</div>
-</div>
-</div>
-</div>
-<div class="modal-overlay" id="phygital-modal">
-<div class="modal-content">
-<span class="modal-close">×</span>
-<div id="phygital-document">
-<h2 style="color: var(--lime);">Concept : Expériences Phygitales</h2>
-<p>Créer des ponts entre nos contenus digitaux et le monde réel pour augmenter l'engagement, prolonger l'expérience de nos programmes et créer de la valeur pour nos partenaires et notre public.</p>
-<div class="page-break"></div>
-<h3>Idée 1 : Le Jardin Extraordinaire - Pokedex GO!</h3>
-<video autoplay loop muted controls class="w-full rounded-xl mb-4">
-    <source src="https://cdn.midjourney.com/video/a38b4eb1-38c3-4524-a932-4081b0ed6203/2.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la balise vidéo.
-</video>
-<ul>
-<li><strong>Concept :</strong> Une application web de Réalité Augmentée (sans téléchargement) qui transforme un parc (ex: Parc de La Boverie à Liège) en un terrain de découverte.</li>
-<li><strong>Mécanisme :</strong> En pointant leur smartphone sur des lieux spécifiques (statue, arbre remarquable), les utilisateurs voient apparaître un animal ou une plante en 3D, tiré des archives de l'émission.</li>
-<li><strong>Engagement :</strong> Chaque "capture" débloque une fiche informative et un extrait vidéo exclusif. Une collection complète permet de participer à un tirage au sort pour une visite des coulisses de l'émission.</li>
-<li><strong>Objectif :</strong> Générer du trafic sur un lieu partenaire, créer une activité familiale engageante et lier le patrimoine audiovisuel de la RTBF à une expérience tangible.</li>
-</ul>
-<div class="page-break"></div>
-<h3>Idée 2 : Viva for Life - La Chasse aux Cubes Solidaires</h3>
-<ul>
-<li><strong>Concept :</strong> Une chasse au trésor géante via QR codes dans la ville hôte de l'événement.</li>
-<li><strong>Mécanisme :</strong> Des QR codes sont disséminés chez les commerçants partenaires, sur les monuments et dans les transports publics. Chaque scan révèle un défi ou une question sur les actions de solidarité de la RTBF.</li>
-<li><strong>Engagement :</strong> Chaque bonne réponse ajoute une somme symbolique (ex: 0,50€, sponsorisée par des partenaires) à un compteur collectif visible par tous. Un classement en direct motive les participants.</li>
-<li><strong>Objectif :</strong> Dynamiser l'événement Viva for Life, augmenter la visibilité des partenaires locaux et matérialiser l'effort collectif de manière ludique.</li>
-</ul>
-<div class="page-break"></div>
-<h3>Idée 3 : Les Ambassadeurs - Parcours d'Investigation</h3>
-<ul>
-<li><strong>Concept :</strong> Un parcours touristique autoguidé dans une ville mise en avant par l'émission, accessible via une web-app.</li>
-<li><strong>Mécanisme :</strong> La carte de la ville indique des points d'intérêt. Une fois sur place (via géolocalisation), l'utilisateur débloque du contenu exclusif : un message audio de l'animateur, une scène coupée au montage, une archive historique.</li>
-<li><strong>Engagement :</strong> Le parcours est scénarisé comme une "mission" pour découvrir les secrets de la ville. Terminer le parcours donne droit à une réduction chez un partenaire local (restaurant, musée) vu dans l'épisode.</li>
-<li><strong>Objectif :</strong> Promouvoir le tourisme local, enrichir l'expérience des téléspectateurs et créer un contenu marketing durable qui vit bien au-delà de la diffusion de l'émission.</li>
-</ul>
 </div>
 </div>
 </div>
@@ -975,7 +898,6 @@
 <option value="jeunes_adultes">Jeunes adultes (18-25 ans)</option>
 <option value="familles">Familles avec enfants</option>
 <option value="passionnes_actu">Passionnés d'actualité</option>
-<option value="amateurs_sport">Amateurs de sport</option>
 </select>
 </div>
 </div>
@@ -1285,123 +1207,6 @@
         setTimeout(() => pushOfficial(msg.name, msg.role, msg.text), 1000 * (i + 1));
     });
     setTimeout(loop, 4000);
-  <\/script>
-</body>
-</html>`,
-            cactus: `<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Le Grand Cactus — Live + Chat</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
-<style>
-    :root{--gc-green:#28e07e; --gc-dark:#0a0f0c; --panel:#101510; --card:#151a16; --border:rgba(255,255,255,.08); --text:#f4fff7; --dim:#cfeedd; --accent:#7bffb8}
-    *{box-sizing:border-box}
-    body{margin:0; font-family:'Montserrat',system-ui,sans-serif; background:radial-gradient(70% 80% at 50% 20%, #0f1511 0%, #0a0f0c 60%, #060906 100%); color:var(--text)}
-    .app{display:grid; grid-template-columns: 1.15fr 0.85fr; gap:16px; height:100svh; padding:16px}
-    .stage{position:relative; border:1px solid var(--border); border-radius:20px; background-image:url(https://steeve-pires.com/cv-rtbf/grand-cactus-bg.jpg); background-size:cover; background-position:center; display:flex; flex-direction:column; justify-content:flex-end; padding:2rem; text-align:center;}
-    .stage::before{content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 60%);}
-    .stage-content{position:relative; z-index:1;}
-    .stage-content img{max-width:250px; margin-bottom:1rem;}
-    .stage-content h1{font-size:clamp(24px, 4vw, 48px); font-weight:900; margin:0; text-shadow:0 4px 20px #000;}
-    .side-panel{display:flex; flex-direction:column; gap:16px;}
-    .chat-box{flex-grow:1; display:flex; flex-direction:column; background:var(--panel); border:1px solid var(--border); border-radius:20px; overflow:hidden;}
-    .chat-box__header{padding:1rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;}
-    .chat-box__header h2{margin:0; font-size:1.2rem; font-weight:700; color:var(--gc-green);}
-    .chat-box__log{flex-grow:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:1rem;}
-    .chat-box__log .msg{display:flex; gap:.75rem;}
-    .chat-box__log .avatar{width:32px; height:32px; border-radius:50%; background:var(--card); flex-shrink:0;}
-    .chat-box__log .name{font-weight:700; font-size:.9rem; color:var(--accent); margin-bottom:.2rem; display:block;}
-    .chat-box__log .name .badge{background:var(--gc-green); color:#000; font-size:.7rem; padding:.1rem .4rem; border-radius:4px; margin-left:.25rem;}
-    .chat-box__log .text{line-height:1.5;}
-    .chat-box__input{padding:1rem; border-top:1px solid var(--border); display:flex; gap:.5rem;}
-    .chat-box__input input{flex-grow:1; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:.5rem .75rem; color:var(--text); font-family:inherit;}
-    .chat-box__input button{background:var(--gc-green); color:#000; border:none; border-radius:8px; padding:0 1rem; font-weight:700; cursor:pointer;}
-    .stats-box{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:1rem;}
-    .stats-box .stat-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;}
-    .stats-box .stat-row h3{margin:0; font-size:1rem;}
-    .stats-box .bar{height:8px; background:var(--card); border-radius:99px; overflow:hidden;}
-    .stats-box .bar-value{height:100%; background:var(--gc-green); border-radius:99px;}
-    @media(max-width:900px){.app{grid-template-columns:1fr;}}
-  </style>
-</head>
-<body>
-  <div class="app">
-    <div class="stage">
-      <div class="stage-content">
-        <img src="https://steeve-pires.com/cv-rtbf/Le_Grand_Cactus_logo.png" alt="Le Grand Cactus Logo">
-        <h1>Le direct continue sur Auvio</h1>
-      </div>
-    </div>
-    <div class="side-panel">
-      <div class="chat-box">
-        <header class="chat-box__header">
-          <h2>Chat en direct</h2>
-          <div id="viewers"></div>
-        </header>
-        <div class="chat-box__log" id="chat-log"></div>
-        <div class="chat-box__input">
-          <input type="text" id="chat-text" placeholder="Votre message...">
-          <button id="chat-send">Envoyer</button>
-        </div>
-      </div>
-      <div class="stats-box">
-        <div class="stat-row">
-          <h3>Buzz du moment</h3>
-          <span id="buzzTxt">46%</span>
-        </div>
-        <div class="bar"><div class="bar-value" id="buzzVal" style="width:46%;"></div></div>
-      </div>
-    </div>
-  </div>
-  <script>
-    const log = document.getElementById('chat-log');
-    const text = document.getElementById('chat-text');
-    const send = document.getElementById('chat-send');
-    const profiles = [{name:'Modérateur', badge:true}, {name:'Lola22'}, {name:'FanDeJérôme'}, {name:'CactusForever'}, {name:'David_Bxl'}, {name:'SophieH'}];
-    const lines = ["Excellent ce sketch !", "Hahaha j'en peux plus 😂", "Qui est l'invité de ce soir ?", "C'est mon émission préférée !", "Tellement vrai ce qu'ils disent 🤣", "Vivement la séquence de James & Dédé !"];
-    const system = ["N'oubliez pas de réagir avec le #GrandCactus sur les réseaux !", "Votez pour votre séquence préférée sur notre site !"];
-    function pushMessage(p, txt){
-      const msg = document.createElement('div');
-      msg.className = 'msg';
-      let nameHTML = `<span class="name">${p.name}`;
-      if(p.badge){ nameHTML += `<span class="badge">MODO</span>`; }
-      nameHTML += `</span>`;
-      msg.innerHTML = \`<div class="avatar"></div><div>\${nameHTML}<div class="text">\${txt}</div></div>\`;
-      log.appendChild(msg);
-      log.scrollTop = log.scrollHeight;
-    }
-    pushMessage(profiles[0], 'Bienvenue ! Restez respectueux et votez pour votre sketch préféré 👉 à droite.');
-    function loop(){
-      const delay = 700 + Math.random()*700;
-      setTimeout(()=>{
-        if(Math.random()<0.16){
-          pushMessage(profiles[0], system[Math.floor(Math.random()*system.length)]);
-        } else {
-          const p = profiles[1 + Math.floor(Math.random()*(profiles.length-1))];
-          const msg = lines[Math.floor(Math.random()*lines.length)];
-          pushMessage(p, msg);
-        }
-        bumpBuzz(); bumpViewers();
-        loop();
-      }, delay);
-    }
-    loop();
-    send.addEventListener('click', () => {
-      const v = (text.value||'').trim(); if(!v) return;
-      pushMessage({name:'Vous'}, v); text.value='';
-    });
-    text.addEventListener('keydown', e=>{ if(e.key==='Enter'){ send.click(); }});
-    const buzzBar = document.getElementById('buzzVal');
-    const buzzTxt = document.getElementById('buzzTxt');
-    let buzz = 46;
-    function bumpBuzz(){ const d = (Math.random()*6-2); buzz = Math.max(15, Math.min(100, buzz + d));
-      if(buzzBar){buzzBar.style.width = buzz.toFixed(0)+'%';} if(buzzTxt){buzzTxt.textContent = buzz.toFixed(0)+'%';} }
-    const viewersEl = document.getElementById('viewers');
-    let viewers = 18450;
-    function bumpViewers(){ const d = Math.floor(Math.random()*200-95); viewers += d; if(viewersEl){viewersEl.textContent = `${viewers.toLocaleString('fr-BE')} spectateurs`;} }
-    bumpViewers();
   <\/script>
 </body>
 </html>`,
