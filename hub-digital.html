@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="fr">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hub Digital — Steeve Pires Madeira</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --bg-dark: #0d0c1d;
+            --surface-dark: #16152b;
+            --text-primary: #f0f2f5;
+            --text-secondary: #a0aec0;
+            --accent-pink: #d946ef;
+            --accent-cyan: #22d3ee;
+            --accent-violet: #8b5cf6;
+            --lime: #84cc16;
+            --orange: #f97316;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+        }
+        #tsparticles-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+        }
+        .content-wrapper {
+            position: relative; z-index: 1;
+        }
+        body, a, button, .interactive-card, #secret-trigger, #logo-trigger, .card, .accordion-header { cursor: none; }
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none; z-index: 9999; }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--accent-pink); }
+        .cursor-outline { width: 35px; height: 35px; border: 2px solid var(--accent-cyan); transition: transform 0.2s ease-out, background-color 0.2s ease-out; }
+        .cursor-outline.hover { transform: translate(-50%, -50%) scale(1.6); background-color: rgba(34, 211, 238, 0.1); }
+        nav { background: rgba(13, 12, 29, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn{display:inline-block;padding:.55rem .9rem;border-radius:12px;background:linear-gradient(90deg,#f472b6,#22d3ee);color:#0b1020;font-weight:800;text-decoration:none;}
+        .neon-gradient-text { background-image: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hub-intro {
+            background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(45,212,191,.06));
+            border: 1px solid rgba(148,163,184,.2);
+            border-radius: 18px;
+            padding: 2rem;
+            backdrop-filter: blur(4px);
+        }
+        .hub-intro__title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+        .hub-intro__subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+        .hub-section-title {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: var(--accent-cyan);
+        }
+        .hub-section-title-pink {
+            color: var(--accent-pink);
+        }
+
+        .accordion-item {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: var(--surface-dark);
+        }
+        .accordion-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out, opacity 0.5s ease-out;
+            padding: 0 1.5rem;
+            opacity: 0;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; /* Valeur généreuse pour le déploiement */
+            padding: 0rem 1.5rem 1.5rem;
+            opacity: 1;
+        }
+        .accordion-arrow {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+        .resource-list li {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .resource-list a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .resource-list a:hover {
+            color: var(--accent-pink);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+        .back-button:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+<div id="tsparticles-bg"></div>
+<div class="content-wrapper">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <nav class="sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4">
+            <div class="flex items-start justify-between h-20">
+                <a href="index.html" class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</a>
+                <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
+                    <a class="hover:text-pink-400 transition-colors duration-300" href="dashboard.html">Dashboard</a>
+                    <a class="hover:text-pink-400 transition-colors duration-300 font-bold text-cyan-400" href="hub-digital.html">Hub Digital</a>
+                    <a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-synthese">Piliers</a>
+                    <a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-ecosysteme">Écosystème</a>
+                    <a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-plan-action">Plan 90j</a>
+                    <a class="hover:text-pink-400 transition-colors duration-300" href="index.html#innovations">Innovations</a>
+                    <a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
+                    <a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a>
+                    <a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="py-20 px-4">
+        <div class="max-w-screen-xl mx-auto">
+            <a href="index.html" class="back-button mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M15 18l-6-6 6-6"/></svg>
+                Retour à l'accueil
+            </a>
+            <div class="hub-intro text-center mb-16" data-aos="fade-up">
+                <h1 class="hub-intro__title neon-gradient-text">Le Hub Digital RTBF</h1>
+                <p class="hub-intro__subtitle">
+                    Votre centre de ressources pour maîtriser le paysage numérique de la RTBF, centraliser les connaissances et favoriser l'autonomie des équipes.
+                </p>
+            </div>
+
+            <section class="max-w-4xl mx-auto space-y-6" data-aos="fade-up">
+                <div class="accordion-item">
+                    <div class="accordion-header text-fuchsia-400">
+                        <span>La Charte Social Media RTBF</span>
+                        <svg class="accordion-arrow w-6 h-6 text-fuchsia-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="mb-4 text-slate-300">
+                            Le document de référence qui encadre la stratégie, les valeurs et les bonnes pratiques de notre communication sur les réseaux sociaux. C'est le pilier pour assurer une voix cohérente et percutante pour l'ensemble de nos marques.
+                        </p>
+                        <h4 class="font-bold text-slate-200 mt-6 mb-2">Exemples (fictifs) :</h4>
+                        <ul class="resource-list">
+                            <li><span>Charte complète : Ton et valeurs de marque</span><a href="#">Accéder</a></li>
+                            <li><span>Dernière mise à jour : Utilisation de musiques sous licence sur TikTok</span><a href="#">Accéder</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header text-cyan-400">
+                        <span>Guides de Bonnes Pratiques & Outils</span>
+                        <svg class="accordion-arrow w-6 h-6 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="mb-4 text-slate-300">
+                            Des guides concrets pour chaque plateforme, agrémentés de tutoriels vidéo pour vous aider à maîtriser les outils, des tendances TikTok aux analyses de performance sur YouTube.
+                        </p>
+                        <h4 class="font-bold text-slate-200 mt-6 mb-2">Exemples (fictifs) :</h4>
+                        <ul class="resource-list">
+                            <li><span>Tutoriel : Créer un Reel viral avec CapCut</span><a href="#">Accéder</a></li>
+                            <li><span>Guide : Les 5 étapes pour optimiser une miniature YouTube</span><a href="#">Accéder</a></li>
+                            <li><span>Webinaire : Analyser un rapport de performance sur Facebook</span><a href="#">Accéder</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header text-violet-400">
+                        <span>Bibliothèque de Cas d'Étude</span>
+                        <svg class="accordion-arrow w-6 h-6 text-violet-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="mb-4 text-slate-300">
+                            Inspirez-vous des succès passés de la RTBF et des meilleures pratiques de l'industrie pour créer vos prochaines campagnes percutantes. Chaque cas d'étude est un levier pour votre créativité.
+                        </p>
+                        <h4 class="font-bold text-slate-200 mt-6 mb-2">Exemples (fictifs) :</h4>
+                        <ul class="resource-list">
+                            <li><span>Analyse de la campagne "Viva for Life" sur Instagram : les Stories qui ont généré le plus de dons.</span><a href="#">Accéder</a></li>
+                            <li><span>Étude de cas : Comment notre stratégie SEO a fait exploser le trafic sur le site de "Jardin Extraordinaire".</span><a href="#">Accéder</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header text-lime-400">
+                        <span>Outils d'Innovation & IA</span>
+                        <svg class="accordion-arrow w-6 h-6 text-lime-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="mb-4 text-slate-300">
+                            Découvrez comment l'intelligence artificielle peut optimiser vos workflows, de la génération d'idées à l'analyse de performance. Cet espace est dédié à l'expérimentation et à l'apprentissage.
+                        </p>
+                        <h4 class="font-bold text-slate-200 mt-6 mb-2">Exemples (fictifs) :</h4>
+                        <ul class="resource-list">
+                            <li><span>Atelier : Utiliser ChatGPT pour créer des sujets de newsletters percutants</span><a href="#">Accéder</a></li>
+                            <li><span>Tutoriel : Intégrer un outil d'IA pour la production de sous-titres automatiques</span><a href="#">Accéder</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="text-center text-sm py-12 bg-black/30 text-gray-400 border-t border-white/10">
+        <p>© 2025 Steeve Pires Madeira. Tous droits réservés.</p>
+        <p class="mt-4">
+            <a class="hover:text-white transition underline" href="https://www.linkedin.com/in/steeve-pires-madeira-7328971a/" target="_blank">LinkedIn</a> • 
+            <a class="hover:text-white transition underline" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+        </p>
+        <p class="mt-2 text-xs text-slate-500">Langues : Français (Natif) • Anglais (Professionnel)</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 700, once: true, offset: 100 });
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            if(cursorDot && cursorOutline) {
+                window.addEventListener('mousemove', (e) => {
+                    cursorDot.style.left = `${e.clientX}px`;
+                    cursorDot.style.top = `${e.clientY}px`;
+                    cursorOutline.style.left = `${e.clientX}px`;
+                    cursorOutline.style.top = `${e.clientY}px`;
+                });
+                document.querySelectorAll('a, button, .accordion-header').forEach((el) => {
+                    el.addEventListener('mouseenter', () => cursorOutline.classList.add('hover'));
+                    el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hover'));
+                });
+            }
+
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    // Fermer tous les autres accordéons
+                    accordionItems.forEach(el => el.classList.remove('active'));
+                    // Ouvrir ou fermer celui qui a été cliqué
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
