@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard — Responsable Marketing Digital — Steeve Pires Madeira</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
+<style>
+    :root {
+        --bg-dark: #0d0c1d;
+        --surface-dark: #16152b;
+        --text-primary: #f0f2f5;
+        --text-secondary: #a0aec0;
+        --accent-pink: #d946ef;
+        --accent-cyan: #22d3ee;
+        --accent-violet: #8b5cf6;
+        --lime: #84cc16;
+        --orange: #f97316;
+    }
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-primary);
+    }
+
+    #tsparticles-bg {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+    }
+    .content-wrapper {
+        position: relative; z-index: 1;
+    }
+
+    .card { background-color: var(--surface-dark); border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; }
+    .neon-gradient-text { background-image: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .metric-value { font-size: 2.5rem; font-weight: 800; }
+    .metric-label { color: var(--text-secondary); font-weight: 500; }
+    .chart-container { height: 300px; }
+    .table-container { max-height: 400px; overflow-y: auto; }
+    .table-container::-webkit-scrollbar { width: 8px; }
+    .table-container::-webkit-scrollbar-track { background: var(--surface-dark); border-radius: 10px; }
+    .table-container::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+    
+    table { width: 100%; border-collapse: separate; border-spacing: 0 0.75rem; }
+    thead th { text-align: center; padding: 0.5rem 1rem; color: var(--text-secondary); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    tbody td { padding: 1rem; background-color: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; }
+    
+    .section-title { font-size: 1.75rem; font-weight: 800; margin-bottom: 2rem; border-bottom: 2px solid rgba(255,255,255,.1); padding-bottom: 1rem;}
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .stat-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background-image: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .stat-label {
+        color: var(--text-secondary);
+        font-weight: 500;
+        margin-top: 0.5rem;
+    }
+    .growth {
+        display: flex;
+        align-items: center;
+        margin-top: 0.5rem;
+        font-weight: 600;
+    }
+    .growth.positive { color: var(--lime); }
+    .growth.negative { color: var(--orange); }
+
+    .effort-card {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .effort-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .effort-card h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+    .progress-bar {
+        width: 100%;
+        height: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 99px;
+        margin-top: 1rem;
+        overflow: hidden;
+    }
+    .progress-fill {
+        height: 100%;
+        background-image: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+        transition: width 0.5s ease-in-out;
+    }
+    .progress-text {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-top: 0.25rem;
+    }
+    .project-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.2s ease;
+    }
+    .project-list li:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    .project-list .status {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+    .status.in-progress { background-color: var(--orange); }
+    .status.completed { background-color: var(--lime); }
+    .status.to-do { background-color: var(--accent-violet); }
+
+    .chart-title-sub {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent-cyan);
+      padding-left: 1rem;
+    }
+    /* Styles pour les notes et commentaires */
+    .comment-section {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .comment-list {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .comment-item {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        cursor: pointer;
+    }
+    .comment-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+    .comment-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+    }
+    .comment-text {
+        color: var(--text-primary);
+        line-height: 1.5;
+    }
+    .comment-input-area {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-top: 1.5rem;
+    }
+    .comment-input {
+        flex-grow: 1;
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+        color: var(--text-primary);
+        resize: none;
+        height: 70px;
+    }
+    .comment-button {
+        background-color: var(--accent-cyan);
+        color: #1a202c;
+        font-weight: 700;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        transition: background-color 0.2s, transform 0.2s;
+        cursor: pointer;
+    }
+    .comment-button:hover {
+        background-color: var(--accent-pink);
+        transform: translateY(-2px);
+    }
+    .intro-block {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    .intro-block p {
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin-top: 1rem;
+    }
+
+    .close-dashboard-btn {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 60;
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+        color: #0b1020;
+        font-weight: 900;
+        font-size: 1.25rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.08);
+        border: 2px solid rgba(255,255,255,0.25);
+        transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .close-dashboard-btn:hover {
+        transform: translateY(-2px) scale(1.04);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 0 0 6px rgba(255,255,255,0.14);
+    }
+    .close-dashboard-btn:focus { outline: none; box-shadow: 0 0 0 3px rgba(34,211,238,0.6); }
+
+</style>
+</head>
+<body class="relative min-h-screen">
+<div id="tsparticles-bg"></div>
+<div class="content-wrapper">
+
+<button id="closeDashboard" class="close-dashboard-btn" aria-label="Fermer le dashboard" title="Fermer">
+  ×
+</button>
+
+<nav class="sticky top-0 z-50 bg-bg-dark/70 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-screen-xl mx-auto px-4">
+        <div class="flex items-start justify-between h-20">
+            <div class="text-3xl font-black neon-gradient-text cursor-pointer">SPM.</div>
+            <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
+                <a class="hover:text-pink-400 transition-colors duration-300" href="index-def.html">Retour au CV</a>
+                <a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="py-20 px-4">
+    <div class="container mx-auto max-w-screen-xl">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-black mb-4 neon-gradient-text" data-aos="fade-down">
+                Tableau de Bord Stratégique
+            </h1>
+        </div>
+
+        <div class="intro-block max-w-4xl mx-auto" data-aos="fade-up">
+            <h3 class="text-xl font-bold text-accent-cyan">Hub de collaboration pour piloter la performance</h3>
+            <p>Ce tableau de bord est bien plus qu'un simple rapport chiffré. C'est un espace de travail interactif et collaboratif, conçu pour que chaque membre de l'équipe puisse non seulement consulter les données, mais aussi les enrichir par ses propres analyses et retours d'expérience. Chaque section permet de laisser des commentaires en temps réel, ce qui transforme les chiffres en conversations et facilite la prise de décision rapide. L'objectif est de créer un **Hub Digital RTBF** qui s'auto-alimente, où la stratégie, l'exécution et le feedback sont centralisés et accessibles à tous, de manière transparente.</p>
+        </div>
+
+        <h2 class="section-title text-accent-pink text-center" data-aos="fade-up">
+            Performance Générale (30 jours)
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="card flex flex-col items-center justify-center text-center" data-aos="fade-up">
+                <p class="metric-value text-accent-pink">8,5 M</p>
+                <p class="metric-label">Vues vidéo</p>
+            </div>
+            <div class="card flex flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-delay="100">
+                <p class="metric-value text-accent-cyan">3,2 min</p>
+                <p class="metric-label">Temps moyen sur la page</p>
+            </div>
+            <div class="card flex flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-delay="200">
+                <p class="metric-value text-lime-400">12,5 %</p>
+                <p class="metric-label">Taux d'inscription newsletter</p>
+            </div>
+            <div class="card flex flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-delay="300">
+                <p class="metric-value text-orange-400">7,20 €</p>
+                <p class="metric-label">Coût par Acquisition (CAC)</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="card" data-aos="fade-right">
+                <h3 class="chart-title-sub">Trafic par Canal</h3>
+                <div class="chart-container">
+                    <canvas id="trafficChart"></canvas>
+                </div>
+                <div class="comment-section">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Alexis DUBOIS**</span>
+                                <span>14:35, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Le trafic organique est en forte croissance ! C'est le résultat direct de nos efforts sur la Task Force SEO. Félicitations à toute l'équipe.</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Camille LEROY**</span>
+                                <span>15:10, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Je confirme, le projet sur l'actualité des élections a généré un pic de trafic organique de +25%. Nous allons documenter les bonnes pratiques pour le Hub Digital.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Laissez une note ou un commentaire..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-left">
+                <h3 class="chart-title-sub">Engagement sur Auvio</h3>
+                <div class="chart-container">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+                <div class="comment-section">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Lina MARCHAL**</span>
+                                <span>16:05, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">L'augmentation du taux d'achèvement est directement liée au format court que nous avons testé pour la nouvelle série docu. Les premiers retours sont très positifs, nous pourrions l'industrialiser.</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Zoé FONTAINE**</span>
+                                <span>16:20, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">L'UX de la nouvelle page programme semble avoir un impact positif sur le temps de visionnage. Un point à valider avec les équipes techniques.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Laissez une note ou un commentaire..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title text-accent-cyan text-center" data-aos="fade-up">
+            Gouvernance Sociale & Projets
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="card flex flex-col items-center justify-center text-center" data-aos="fade-up">
+                <p class="metric-value text-lime-400">95 %</p>
+                <p class="metric-label">Taux d'adoption Charte Social Media</p>
+            </div>
+            <div class="card flex flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-delay="100">
+                <p class="metric-value text-orange-400">3,4 M</p>
+                <p class="metric-label">Audience sociale cumulée</p>
+            </div>
+            <div class="card flex flex-col items-center justify-center text-center" data-aos="fade-up" data-aos-delay="200">
+                <p class="metric-value text-accent-violet">1,75 M</p>
+                <p class="metric-label">Reach organique mensuel</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div class="effort-card" data-aos="fade-up">
+                <h4 class="text-accent-pink">Mise en place du Plan 90j</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%;"></div>
+                </div>
+                <div class="progress-text">65% de l'objectif atteint</div>
+                <div class="mt-4 text-sm text-slate-400">
+                    <p class="mb-2"><strong>Phase 2 : Structuration & Pilotes</strong></p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2">
+                            <span class="status completed"></span>
+                            <span>Audit 360° & Rapport SWOT</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status completed"></span>
+                            <span>Matrice des compétences d'équipe</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status in-progress"></span>
+                            <span>Co-construction Charte Social Media</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status to-do"></span>
+                            <span>Lancement Task Force SEO</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="comment-section">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes de suivi</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Élise MOREAU**</span>
+                                <span>09:40, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Je suis disponible pour un point sur la Charte RS la semaine prochaine. L'harmonisation des messages est clé pour nos éditions d'offres.</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Nora VALENTIN**</span>
+                                <span>10:15, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Bonne initiative, Aurélie. Nous devrions aussi inclure un volet sur l'optimisation des flux de travail pour les éditions d'offres.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Ajouter une note de suivi..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="effort-card" data-aos="fade-up" data-aos-delay="100">
+                <h4 class="text-accent-cyan">Formation IA & Compétences</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80%;"></div>
+                </div>
+                <div class="progress-text">80% des équipes formées aux outils IA</div>
+                <div class="mt-4 text-sm text-slate-400">
+                    <p class="mb-2"><strong>Objectifs par équipe :</strong></p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2">
+                            <span class="status completed"></span>
+                            <span>Ateliers 'Prompting' pour la rédaction</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status completed"></span>
+                            <span>Formation Midjourney pour le design</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status in-progress"></span>
+                            <span>Module 'IA & SEO' en cours de déploiement</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status to-do"></span>
+                            <span>Projet de 'Générateur de Campagne IA'</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="comment-section">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes de suivi</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Hugo LAMBERT**</span>
+                                <span>11:55, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Le module de formation sur l'IA est très bien conçu. Il faudrait l'ouvrir à d'autres départements comme la communication externe. Romain, tu en penses quoi ?</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Jules CARON**</span>
+                                <span>12:15, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Excellente idée, Vitold. Un séminaire transversal pourrait démystifier l'outil et accélérer son adoption pour les RP.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Ajouter une note de suivi..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="effort-card" data-aos="fade-up" data-aos-delay="200">
+                <h4 class="text-accent-violet">Synergies & Projets Actifs</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 45%;"></div>
+                </div>
+                <div class="progress-text">3 projets de synergie en cours</div>
+                <div class="mt-4 text-sm text-slate-400">
+                    <p class="mb-2"><strong>Projets en collaboration :</strong></p>
+                    <ul class="space-y-2 project-list">
+                        <li class="flex items-center gap-2">
+                            <span class="status completed"></span>
+                            <span>Projet Remix : Archives & TikTok</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status in-progress"></span>
+                            <span>Lancement du Conseil Digital mensuel</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="status to-do"></span>
+                            <span>Projet Pilote 'Phygital' pour VFL</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="comment-section">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes de suivi</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Maëlle GARNIER**</span>
+                                <span>17:40, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Les premiers échanges sur le Conseil Digital sont très productifs. Il faut qu'on ait une vue claire du budget pour la campagne de fin d'année.</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Sarah COLIN**</span>
+                                <span>17:55, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Absolument Maëlle. L'alignement est indispensable pour garantir le succès de nos prochaines opérations.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Ajouter une note de suivi..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title text-accent-violet text-center" data-aos="fade-up">
+            Impacts de l'Innovation
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="stat-card" data-aos="fade-up">
+                <p class="stat-value">25 %</p>
+                <p class="stat-label">Augmentation de l'engagement live</p>
+                <span class="growth positive">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L11 20"></path></svg>
+                    <span>(+ Live Communities)</span>
+                </span>
+                <div class="comment-section w-full text-left">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Emma LECLERC**</span>
+                                <span>13:10, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Les données de la F1 sont prometteuses. Il faut qu'on analyse la possibilité d'étendre ce format à d'autres événements sportifs majeurs sur Auvio.</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Mathis PERRIN**</span>
+                                <span>13:45, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Le format pourrait être adapté pour les retransmissions radio également, en ajoutant un fil de discussion en direct pour les auditeurs.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Votre commentaire..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                <p class="stat-value">15 %</p>
+                <p class="stat-label">Augmentation du temps passé</p>
+                <span class="growth positive">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L11 20"></path></svg>
+                    <span>(+ Gamification)</span>
+                </span>
+                <div class="comment-section w-full text-left">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Mathis PERRIN**</span>
+                                <span>10:30, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">J'ai fait remonter le prototype du jeu à l'équipe de production. Le potentiel de gamification pour les contenus audio est à explorer absolument.</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Sarah COLIN**</span>
+                                <span>10:45, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">C'est une excellente idée pour les programmes TV qui touchent un public jeune. Ça permet de prolonger l'expérience en dehors de la diffusion.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Votre commentaire..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                <p class="stat-value">20 %</p>
+                <p class="stat-label">Augmentation du reach 18-34 ans</p>
+                <span class="growth positive">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L11 20"></path></svg>
+                    <span>(+ #RTBFRemix)</span>
+                </span>
+                <div class="comment-section w-full text-left">
+                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
+                    <div class="comment-list">
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Sarah COLIN**</span>
+                                <span>15:50, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Le concept de #RTBFRemix est parfait pour les archives TV. On pourrait faire une session de brainstorming avec l'équipe Contenus pour identifier les pépites à exploiter.</p>
+                        </div>
+                        <div class="comment-item">
+                            <div class="comment-meta">
+                                <span>**Emma LECLERC**</span>
+                                <span>16:00, 2 Sep 2025</span>
+                            </div>
+                            <p class="comment-text">Il faudrait aussi voir comment l'intégrer aux plans de communication des programmes actuels. Le pont entre le passé et le présent est un vrai levier d'engagement.</p>
+                        </div>
+                    </div>
+                    <div class="comment-input-area">
+                        <textarea class="comment-input" placeholder="Votre commentaire..."></textarea>
+                        <button class="comment-button">Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title text-lime-400 text-center" data-aos="fade-up">
+            Performance SEO
+        </h2>
+        <div class="card" data-aos="fade-up">
+            <h3 class="chart-title-sub">Trafic Organique par Pilier</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pilier Thématique</th>
+                            <th>Trafic Organique (30j)</th>
+                            <th>Augmentation (%)</th>
+                            <th>Mots-clés classés</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Actualités (info.rtbf.be)</td>
+                            <td>3,45 M</td>
+                            <td class="text-lime-400">+12%</td>
+                            <td>5,200</td>
+                        </tr>
+                        <tr>
+                            <td>Sport (rtbf.be/sport)</td>
+                            <td>1,80 M</td>
+                            <td class="text-orange-400">-3%</td>
+                            <td>3,100</td>
+                        </tr>
+                        <tr>
+                            <td>Divertissement (auvio.rtbf.be)</td>
+                            <td>2,15 M</td>
+                            <td class="text-lime-400">+8%</td>
+                            <td>4,850</td>
+                        </tr>
+                        <tr>
+                            <td>Culture (rtbf.be/culture)</td>
+                            <td>850 K</td>
+                            <td class="text-lime-400">+15%</td>
+                            <td>1,950</td>
+                        </tr>
+                        <tr>
+                            <td>Émissions Radio (rtbf.be/radio)</td>
+                            <td>550 K</td>
+                            <td class="text-lime-400">+5%</td>
+                            <td>1,120</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="comment-section">
+                <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
+                <div class="comment-list">
+                    <div class="comment-item">
+                        <div class="comment-meta">
+                            <span>**Jules CARON**</span>
+                            <span>17:00, 2 Sep 2025</span>
+                        </div>
+                        <p class="comment-text">Je vois que le pôle Sport est en baisse. Est-ce dû à la fin de la saison de foot ? C'est le bon moment pour lancer un nouveau projet SEO sur la rentrée sportive.</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-meta">
+                            <span>**Chloé BERNARD**</span>
+                            <span>17:25, 2 Sep 2025</span>
+                        </div>
+                        <p class="comment-text">La baisse est normale. Le plan marketing global pour le pôle sport inclut une stratégie de contenu pour les JO. Le référencement des articles est en cours pour anticiper le pic de trafic.</p>
+                    </div>
+                </div>
+                <div class="comment-input-area">
+                    <textarea class="comment-input" placeholder="Laissez une note ou un commentaire..."></textarea>
+                    <button class="comment-button">Envoyer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="text-center text-sm py-12 bg-black/30 text-gray-400 border-t border-white/10">
+    <p>© 2025 Steeve Pires Madeira. Tous droits réservés.</p>
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    AOS.init({ duration: 700, once: true, offset: 100 });
+    document.addEventListener('DOMContentLoaded', () => {
+
+    const closeBtn = document.getElementById('closeDashboard');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            if (document.referrer && document.referrer !== window.location.href) {
+                history.back();
+            } else {
+                window.location.href = 'index-def.html';
+            }
+        });
+    }
+
+        tsParticles.load("tsparticles-bg", {
+            background: { color: { value: "#0d0c1d" } }, fpsLimit: 60,
+            interactivity: { events: { onHover: { enable: true, mode: "grab" }, onClick: { enable: true, mode: "push" } }, modes: { grab: { distance: 140, links: { opacity: 0.5 }}, push: { quantity: 4 } } },
+            particles: { number: { value: 65, density: { enable: true } }, color: { value: "#ffffff" }, links: { color: "#ffffff", distance: 150, enable: true, opacity: 0.15, width: 1 }, move: { direction: "none", enable: true, outModes: "out", random: false, speed: 0.5, straight: false }, opacity: { value: { min: 0.1, max: 0.5 }}, shape: { type: "circle" }, size: { value: { min: 1, max: 2 }} },
+            detectRetina: true
+        });
+
+        const trafficCtx = document.getElementById('trafficChart');
+        if (trafficCtx) {
+            new Chart(trafficCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Trafic Organique', 'Direct', 'Réseaux Sociaux', 'E-mails', 'Référents'],
+                    datasets: [{
+                        data: [45, 20, 18, 10, 7],
+                        backgroundColor: [
+                            'rgba(217, 70, 239, 0.8)',
+                            'rgba(34, 211, 238, 0.8)',
+                            'rgba(139, 92, 246, 0.8)',
+                            'rgba(132, 204, 22, 0.8)',
+                            'rgba(249, 115, 22, 0.8)'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.8)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        const engagementCtx = document.getElementById('engagementChart');
+        if (engagementCtx) {
+            new Chart(engagementCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Vues vidéo', 'Temps de visionnage (h)', 'Vues totales (Auvio)', 'Taux d\'achèvement (%)'],
+                    datasets: [{
+                        label: 'Vues',
+                        data: [8500000, 0, 12500000, 0],
+                        backgroundColor: ['rgba(34, 211, 238, 0.8)', 'rgba(255,255,255,0)', 'rgba(217, 70, 239, 0.8)', 'rgba(255,255,255,0)'],
+                        borderRadius: 8,
+                        yAxisID: 'y'
+                    },{
+                        label: 'Heures',
+                        data: [0, 48000, 0, 0],
+                        backgroundColor: ['rgba(255,255,255,0)', 'rgba(139, 92, 246, 0.8)', 'rgba(255,255,255,0)', 'rgba(255,255,255,0)'],
+                        borderRadius: 8,
+                        yAxisID: 'y1'
+                    },{
+                        label: 'Taux',
+                        data: [0, 0, 0, 78],
+                        backgroundColor: ['rgba(255,255,255,0)', 'rgba(255,255,255,0)', 'rgba(255,255,255,0)', 'rgba(132, 204, 22, 0.8)'],
+                        borderRadius: 8,
+                        yAxisID: 'y2'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: 'rgba(255, 255, 255, 0.8)' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: 'rgba(255, 255, 255, 0.8)' }
+                        },
+                        y2: {
+                            type: 'linear',
+                            display: false, /* On cache cet axe pour ne pas encombrer le graphique */
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: 'rgba(255, 255, 255, 0.8)', max: 100 }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: 'rgba(255, 255, 255, 0.8)', maxRotation: 45, minRotation: 45 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: (ctx) => ctx[0].label,
+                                label: (ctx) => {
+                                    const value = ctx.parsed.y;
+                                    if (ctx.dataset.label === 'Vues') {
+                                        return `${value.toLocaleString('fr-BE')} vues`;
+                                    } else if (ctx.dataset.label === 'Heures') {
+                                        return `${value.toLocaleString('fr-BE')} heures`;
+                                    } else if (ctx.dataset.label === 'Taux') {
+                                        return `${value}%`;
+                                    }
+                                    return value;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

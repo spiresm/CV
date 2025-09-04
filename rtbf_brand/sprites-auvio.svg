@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <rect width="100%" height="100%" fill="none"/>
+  <!-- Player ship -->
+  <g id="player">
+    <rect x="16" y="200" width="84" height="40" rx="8" fill="#ffffff"/>
+    <circle cx="58" cy="208" r="8" fill="#ffca1a"/>
+  </g>
+  <!-- Enemy block -->
+  <g id="enemy">
+    <rect x="140" y="24" width="36" height="24" rx="4" fill="#22d3ee"/>
+  </g>
+  <!-- Bullet -->
+  <g id="bullet">
+    <rect x="24" y="24" width="4" height="12" rx="2" fill="#d946ef"/>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+:root{
+  --rtbf-black: #0a0a0a;
+  --rtbf-white: #ffffff;
+  --auvio-yellow: #ffca1a;
+  --info-blue: #1e90ff;
+  --info-red: #ff4757;
+  --cactus-green: #28e07e;
+  --accent-fuchsia: #d946ef;
+  --accent-cyan: #22d3ee;
+  --accent-violet: #8b5cf6;
+}
+/* Panels & cards */
+.rtbf-panel { background: rgba(10,10,10,.8); border: 1px solid rgba(255,255,255,.08); }
+.rtbf-chip  { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding:.25rem .6rem; font-weight:700; font-size:.8rem; }
+/* Buttons */
+.btn-rtbf  { background: linear-gradient(90deg, var(--accent-fuchsia), var(--accent-cyan)); color:#0b1020; font-weight:800; border-radius:12px; padding:.55rem .9rem; }
+/* Game canvases with brand bgs */
+#cvGame.brand-info { background-image: url('./rtbf_brand/bg-quiz-info.svg'); background-size: cover; background-position:center; }
+#auvioGame.brand-auvio { background-image: url('./rtbf_brand/bg-auvio-invaders.svg'); background-size: cover; background-position:center; }
+/* Score tiles */
+.hud-tile strong { color: var(--rtbf_white); font-weight: 900; }
