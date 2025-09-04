@@ -131,11 +131,11 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* Production Strategy Section Styles */
-    .synergy-card { background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(217,70,239,.06)); border: 1px solid rgba(148,163,184,.2); border-radius: 18px; padding: 28px; }
-    .synergy-card h3 { font-weight: 800; font-size: 1.5rem; color: #e5e7eb; margin-bottom: 10px; }
-    .synergy-card p { color: #cbd5e1; line-height: 1.6; margin-bottom: 1rem; }
-    .synergy-card ul { list-style-type: '👉 '; padding-left: 1.5rem; }
-    .synergy-card li { margin-bottom: 0.5rem; }
+    .strategy-card { background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(217,70,239,.06)); border: 1px solid rgba(148,163,184,.2); border-radius: 18px; padding: 28px; }
+    .strategy-card h3 { font-weight: 800; font-size: 1.5rem; color: #e5e7eb; margin-bottom: 10px; }
+    .strategy-card p { color: #cbd5e1; line-height: 1.6; margin-bottom: 1rem; }
+    .strategy-card ul { list-style-type: '👉 '; padding-left: 1.5rem; }
+    .strategy-card li { margin-bottom: 0.5rem; }
     
     /* Styles pour le dashboard */
     #dashboard-modal .modal-content { max-width: 95vw; height: 95vh; padding: 0; }
@@ -478,7 +478,7 @@
 <nav class="sticky top-0 z-50">
 <div class="max-w-screen-xl mx-auto px-4">
 <div class="flex items-start justify-between h-20">
-<a class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</a>
+<div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
 <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
 <a class="hover:text-pink-400 transition-colors duration-300" href="dashboard.html">Dashboard</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="hub-digital.html">Hub Digital</a>
@@ -768,27 +768,6 @@
 </div>
 </footer>
 </div>
-<div class="modal-overlay" id="intro-modal">
-    <div class="modal-content">
-        <span class="modal-close">×</span>
-        <div class="text-center">
-            <h3 class="modal-title neon-gradient-text">Bienvenue !</h3>
-            <p class="modal-desc">
-                Ce CV est une expérience interactive. Naviguez avec la souris (ou votre doigt sur mobile) pour découvrir les différentes sections.
-            </p>
-            <div class="my-8">
-                <iframe src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&public_id=capture-ecran_qiek4t&autoplay=true&loop=true&controls=false&mute=true&playsinline=true"
-                    width="100%"
-                    height="auto"
-                    style="aspect-ratio: 16 / 9; border-radius: 12px; border: none;"
-                    allow="autoplay"
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <a class="start-btn inline-block text-lg" href="#">Accéder au CV</a>
-        </div>
-    </div>
-</div>
 <div class="modal-overlay" id="secret-modal">
 <div class="modal-content">
 <span class="modal-close">×</span>
@@ -802,6 +781,47 @@
 <div class="modal-content border-indigo-500">
 <span class="modal-close">×</span>
 <h3 class="text-2xl font-bold text-fuchsia-400 mb-4">Mon Profil</h3>
+<div class="max-w-xl mx-auto">
+<canvas id="skillsRadarChartModal"></canvas>
+</div>
+<p class="mt-6 text-slate-300 max-w-2xl mx-auto">
+    Avec 25 ans d'expérience à la RTBF, ma connaissance interne me rend immédiatement opérationnel. Mon profil équilibré allie une vision stratégique, une expertise technique et managériale, complétée par des compétences avérées en négociation avec les partenaires externes.
+</p>
+</div>
+</div>
+<div class="modal-overlay" id="skill-detail-modal">
+<div class="modal-content border-cyan-400 text-left max-w-2xl">
+<span class="modal-close">×</span>
+<h3 class="text-2xl font-bold text-cyan-400 mb-4" id="skill-modal-title">Titre de la compétence</h3>
+<p class="text-lg text-slate-300 leading-relaxed" id="skill-modal-text">Détail de la compétence et exemple concret ici.</p>
+</div>
+</div>
+<div class="modal-overlay" id="vision-modal">
+<div class="modal-content">
+<span class="modal-close">×</span>
+<div id="vision-document">
+<div class="cover-page"><h1 class="text-4xl font-black text-gray-800">Projet de Vision Stratégique</h1><p class="text-xl mt-2 text-gray-600">Poste de Responsable Marketing Digital</p><p class="text-2xl mt-12 font-bold text-violet-600">Steeve Pires Madeira</p></div>
+<div class="page-break"></div>
+<h2>Introduction : Relever les défis du service public à l'ère numérique</h2>
+<p>Le paysage médiatique est en pleine mutation. Face à la fragmentation des audiences, la puissance des plateformes internationales et l'émergence de nouveaux usages, la mission du service public doit se réinventer pour rester pertinente et centrale. Mon projet pour la RTBF s'articule autour d'une conviction forte : nous devons passer d'une logique de simple diffusion à une stratégie de **connexion durable et personnalisée** avec nos publics.</p>
+<h3>L'enjeu : une mutation nécessaire des métiers</h3>
+<p>Le succès d'une telle vision passe par la transformation de nos équipes. Les compétences acquises pour la télévision traditionnelle sont un atout, mais doivent être enrichies par une culture digitale forte. Les réalisateurs et monteurs sont nos premiers alliés dans cette évolution.</p>
+<div class="page-break"></div>
+<h2>Pilier 1 : Maximiser la Portée et l'Usage de nos Plateformes</h2>
+<p>L'enjeu principal est de renforcer nos plateformes propriétaires (Auvio, RTBF Actus) pour en faire la destination naturelle et privilégiée de nos audiences. Il ne s'agit plus seulement d'attirer des visiteurs, mais de construire des parcours utilisateurs qui encouragent l'exploration, la consommation répétée et la fidélité.</p>
+<h3>La Stratégie de Trafic 360°</h3>
+<p>Il s'agit de créer un écosystème où les différents leviers de trafic (SEO, SEA, Social Media, base de contacts) ne travaillent plus en silos, mais se renforcent mutuellement. Le SEO, en particulier, assure une visibilité de fond durable et crédible.</p>
+<h3>Le Dashboard de Performance Unifié</h3>
+<p>Pour piloter efficacement, il est impératif de disposer d'une vision claire et unifiée de la performance. Je mettrai en place un tableau de bord centralisé qui consolidera les données issues de toutes les sources de trafic pour suivre des KPIs clés comme le coût d'acquisition par canal, la LTV (valeur vie client), et les funnels de conversion.</p>
+<h3>Les "Task Forces SEO"</h3>
+<p>Sur les grands événements, le SEO est notre meilleur allié. Je propose de créer des "Task Forces" temporaires, réunissant des experts du marketing, de la rédaction et de la technique, pour définir et exécuter une stratégie SEO offensive sur ces moments clés.</p>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="id-card-modal">
+<div class="modal-content border-violet-500">
+<span class="modal-close">×</span>
+<h2 class="text-3xl font-black mb-6 neon-gradient-text">Carte d'Identité Professionnelle</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="md:col-span-1 border-r border-violet-500/20 pr-8">
 <h3 class="text-2xl font-bold text-slate-100">Steeve Pires Madeira</h3>
@@ -810,7 +830,7 @@
 <div class="my-6 border-t border-violet-500/20"></div>
 <p class="font-bold text-slate-200">Poste Actuel</p>
 <p class="text-violet-400">Chargé de recherches et développements formats marketing</p>
-<img src="476798929_689213736763427_9105853769662881523_n.jpg" alt="Photo de Steeve Pires Madeira" class="rounded-xl mt-4 max-w-full" />
+<img src="476798929_689213736763427_9105853769662881523_n.jpg" alt="Photo de Steeve Pires Madeira" class="rounded-xl mt-4 max-w-[200px] mx-auto" />
 </div>
 <div class="md:col-span-2 max-h-[60vh] overflow-y-auto pr-4 text-left">
 <h3>Mission</h3>
@@ -1268,6 +1288,123 @@
   <\/script>
 </body>
 </html>`,
+            cactus: `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Le Grand Cactus — Live + Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{--gc-green:#28e07e; --gc-dark:#0a0f0c; --panel:#101510; --card:#151a16; --border:rgba(255,255,255,.08); --text:#f4fff7; --dim:#cfeedd; --accent:#7bffb8}
+    *{box-sizing:border-box}
+    body{margin:0; font-family:'Montserrat',system-ui,sans-serif; background:radial-gradient(70% 80% at 50% 20%, #0f1511 0%, #0a0f0c 60%, #060906 100%); color:var(--text)}
+    .app{display:grid; grid-template-columns: 1.15fr 0.85fr; gap:16px; height:100svh; padding:16px}
+    .stage{position:relative; border:1px solid var(--border); border-radius:20px; background-image:url(https://steeve-pires.com/cv-rtbf/grand-cactus-bg.jpg); background-size:cover; background-position:center; display:flex; flex-direction:column; justify-content:flex-end; padding:2rem; text-align:center;}
+    .stage::before{content:''; position:absolute; inset:0; border-radius:inherit; background:linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 60%);}
+    .stage-content{position:relative; z-index:1;}
+    .stage-content img{max-width:250px; margin-bottom:1rem;}
+    .stage-content h1{font-size:clamp(24px, 4vw, 48px); font-weight:900; margin:0; text-shadow:0 4px 20px #000;}
+    .side-panel{display:flex; flex-direction:column; gap:16px;}
+    .chat-box{flex-grow:1; display:flex; flex-direction:column; background:var(--panel); border:1px solid var(--border); border-radius:20px; overflow:hidden;}
+    .chat-box__header{padding:1rem; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;}
+    .chat-box__header h2{margin:0; font-size:1.2rem; font-weight:700; color:var(--gc-green);}
+    .chat-box__log{flex-grow:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:1rem;}
+    .chat-box__log .msg{display:flex; gap:.75rem;}
+    .chat-box__log .avatar{width:32px; height:32px; border-radius:50%; background:var(--card); flex-shrink:0;}
+    .chat-box__log .name{font-weight:700; font-size:.9rem; color:var(--accent); margin-bottom:.2rem; display:block;}
+    .chat-box__log .name .badge{background:var(--gc-green); color:#000; font-size:.7rem; padding:.1rem .4rem; border-radius:4px; margin-left:.25rem;}
+    .chat-box__log .text{line-height:1.5;}
+    .chat-box__input{padding:1rem; border-top:1px solid var(--border); display:flex; gap:.5rem;}
+    .chat-box__input input{flex-grow:1; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:.5rem .75rem; color:var(--text); font-family:inherit;}
+    .chat-box__input button{background:var(--gc-green); color:#000; border:none; border-radius:8px; padding:0 1rem; font-weight:700; cursor:pointer;}
+    .stats-box{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:1rem;}
+    .stats-box .stat-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;}
+    .stats-box .stat-row h3{margin:0; font-size:1rem;}
+    .stats-box .bar{height:8px; background:var(--card); border-radius:99px; overflow:hidden;}
+    .stats-box .bar-value{height:100%; background:var(--gc-green); border-radius:99px;}
+    @media(max-width:900px){.app{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="stage">
+      <div class="stage-content">
+        <img src="https://steeve-pires.com/cv-rtbf/Le_Grand_Cactus_logo.png" alt="Le Grand Cactus Logo">
+        <h1>Le direct continue sur Auvio</h1>
+      </div>
+    </div>
+    <div class="side-panel">
+      <div class="chat-box">
+        <header class="chat-box__header">
+          <h2>Chat en direct</h2>
+          <div id="viewers"></div>
+        </header>
+        <div class="chat-box__log" id="chat-log"></div>
+        <div class="chat-box__input">
+          <input type="text" id="chat-text" placeholder="Votre message...">
+          <button id="chat-send">Envoyer</button>
+        </div>
+      </div>
+      <div class="stats-box">
+        <div class="stat-row">
+          <h3>Buzz du moment</h3>
+          <span id="buzzTxt">46%</span>
+        </div>
+        <div class="bar"><div class="bar-value" id="buzzVal" style="width:46%;"></div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const log = document.getElementById('chat-log');
+    const text = document.getElementById('chat-text');
+    const send = document.getElementById('chat-send');
+    const profiles = [{name:'Modérateur', badge:true}, {name:'Lola22'}, {name:'FanDeJérôme'}, {name:'CactusForever'}, {name:'David_Bxl'}, {name:'SophieH'}];
+    const lines = ["Excellent ce sketch !", "Hahaha j'en peux plus 😂", "Qui est l'invité de ce soir ?", "C'est mon émission préférée !", "Tellement vrai ce qu'ils disent 🤣", "Vivement la séquence de James & Dédé !"];
+    const system = ["N'oubliez pas de réagir avec le #GrandCactus sur les réseaux !", "Votez pour votre séquence préférée sur notre site !"];
+    function pushMessage(p, txt){
+      const msg = document.createElement('div');
+      msg.className = 'msg';
+      let nameHTML = `<span class="name">${p.name}`;
+      if(p.badge){ nameHTML += `<span class="badge">MODO</span>`; }
+      nameHTML += `</span>`;
+      msg.innerHTML = \`<div class="avatar"></div><div>\${nameHTML}<div class="text">\${txt}</div></div>\`;
+      log.appendChild(msg);
+      log.scrollTop = log.scrollHeight;
+    }
+    pushMessage(profiles[0], 'Bienvenue ! Restez respectueux et votez pour votre sketch préféré 👉 à droite.');
+    function loop(){
+      const delay = 700 + Math.random()*700;
+      setTimeout(()=>{
+        if(Math.random()<0.16){
+          pushMessage(profiles[0], system[Math.floor(Math.random()*system.length)]);
+        } else {
+          const p = profiles[1 + Math.floor(Math.random()*(profiles.length-1))];
+          const msg = lines[Math.floor(Math.random()*lines.length)];
+          pushMessage(p, msg);
+        }
+        bumpBuzz(); bumpViewers();
+        loop();
+      }, delay);
+    }
+    loop();
+    send.addEventListener('click', () => {
+      const v = (text.value||'').trim(); if(!v) return;
+      pushMessage({name:'Vous'}, v); text.value='';
+    });
+    text.addEventListener('keydown', e=>{ if(e.key==='Enter'){ send.click(); }});
+    const buzzBar = document.getElementById('buzzVal');
+    const buzzTxt = document.getElementById('buzzTxt');
+    let buzz = 46;
+    function bumpBuzz(){ const d = (Math.random()*6-2); buzz = Math.max(15, Math.min(100, buzz + d));
+      if(buzzBar){buzzBar.style.width = buzz.toFixed(0)+'%';} if(buzzTxt){buzzTxt.textContent = buzz.toFixed(0)+'%';} }
+    const viewersEl = document.getElementById('viewers');
+    let viewers = 18450;
+    function bumpViewers(){ const d = Math.floor(Math.random()*200-95); viewers += d; if(viewersEl){viewersEl.textContent = `${viewers.toLocaleString('fr-BE')} spectateurs`;} }
+    bumpViewers();
+  <\/script>
+</body>
+</html>`,
             info: `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1504,6 +1641,46 @@
             }
         });
     });
+</script>
+<div class="modal-overlay active" id="intro-video-modal">
+  <div class="modal-content">
+    <span class="modal-close">×</span>
+    <h3 class="text-2xl font-bold text-cyan-400 mb-4">Découvrez comment naviguer</h3>
+    <p class="mb-4 text-slate-300">Cette courte vidéo vous montre comment explorer le site facilement.</p>
+    <div class="video-wrapper">
+      <iframe
+        src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&public_id=capture-ecran_qiek4t&profile=cld-default&autoplay=true"
+        width="640"
+        height="360"
+        style="height:auto; width:100%; aspect-ratio:640/360; border-radius: 12px;"
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        allowfullscreen
+        frameborder="0"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('intro-video-modal');
+    const closeBtn = modal.querySelector('.modal-close');
+
+    // Affiche automatiquement la modale au chargement
+    modal.classList.add('active');
+
+    // Ferme la modale quand on clique sur le bouton
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    // Ferme aussi si on clique en dehors du contenu
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  });
 </script>
 </body>
 </html>
