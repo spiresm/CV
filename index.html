@@ -750,7 +750,7 @@
     </ul>
     <div class="mt-4 flex items-center justify-between text-sm">
         <span class="chip">Espace collaboratif</span>
-        <a class="btn" id="hub-digital-trigger" href="hub-digital.html">Découvrir</a>
+        <a class="btn" href="hub-digital.html">Découvrir</a>
     </div>
 </div>
 </div>
@@ -1168,7 +1168,7 @@
                 options: {
                     onClick: (event, elements) => { if (elements.length > 0) { const details = skillDetails[elements[0].index]; document.getElementById('skill-modal-title').textContent = details.title; document.getElementById('skill-modal-text').textContent = details.text; skillDetailModal.classList.add('active'); } },
                     scales: { r: { angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, grid: { color: 'rgba(255, 255, 255, 0.2)' }, pointLabels: { color: '#f0f2f5', font: { size: 14 } }, ticks: { display: false, backdropColor: 'transparent' } } },
-                    plugins: { legend: { display: false }, tooltip: { enabled: false, callbacks: { title: (ctx) => ctx[0].label.replace(/\s\(.*\)/, '') } } }
+                    plugins: { legend: { display: false }, tooltip: { enabled: true, callbacks: { title: (ctx) => ctx[0].label.replace(/\s\(.*\)/, '') } } }
                 }
             });
         };
@@ -1730,49 +1730,69 @@
     // Gestion de l'animation de défilement
     document.addEventListener('DOMContentLoaded', () => {
         const scrollArrow = document.querySelector('.scroll-down-arrow');
-        let scrollTimeout;
+        let hasScrolled = false;
+        let hasMouseMoved = false;
 
-        const showScrollArrow = () => {
-            scrollArrow.classList.add('visible');
-        };
+        // Montre la flèche après un court délai pour que la page charge
+        setTimeout(() => {
+            if (!hasScrolled && !hasMouseMoved) {
+                scrollArrow.classList.add('visible');
+            }
+        }, 1000);
 
-        const hideScrollArrow = () => {
-            scrollArrow.classList.remove('visible');
-        };
-
+        // Cache la flèche au premier défilement
         window.addEventListener('scroll', () => {
-            hideScrollArrow();
-            clearTimeout(scrollTimeout);
+            if (!hasScrolled) {
+                scrollArrow.classList.remove('visible');
+                hasScrolled = true;
+            }
         });
 
+        // Cache la flèche au premier mouvement de souris
         window.addEventListener('mousemove', () => {
-            hideScrollArrow();
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(showScrollArrow, 2000); // Apparaît après 2 secondes d'inactivité
+            if (!hasMouseMoved) {
+                scrollArrow.classList.remove('visible');
+                hasMouseMoved = true;
+            }
         });
-
-        // Afficher la flèche au chargement si l'utilisateur ne bouge pas
-        scrollTimeout = setTimeout(showScrollArrow, 2000);
     });
 </script>
 <div class="modal-overlay active" id="intro-video-modal">
-    <div class="modal-content intro-content">
-        <span class="modal-close">×</span>
-        <h3 class="modal-title">Découvrez comment naviguer</h3>
-        <p class="modal-desc">Cette courte vidéo vous montre comment explorer le site facilement.</p>
-        <div class="video-wrapper">
-            <iframe
-                src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&public_id=capture-ecran_qiek4t&profile=cld-default&autoplay=true&muted=true"
-                width="640"
-                height="360"
-                style="height:auto; width:100%; aspect-ratio:640/360; border-radius: 12px;"
-                allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                allowfullscreen
-                frameborder="0"
-            ></iframe>
-        </div>
-    </div>
+  <div class="modal-content intro-content">
+    <span class="modal-close">×</span>
+    <h3 class="modal-title">Découvrez comment naviguer</h3>
+    <p class="modal-desc">Cette courte vidéo vous montre comment explorer le site facilement.</p>
+    <div class="video-wrapper">
+      <iframe
+        src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&public_id=capture-ecran_qiek4t&profile=cld-default&autoplay=true&muted=true"
+        width="640"
+        height="360"
+        style="height:auto; width:100%; aspect-ratio:640/360; border-radius: 12px;"
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        allowfullscreen
+        frameborder="0"
+      ></iframe>
+    </div>
+  </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('intro-video-modal');
+        const closeBtn = modal.querySelector('.modal-close');
+        
+        modal.classList.add('active');
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+</script>
 <div class="modal-overlay" id="hub-digital-modal">
     <div class="modal-content text-left">
         <span class="modal-close">×</span>
