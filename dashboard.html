@@ -226,51 +226,29 @@
         margin-top: 1rem;
     }
 
-    .close-dashboard-btn {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        z-index: 60;
-        width: 56px;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 9999px;
-        background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
-        color: #0b1020;
-        font-weight: 900;
-        font-size: 1.25rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.08);
-        border: 2px solid rgba(255,255,255,0.25);
-        transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .close-dashboard-btn:hover {
-        transform: translateY(-2px) scale(1.04);
-        box-shadow: 0 14px 28px rgba(0,0,0,0.45), 0 0 0 6px rgba(255,255,255,0.14);
-    }
-    .close-dashboard-btn:focus { outline: none; box-shadow: 0 0 0 3px rgba(34,211,238,0.6); }
-
 </style>
 </head>
 <body class="relative min-h-screen">
 <div id="tsparticles-bg"></div>
 <div class="content-wrapper">
 
-<button id="closeDashboard" class="close-dashboard-btn" aria-label="Fermer le dashboard" title="Fermer">
-  ×
-</button>
-
 <nav class="sticky top-0 z-50 bg-bg-dark/70 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-screen-xl mx-auto px-4">
-        <div class="flex items-start justify-between h-20">
-            <div class="text-3xl font-black neon-gradient-text cursor-pointer">SPM.</div>
-            <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
-                <a class="hover:text-pink-400 transition-colors duration-300" href="index.html">Retour au CV</a>
-                <a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
-            </div>
-        </div>
-    </div>
+<div class="max-w-screen-xl mx-auto px-4">
+<div class="flex items-start justify-between h-20">
+<div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
+<div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
+<a class="hover:text-pink-400 transition-colors duration-300" href="index.html">Retour au CV</a>
+<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-synthese">Piliers</a>
+<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-ecosysteme">Écosystème</a>
+<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-plan-action">Plan 90j</a>
+<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#innovations">Innovations</a>
+<a class="hover:text-pink-400 transition-colors duration-300" id="hub-digital-modal-trigger">Hub Digital</a>
+<a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
+<a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a>
+<a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+</div>
+</div>
+</div>
 </nav>
 
 <main class="py-20 px-4">
@@ -430,7 +408,7 @@
                                 <span>**Nora VALENTIN**</span>
                                 <span>10:15, 2 Sep 2025</span>
                             </div>
-                            <p class="comment-text">Bonne initiative, Aurélie. Nous devrions aussi inclure un volet sur l'optimisation des flux de travail pour les éditions d'offres.</p>
+                            <p class="comment-text">Bonne initiative, Aurélie. Un séminaire transversal pourrait démystifier l'outil et accélérer son adoption pour les RP.</p>
                         </div>
                     </div>
                     <div class="comment-input-area">
@@ -539,105 +517,6 @@
             </div>
         </div>
 
-        <h2 class="section-title text-accent-violet text-center" data-aos="fade-up">
-            Impacts de l'Innovation
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div class="stat-card" data-aos="fade-up">
-                <p class="stat-value">25 %</p>
-                <p class="stat-label">Augmentation de l'engagement live</p>
-                <span class="growth positive">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L11 20"></path></svg>
-                    <span>(+ Live Communities)</span>
-                </span>
-                <div class="comment-section w-full text-left">
-                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
-                    <div class="comment-list">
-                        <div class="comment-item">
-                            <div class="comment-meta">
-                                <span>**Emma LECLERC**</span>
-                                <span>13:10, 2 Sep 2025</span>
-                            </div>
-                            <p class="comment-text">Les données de la F1 sont prometteuses. Il faut qu'on analyse la possibilité d'étendre ce format à d'autres événements sportifs majeurs sur Auvio.</p>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-meta">
-                                <span>**Mathis PERRIN**</span>
-                                <span>13:45, 2 Sep 2025</span>
-                            </div>
-                            <p class="comment-text">Le format pourrait être adapté pour les retransmissions radio également, en ajoutant un fil de discussion en direct pour les auditeurs.</p>
-                        </div>
-                    </div>
-                    <div class="comment-input-area">
-                        <textarea class="comment-input" placeholder="Votre commentaire..."></textarea>
-                        <button class="comment-button">Envoyer</button>
-                    </div>
-                </div>
-            </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-                <p class="stat-value">15 %</p>
-                <p class="stat-label">Augmentation du temps passé</p>
-                <span class="growth positive">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L11 20"></path></svg>
-                    <span>(+ Gamification)</span>
-                </span>
-                <div class="comment-section w-full text-left">
-                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
-                    <div class="comment-list">
-                        <div class="comment-item">
-                            <div class="comment-meta">
-                                <span>**Mathis PERRIN**</span>
-                                <span>10:30, 2 Sep 2025</span>
-                            </div>
-                            <p class="comment-text">J'ai fait remonter le prototype du jeu à l'équipe de production. Le potentiel de gamification pour les contenus audio est à explorer absolument.</p>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-meta">
-                                <span>**Sarah COLIN**</span>
-                                <span>10:45, 2 Sep 2025</span>
-                            </div>
-                            <p class="comment-text">C'est une excellente idée pour les programmes TV qui touchent un public jeune. Ça permet de prolonger l'expérience en dehors de la diffusion.</p>
-                        </div>
-                    </div>
-                    <div class="comment-input-area">
-                        <textarea class="comment-input" placeholder="Votre commentaire..."></textarea>
-                        <button class="comment-button">Envoyer</button>
-                    </div>
-                </div>
-            </div>
-            <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-                <p class="stat-value">20 %</p>
-                <p class="stat-label">Augmentation du reach 18-34 ans</p>
-                <span class="growth positive">
-                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8L11 20"></path></svg>
-                    <span>(+ #RTBFRemix)</span>
-                </span>
-                <div class="comment-section w-full text-left">
-                    <h4 class="text-lg font-bold mb-2 text-fuchsia-400">Notes & Commentaires</h4>
-                    <div class="comment-list">
-                        <div class="comment-item">
-                            <div class="comment-meta">
-                                <span>**Sarah COLIN**</span>
-                                <span>15:50, 2 Sep 2025</span>
-                            </div>
-                            <p class="comment-text">Le concept de #RTBFRemix est parfait pour les archives TV. On pourrait faire une session de brainstorming avec l'équipe Contenus pour identifier les pépites à exploiter.</p>
-                        </div>
-                        <div class="comment-item">
-                            <div class="comment-meta">
-                                <span>**Emma LECLERC**</span>
-                                <span>16:00, 2 Sep 2025</span>
-                            </div>
-                            <p class="comment-text">Il faudrait aussi voir comment l'intégrer aux plans de communication des programmes actuels. Le pont entre le passé et le présent est un vrai levier d'engagement.</p>
-                        </div>
-                    </div>
-                    <div class="comment-input-area">
-                        <textarea class="comment-input" placeholder="Votre commentaire..."></textarea>
-                        <button class="comment-button">Envoyer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <h2 class="section-title text-lime-400 text-center" data-aos="fade-up">
             Performance SEO
         </h2>
@@ -702,7 +581,7 @@
                             <span>**Chloé BERNARD**</span>
                             <span>17:25, 2 Sep 2025</span>
                         </div>
-                        <p class="comment-text">La baisse est normale. Le plan marketing global pour le pôle sport inclut une stratégie de contenu pour les JO. Le référencement des articles est en cours pour anticiper le pic de trafic.</p>
+                        <p class="comment-text">La baisse est normale. Le plan marketing global pour le pôle sport inclus une stratégie de contenu pour les JO. Le référencement des articles est en cours pour anticiper le pic de trafic.</p>
                     </div>
                 </div>
                 <div class="comment-input-area">
