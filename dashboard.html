@@ -225,7 +225,12 @@
         line-height: 1.6;
         margin-top: 1rem;
     }
-
+    /* Rend les liens des modales inactifs et visuellement distincts dans le dashboard */
+    .dashboard-nav-link-disabled {
+        pointer-events: none;
+        opacity: 0.5;
+        text-decoration: none;
+    }
 </style>
 </head>
 <body class="relative min-h-screen">
@@ -233,22 +238,22 @@
 <div class="content-wrapper">
 
 <nav class="sticky top-0 z-50 bg-bg-dark/70 backdrop-blur-md border-b border-white/10">
-<div class="max-w-screen-xl mx-auto px-4">
-<div class="flex items-start justify-between h-20">
-<div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
-<div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
-<a class="hover:text-pink-400 transition-colors duration-300" href="index.html">Retour au CV</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-synthese">Piliers</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-ecosysteme">Écosystème</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#section-plan-action">Plan 90j</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="index.html#innovations">Innovations</a>
-<a class="hover:text-pink-400 transition-colors duration-300" id="hub-digital-modal-trigger">Hub Digital</a>
-<a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
-<a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a>
-<a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
-</div>
-</div>
-</div>
+    <div class="max-w-screen-xl mx-auto px-4">
+        <div class="flex items-start justify-between h-20">
+            <div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
+            <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
+                <a class="hover:text-pink-400 transition-colors duration-300 font-bold" href="index.html">Retour au CV</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-synthese">Piliers</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-ecosysteme">Écosystème</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-plan-action">Plan 90j</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#innovations">Innovations</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Hub Digital</a>
+                <a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Vision Détaillée</a>
+                <a class="font-bold hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Mon Profil</a>
+                <a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+            </div>
+        </div>
+    </div>
 </nav>
 
 <main class="py-20 px-4">
@@ -258,7 +263,7 @@
                 Tableau de Bord Stratégique
             </h1>
         </div>
-
+        
         <div class="intro-block max-w-4xl mx-auto" data-aos="fade-up">
             <h3 class="text-xl font-bold text-accent-cyan">Hub de collaboration pour piloter la performance</h3>
             <p>Ce tableau de bord est bien plus qu'un simple rapport chiffré. C'est un espace de travail interactif et collaboratif, conçu pour que chaque membre de l'équipe puisse non seulement consulter les données, mais aussi les enrichir par ses propres analyses et retours d'expérience. Chaque section permet de laisser des commentaires en temps réel, ce qui transforme les chiffres en conversations et facilite la prise de décision rapide. L'objectif est de créer un **Hub Digital RTBF** qui s'auto-alimente, où la stratégie, l'exécution et le feedback sont centralisés et accessibles à tous, de manière transparente.</p>
