@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>CV — Responsable Marketing Digital — Steeve Pires Madeira</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet"/>
 <style>
     :root {
@@ -516,6 +516,53 @@
         border-radius: 1rem;
         margin: 0 auto 1rem;
     }
+
+    /* Styles for a better profile layout */
+    .profile-modal-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+    @media (min-width: 768px) {
+        .profile-modal-grid {
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+    .profile-modal-img {
+        width: 100%;
+        max-width: 250px;
+        border-radius: 1rem;
+        margin: 0 auto;
+        border: 3px solid var(--accent-cyan);
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
+    }
+
+    /* Styles pour le bloc "Pourquoi..." */
+    .modern-card {
+        background: linear-gradient(145deg, rgba(217, 70, 239, 0.1), rgba(34, 211, 238, 0.1));
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        text-align: center;
+    }
+    .modern-card__title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        background-image: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .modern-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
 </style>
 </head>
 <body class="relative min-h-screen">
@@ -885,11 +932,13 @@
 </section>
 <section class="section-wrapper py-20 px-4" id="section-why">
 <div class="max-w-screen-lg mx-auto">
-<div class="modern-card">
+<div class="modern-card" data-aos="fade-up">
 <h2 class="modern-card__title">Pourquoi je suis la bonne personne pour ce poste</h2>
 <p>Tout au long de mon parcours, j’ai su, dans les moments clés, concevoir et mettre en place des campagnes qui ont réellement fait parler d’elles. Que ce soit pour lancer un nouveau format, mettre en avant un événement ou soutenir une initiative stratégique, j’ai toujours trouvé les leviers et les idées créatives pour attirer l’attention du public.</p>
 <p>Ma force : savoir combiner une bonne compréhension des audiences avec des outils adaptés et un message clair, pour maximiser l’impact d’une campagne. Cela s’est traduit par une forte visibilité et un engagement mesurable, y inclus dans des contextes concurrentiels.</p>
-</div></div></section>
+</div>
+</div>
+</section>
 <footer class="text-center text-sm py-12 bg-black/30 text-gray-400 border-t border-white/10">
 <p>© 2025 Steeve Pires Madeira. Tous droits réservés.</p>
 <p class="mt-4">
@@ -915,84 +964,64 @@
 <div class="modal-content border-indigo-500 max-w-5xl h-[90vh] overflow-y-auto p-8">
 <span class="modal-close">×</span>
 <h2 class="text-3xl font-black neon-gradient-text mb-8 text-center">Mon Profil & Parcours</h2>
-
-<div class="grid grid-cols-1 gap-8 text-left mt-8">
-    <div class="text-left bg-black/20 p-8 md:p-12 rounded-2xl border border-white/10 space-y-10">
-        <div>
-            <h4 class="text-xl font-bold neon-gradient-text mb-4">Profil Professionnel</h4>
-            <p class="text-lg text-slate-300">
-                Professionnel du graphisme et du multimédia avec plus de 25 ans d'expérience à la RTBF. Spécialiste du motion design, de l'animation 2D/3D et de la production vidéo. Acteur de la transition de l'entreprise vers le digital, je suis aujourd'hui un contributeur clé dans l'intégration de l'intelligence artificielle au sein des équipes marketing.
-            </p>
-        </div>
-
-        <div>
-            <h4 class="text-xl font-bold neon-gradient-text mb-4">Expérience Professionnelle</h4>
-            <div class="space-y-8 text-slate-300">
-                <p class="font-bold text-xl">RTBF - Reyers, Bruxelles</p>
-                <div class="pl-4 border-l-2 border-fuchsia-400/50">
-                    <p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital & Motion Designer</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li>Conception et réalisation de formats digitaux originaux et de nouveaux habillages d'antenne (La Une et Auvio Kids TV).</li>
-                        <li>Pionnier de l'intégration de l'IA, avec la mise en place d'un groupe de travail et la participation au comité IA.</li>
-                        <li>Conception et réalisation d'une plateforme interne : <a href="https://iamarketing.netlify.app" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">iamarketing.netlify.app</a>, une preuve de concept pour agréger les prompts, workflows et la veille sur l'IA, avec un projet d'extension à l'ensemble de l'entreprise.</li>
-                    </ul>
-                </div>
-                <div class="pl-4 border-l-2 border-cyan-400/50">
-                    <p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li>Rôle de pionnier dans le virage digital de l'entreprise.</li>
-                        <li>Création et gestion de la chaîne <a href="http://youtube.com/user/RTBF" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">YouTube RTBF</a>.</li>
-                        <li>Conception et réalisation de "No Limit", un format court sur les tendances numériques.</li>
-                    </ul>
-                </div>
-                <div class="pl-4 border-l-2 border-violet-400/50">
-                    <p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D & Opérateur Graphique</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li>Création de graphisme et d'habillage pour de nombreuses émissions, notamment : Fort en tête, Quelques chose en nous de..., Seul contre tous, Matière grise, Le Dan Late Show, Dites-moi, Ici BlaBla, Les 50 ans de la TV.</li>
-                        <li>Réalisation de l'habillage du JT et des météos.</li>
-                        <li>Expérience sur des technologies de pointe de l'époque : <a href="https://en.wikipedia.org/wiki/Quantel" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Quantel (HAL)</a>, moteur 3D <a href="https://en.wikipedia.org/wiki/Orad_Hi-Tec_Systems" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Orad</a>.</li>
-                        <li>Création de la première météo 3D et de l'affichage électoral (2000).</li>
-                        <li>Création d'habillages pour de grands événements, comme la Coupe du monde au Japon.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div>
-                <h4 class="text-xl font-bold neon-gradient-text mb-4">Formation</h4>
-                <ul class="list-disc list-inside text-lg text-slate-300 space-y-1">
-                    <li>**1995 :** Études Supérieures en arts graphiques, Institut Saint-Luc, Bruxelles & Liège.</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-xl font-bold neon-gradient-text mb-4">Compétences Techniques</h4>
-                <div class="grid grid-cols-1 gap-4 text-slate-300">
-                    <div>
-                        <p class="font-bold text-lg text-fuchsia-400">Logiciels</p>
-                        <ul class="list-disc list-inside mt-2">
-                            <li>Suite Adobe (Premiere Pro, After Effects, Photoshop)</li>
-                            <li>3dsmax, Quantel (HAL), Orad</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg text-cyan-400">Outils IA</p>
-                        <ul class="list-disc list-inside mt-2">
-                            <li><a href="https://stablediffusionweb.com/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Stable Diffusion</a>, <a href="https://www.midjourney.com/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Midjourney</a>, <a href="https://runwayml.com/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Runway</a>, <a href="https://n8n.io/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">N8N</a></li>
-                        </ul>
-                    </div>
-                    <div class="md:col-span-2">
-                        <p class="font-bold text-lg text-violet-400">Domaines d'Expertise</p>
-                        <ul class="list-disc list-inside mt-2">
-                            <li>Motion design, animation 2D/3D</li>
-                            <li>Montage vidéo, gestion de projet, marketing digital</li>
-                            <li>Habillage d'antenne, décors virtuels, développement web</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="profile-modal-grid">
+<div>
+<img src="476798929_689213736763427_9105853769662881523_n.jpg" alt="Photo de Steeve Pires Madeira" class="profile-modal-img" />
+<div class="mt-8 text-left bg-black/20 p-6 rounded-2xl border border-white/10">
+<h4 class="text-xl font-bold neon-gradient-text mb-4">Formation</h4>
+<ul class="list-disc list-inside text-lg text-slate-300 space-y-1">
+<li>**1995 :** Études Supérieures en arts graphiques, Institut Saint-Luc, Bruxelles & Liège.</li>
+</ul>
+</div>
+<div class="mt-8 text-left bg-black/20 p-6 rounded-2xl border border-white/10">
+<h4 class="text-xl font-bold neon-gradient-text mb-4">Compétences Techniques</h4>
+<ul class="list-disc list-inside text-slate-300">
+<li>**Logiciels :** Suite Adobe (Premiere Pro, After Effects, Photoshop), 3dsmax, Quantel (HAL), Orad</li>
+<li>**Outils IA :** Stable Diffusion, Midjourney, Runway, N8N</li>
+<li>**Domaines :** Motion design, animation 2D/3D, Montage vidéo, gestion de projet, marketing digital, habillage d'antenne, décors virtuels, développement web.</li>
+</ul>
+</div>
+</div>
+<div class="text-left">
+<div>
+<h4 class="text-xl font-bold neon-gradient-text mb-4">Profil Professionnel</h4>
+<p class="text-lg text-slate-300">
+Professionnel du graphisme et du multimédia avec plus de 25 ans d'expérience à la RTBF. Spécialiste du motion design, de l'animation 2D/3D et de la production vidéo. Acteur de la transition de l'entreprise vers le digital, je suis aujourd'hui un contributeur clé dans l'intégration de l'intelligence artificielle au sein des équipes marketing.
+</p>
+</div>
+<div class="mt-8">
+<h4 class="text-xl font-bold neon-gradient-text mb-4">Expérience Professionnelle</h4>
+<div class="space-y-8 text-slate-300">
+<p class="font-bold text-xl">RTBF - Reyers, Bruxelles</p>
+<div class="pl-4 border-l-2 border-fuchsia-400/50">
+<p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital & Motion Designer</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Conception et réalisation de formats digitaux originaux et de nouveaux habillages d'antenne (La Une et Auvio Kids TV).</li>
+<li>Pionnier de l'intégration de l'IA, avec la mise en place d'un groupe de travail et la participation au comité IA.</li>
+<li>Conception et réalisation d'une plateforme interne : <a href="https://iamarketing.netlify.app" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">iamarketing.netlify.app</a>, une preuve de concept pour agréger les prompts, workflows et la veille sur l'IA, avec un projet d'extension à l'ensemble de l'entreprise.</li>
+</ul>
+</div>
+<div class="pl-4 border-l-2 border-cyan-400/50">
+<p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Rôle de pionnier dans le virage digital de l'entreprise.</li>
+<li>Création et gestion de la chaîne <a href="http://youtube.com/user/RTBF" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">YouTube RTBF</a>.</li>
+<li>Conception et réalisation de "No Limit", un format court sur les tendances numériques.</li>
+</ul>
+</div>
+<div class="pl-4 border-l-2 border-violet-400/50">
+<p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D & Opérateur Graphique</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Création de graphisme et d'habillage pour de nombreuses émissions, notamment : Fort en tête, Quelques chose en nous de..., Seul contre tous, Matière grise, Le Dan Late Show, Dites-moi, Ici BlaBla, Les 50 ans de la TV.</li>
+<li>Réalisation de l'habillage du JT et des météos.</li>
+<li>Expérience sur des technologies de pointe de l'époque : <a href="https://en.wikipedia.org/wiki/Quantel" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Quantel (HAL)</a>, moteur 3D <a href="https://en.wikipedia.org/wiki/Orad_Hi-Tec_Systems" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Orad</a>.</li>
+<li>Création de la première météo 3D et de l'affichage électoral (2000).</li>
+<li>Création d'habillages pour de grands événements, comme la Coupe du monde au Japon.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1500,7 +1529,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-device, initial-scale=1.0" name="viewport"/>
 <title>Le Grand Cactus — Live + Chat</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet"/>
 <style>
@@ -1617,7 +1646,12 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-s/tem/Segoe UI,Roboto,Arial}
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RTBF Info - Live Débat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+    :root{--info-red:#e53e3e;--info-blue:#2b6cb0;--bg:#0e1216;--panel:#171d24;--card:#242c33;--border:rgba(255,255,255,.12);--text:#f0f2f5;--muted:#a0aec0;--grad:linear-gradient(90deg, #63b3ed, #4299e1);}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial}
     .app{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;min-height:100svh;padding:16px}
     .video{position:relative;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 10px 30px rgba(0,0,0,.5)}
     .video img.bg{width:100%;height:100%;object-fit:cover;display:block;opacity:.8;}
@@ -1851,11 +1885,11 @@
     });
 </script>
 <div class="modal-overlay active" id="intro-video-modal">
-  <div class="modal-content intro-content">
+  <div class="modal-content intro-content flex flex-col justify-center items-center">
     <span class="modal-close">×</span>
     <h3 class="modal-title">Découvrez comment naviguer</h3>
-    <p class="modal-desc">Cette courte vidéo vous montre comment explorer le site facilement.</p>
-    <div class="video-wrapper">
+    <p class="modal-desc text-center">Cette courte vidéo vous montre comment explorer le site facilement.</p>
+    <div class="video-wrapper w-full max-w-2xl">
       <iframe
         src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&public_id=capture-ecran_qiek4t&profile=cld-default&autoplay=true&muted=true"
         width="640"
