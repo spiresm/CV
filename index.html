@@ -750,7 +750,7 @@
     </ul>
     <div class="mt-4 flex items-center justify-between text-sm">
         <span class="chip">Espace collaboratif</span>
-        <a class="btn" href="hub-digital.html">Découvrir</a>
+        <a class="btn" id="hub-digital-trigger" href="hub-digital.html">Découvrir</a>
     </div>
 </div>
 </div>
@@ -1730,31 +1730,29 @@
     // Gestion de l'animation de défilement
     document.addEventListener('DOMContentLoaded', () => {
         const scrollArrow = document.querySelector('.scroll-down-arrow');
-        let hasScrolled = false;
-        let hasMouseMoved = false;
+        let scrollTimeout;
 
-        // Montre la flèche après un court délai pour que la page charge
-        setTimeout(() => {
-            if (!hasScrolled && !hasMouseMoved) {
-                scrollArrow.classList.add('visible');
-            }
-        }, 1000);
+        const showScrollArrow = () => {
+            scrollArrow.classList.add('visible');
+        };
 
-        // Cache la flèche au premier défilement
+        const hideScrollArrow = () => {
+            scrollArrow.classList.remove('visible');
+        };
+
         window.addEventListener('scroll', () => {
-            if (!hasScrolled) {
-                scrollArrow.classList.remove('visible');
-                hasScrolled = true;
-            }
+            hideScrollArrow();
+            clearTimeout(scrollTimeout);
         });
 
-        // Cache la flèche au premier mouvement de souris
         window.addEventListener('mousemove', () => {
-            if (!hasMouseMoved) {
-                scrollArrow.classList.remove('visible');
-                hasMouseMoved = true;
-            }
+            hideScrollArrow();
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(showScrollArrow, 2000); // Apparaît après 2 secondes d'inactivité
         });
+
+        // Afficher la flèche au chargement si l'utilisateur ne bouge pas
+        scrollTimeout = setTimeout(showScrollArrow, 2000);
     });
 </script>
 <div class="modal-overlay active" id="intro-video-modal">
@@ -1775,24 +1773,6 @@
     </div>
   </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('intro-video-modal');
-        const closeBtn = modal.querySelector('.modal-close');
-        
-        modal.classList.add('active');
-
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
-    });
-</script>
 <div class="modal-overlay" id="hub-digital-modal">
     <div class="modal-content text-left">
         <span class="modal-close">×</span>
