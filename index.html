@@ -580,7 +580,7 @@
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-ecosysteme">Écosystème</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-plan-action">Plan 90j</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#innovations">Innovations</a>
-<a class="hover:text-pink-400 transition-colors duration-300" id="hub-digital-modal-trigger">Hub Digital</a>
+<a class="hover:text-pink-400 transition-colors duration-300"  href="hub-digital.html">Hub Digital</a>
 <a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
 <a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a>
 <a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
@@ -816,7 +816,7 @@
     </ul>
     <div class="mt-4 flex items-center justify-between text-sm">
         <span class="chip">Espace collaboratif</span>
-        <a class="btn" id="hub-digital-trigger">Découvrir</a>
+        <a class="btn" href="hub-digital.html">Découvrir</a>
     </div>
 </div>
 </div>
@@ -1282,11 +1282,7 @@
         setupModal('live-demos-trigger', 'live-demos-modal');
         setupModal('phygital-modal-trigger', 'phygital-modal');
         setupModal('gemini-modal-trigger', 'gemini-modal');
-        setupModal('remix-modal-trigger', 'remix-modal');
-        setupModal('hub-digital-trigger', 'hub-digital-modal');
-
-        
-        const skillDetailModal = document.getElementById('skill-detail-modal');
+        setupModal('remix-modal-trigger', 'remix-modal');const skillDetailModal = document.getElementById('skill-detail-modal');
         if(skillDetailModal) {
             const skillModalCloser = skillDetailModal.querySelector('.modal-close');
             if(skillModalCloser) skillModalCloser.addEventListener('click', () => skillDetailModal.classList.remove('active'));
