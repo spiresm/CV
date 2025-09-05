@@ -54,33 +54,10 @@
 </head>
 <body>
 
-<!-- MODALE DISCLAIMER (centrée, opaque, backdrop flou) -->
-<div id="hub-modal" class="fixed inset-0 z-50">
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-  <div class="absolute inset-0 flex items-center justify-center p-4">
+  <!-- MODALE DISCLAIMER (s'ouvre au chargement) -->
+  <div id="hub-modal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/70"></div>
     <div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title"
-         class="w-full max-w-xl rounded-2xl border border-white/15 bg-slate-900/95 shadow-2xl p-6 md:p-8">
-      <div class="flex items-start gap-3">
-        <div class="text-cyan-300 text-2xl">ℹ</div>
-        <div class="grow">
-          <h2 id="hub-modal-title" class="text-xl font-extrabold">Prototype / Maquette</h2>
-          <p class="mt-2 text-sm leading-6 text-slate-200">
-            Cette version du Hub est une démonstration interactive. Certains liens ouvrent des
-            <em>exemples réalistes</em> (workflows n8n, templates, kits). L’outillage complet arrivera en production
-            après validation.
-          </p>
-        </div>
-        <button id="hub-modal-close"
-                class="ml-2 shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/10">
-          J’ai compris
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title"
          class="relative mx-auto max-w-2xl mt-24 glass rounded-2xl p-6 border border-cyan-400/30 text-slate-200">
       <div class="flex items-start gap-3">
         <div class="text-cyan-300 text-2xl">ℹ</div>
@@ -595,26 +572,56 @@
   </footer>
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  
+  <script>
+    AOS.init({duration:700, once:true, offset:100});
 
+    // Modale disclaimer: ouvrir au chargement; fermer via bouton / ESC / clic backdrop
+    const modal = document.getElementById('hub-modal');
+    const modalClose = document.getElementById('hub-modal-close');
+    function openModal(){ modal.classList.remove('hidden'); document.body.style.overflow='hidden'; }
+    function closeModal(){ modal.classList.add('hidden'); document.body.style.overflow=''; }
+    window.addEventListener('load', openModal);
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')) closeModal(); });
 
-<script>
-(function(){
-  const modal = document.getElementById('hub-modal');
-  if(!modal) return;
-  const btn = document.getElementById('hub-modal-close');
-  const close = () => { modal.classList.add('hidden'); document.body.style.overflow=''; };
-  const open  = () => { modal.classList.remove('hidden'); document.body.style.overflow='hidden'; };
-  window.addEventListener('load', open);
-  btn?.addEventListener('click', close);
-  // Close when clicking the dark backdrop outside the dialog
-  modal.addEventListener('click', (e) => {
-    const dialog = modal.querySelector('[role="dialog"]');
-    if(dialog && !dialog.contains(e.target)) close();
-  });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-})();
-</script>
+    // Horodatage "Dernière sync"
+    const lastSyncEl = document.getElementById('lastSync');
+    const now = new Date(); const pad=n=>n.toString().padStart(2,'0');
+    const ts = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    if(lastSyncEl){ lastSyncEl.textContent = ts; }
 
+    // Raccourci clavier recherche
+    const searchInput = document.querySelector('input[type="search"]');
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === '/' && document.activeElement !== searchInput){
+        e.preventDefault(); searchInput.focus();
+      }
+    });
+
+    // Filtre live sur les cartes
+    const searchableSections = ['#playbooks','#templates','#workflows','#ai','#kpi','#formations','#cas','#recents'];
+    const getCards = () => searchableSections.flatMap(sel => Array.from(document.querySelectorAll(sel + ' .card')));
+    if(searchInput){
+      searchInput.addEventListener('input', (e)=>{
+        const q = e.target.value.trim().toLowerCase();
+        getCards().forEach(card => {
+          const text = card.innerText.toLowerCase();
+          card.style.display = q && !text.includes(q) ? 'none' : '';
+        });
+      });
+    }
+
+    // Feedback visuel sur les boutons (✓)
+    document.addEventListener('click', (ev)=>{
+      const t = ev.target;
+      if(t && t.classList.contains('btn')){
+        const label = t.innerText;
+        t.classList.add('btn-done');
+        t.innerText = '✓';
+        setTimeout(()=>{ t.innerText = label; t.classList.remove('btn-done'); }, 1200);
+      }
+    });
+  </script>
 </body>
 </html>
