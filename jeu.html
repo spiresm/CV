@@ -22,7 +22,7 @@
   .popScore{animation:pulseScore .35s ease}
   .banner{position:fixed;top:60px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.25);padding:.55rem 1rem;border-radius:12px;font-weight:900;letter-spacing:.3px;backdrop-filter:blur(6px);box-shadow:0 10px 24px rgba(0,0,0,.25);pointer-events:none;opacity:0;transition:opacity .25s ease}
   .banner.show{opacity:1}
-  .overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.55)}
+  .overlay{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.55);z-index:100}
   .card{background:#0f1624;border:1px solid rgba(255,255,255,.18);padding:1rem 1.2rem;border-radius:16px;max-width:92vw}
   .card h1{margin:.2rem 0 .4rem;font-size:1.4rem}
   .primary{background:#FFC107;color:#111;border:none;font-weight:900;border-radius:12px;padding:.7rem 1rem;cursor:pointer}
@@ -76,12 +76,13 @@
     font-weight: 700;
   }
   #initialsForm button {
-    background: var(--accent-pink);
+    background: #ff4d4f;
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-weight: 700;
     cursor: pointer;
+    border:none;
   }
 </style>
 </head>
@@ -101,6 +102,21 @@
 <div id="banner" class="banner">Niveau 1</div>
 <div id="errImg">⚠️ <b>Images non chargées.</b> Place <code>RTBF_Auvio.webp</code> & <code>LOGO_RTBF_AUVIO_BLANC.png</code> à côté du HTML.</div>
 <div id="errJS">⚠️ <b>Erreur JS :</b> <span id="errMsg"></span></div>
+
+<div id="introScreen" class="overlay">
+  <div class="card">
+    <h1 style="font-size:2rem; margin-bottom:1rem; color:#ffc107">Auvio — Capte l’audience</h1>
+    <p>Incarnez le service Auvio ! Collectez un maximum d’audience tout en évitant les concurrents.</p>
+    <ul style="list-style-type: '👉 '; text-align:left; padding-left:2.5rem; margin-top:1rem; line-height:1.6; max-width:500px">
+        <li>Déplacez votre curseur pour guider le logo Auvio.</li>
+        <li>Les pastilles vertes représentent **l'audience**. Collectez-les pour faire grandir votre "queue" et augmenter votre score.</li>
+        <li>Les pastilles rouges sont les **concurrents**. Évitez-les ! Chaque contact vous fera perdre de l'audience.</li>
+        <li>Le bonus "bombe" permet de détruire tous les concurrents à l'écran.</li>
+    </ul>
+    <button id="startGame" class="primary" style="margin-top:1.5rem">Commencer</button>
+  </div>
+</div>
+
 
 <div id="gameOver" class="overlay" style="display:none">
   <div class="card" id="scoreCard">
@@ -284,7 +300,6 @@
   }
   function stopMusic(){ if(!musicOn) return; clearInterval(musicTimer); musicTimer=null; musicOn=false; HUD.music.textContent='♪ Musique'; }
   HUD.music.onclick = ()=>{ if(musicOn) stopMusic(); else startMusic(); };
-  ['pointerdown','keydown'].forEach(ev => addEventListener(ev, ()=>{ensureAudio(); if(!musicOn) startMusic();},{once:true}));
 
   // ---------- Niveaux / règles ----------
   const LEVELS = [
@@ -309,7 +324,7 @@
   let prevPX = player.x, prevPY = player.y; const MAX_SPEED = 900;
 
   // ---------- Stats & overlays ----------
-  let lives = 3, score = 0, maxTailSeen = 0, gameOver = false;
+  let lives = 3, score = 0, maxTailSeen = 0, gameOver = false, gameActive = false;
   let flash=0; const shockwaves=[];
 
   // ---------- Queue ----------
@@ -417,6 +432,8 @@
   }
 
   // ---------- Scoreboard / Game Over ----------
+  const introScreen = document.getElementById('introScreen');
+  const startGameBtn = document.getElementById('startGame');
   const goEl=document.getElementById('gameOver'); const goTitle=document.getElementById('goTitle'); const goStats=document.getElementById('goStats');
   const scoreCard = document.getElementById('scoreCard');
   const restartBtn = document.getElementById('restart');
@@ -442,6 +459,12 @@
     });
   }
 
+  startGameBtn.onclick = () => {
+    introScreen.style.display = 'none';
+    gameActive = true;
+    startMusic();
+    resetGame();
+  };
   restartBtn.onclick=()=>resetGame();
   initialsForm.onsubmit=(e)=>{
     e.preventDefault();
@@ -451,6 +474,7 @@
 
   function endGame(title='Terminé !'){
     gameOver=true;
+    gameActive = false;
     goTitle.textContent=title;
     goStats.textContent=`Score : ${score} — Queue max : ${maxTailSeen}`;
     goEl.style.display='grid';
@@ -472,16 +496,19 @@
     lives=3; score=0; tailCount=0; tailSegs.length=0; maxTailSeen=0;
     items.length=0; particles.length=0; bullets.length=0; nextShotAllowedAt=0; flash=0; shockwaves.length=0; floatTexts.length=0;
     showBanner(LEVELS[0].name);
-    updateScoreTable(); // Mettre à jour le tableau au début du jeu
+    updateScoreTable();
   }
-  updateScoreTable(); // Charger les scores au premier chargement
+  updateScoreTable();
 
   // ---------- Boucle principale ----------
   let last=performance.now();
   requestAnimationFrame(loop);
   function loop(now){
     const dt=Math.min(0.033,(now-last)/1000); last=now;
-    update(dt, now); render(now);
+    if (gameActive) {
+      update(dt, now);
+    }
+    render(now);
     requestAnimationFrame(loop);
   }
 
