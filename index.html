@@ -511,7 +511,6 @@
 <div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
 <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
 <a class="hover:text-pink-400 transition-colors duration-300" href="dashboard.html">Dashboard</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="hub-digital.html">Hub Digital</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-synthese">Piliers</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-ecosysteme">Écosystème</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-plan-action">Plan 90j</a>
@@ -739,6 +738,21 @@
 <button class="btn" id="phygital-modal-trigger">Voir concept</button>
 </div>
 </div>
+<div class="card p-6 h-fuchsia md:col-start-3" data-aos="fade-up" data-aos-delay="200">
+    <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 rounded-full bg-fuchsia-600/20 grid place-items-center">🌐</div>
+        <h3 class="text-lg font-extrabold text-fuchsia-400">Hub Digital</h3>
+    </div>
+    <p class="text-slate-300">Monstrateur d’outils et d’innovations en IA pour les équipes de la RTBF.</p>
+    <ul class="mt-3 list-disc list-inside text-slate-400 text-sm space-y-1">
+        <li>Veille & partage des nouvelles technologies.</li>
+        <li>Prompts, workflows & cas d'usage par pôle.</li>
+    </ul>
+    <div class="mt-4 flex items-center justify-between text-sm">
+        <span class="chip">Espace collaboratif</span>
+        <a class="btn" href="hub-digital.html">Découvrir</a>
+    </div>
+</div>
 </div>
 </div>
 </section>
@@ -824,6 +838,29 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+<section class="section-wrapper py-20 px-4" id="section-production-strategy">
+    <div class="max-w-screen-lg mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-black mb-12 text-center">Une synergie créative pour une transformation réussie</h2>
+        <div class="synergy-card">
+            <h3 class="text-violet-400">Bâtir des ponts entre créativité et stratégie</h3>
+            <p>Le virage numérique que nous souhaitons prendre exige une approche unifiée. Il ne s'agit pas de modifier les rôles existants, mais de créer une synergie entre les métiers pour que notre créativité prenne une nouvelle ampleur sur le digital. L'évolution de nos pratiques de production est un levier de croissance fondamental.</p>
+            <div class="space-y-6 mt-8">
+                <div>
+                    <h4 class="text-xl font-bold text-fuchsia-400">Phase 1 : Échange et co-création</h4>
+                    <p>L'idée est d'organiser des ateliers de co-création pour partager les bonnes pratiques et les contraintes de chaque service. Ces moments d'échange permettront de concevoir ensemble de nouveaux formats, adaptés aux plateformes numériques, et de s'assurer que nous parlons tous le même langage.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-cyan-400">Phase 2 : Développement des compétences</h4>
+                    <p>Il ne s'agit pas de changer de métier, mais d'enrichir les compétences. En proposant des formations ciblées sur des outils pertinents (IA, montage rapide pour les réseaux sociaux, etc.), nous donnerons aux équipes les moyens de devenir de véritables "couteaux suisses" de la production, capables de créer des contenus pour la télévision traditionnelle comme pour les formats viraux du digital.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-orange-400">Phase 3 : Industrialisation des processus</h4>
+                    <p>Une fois les bases établies, l'objectif est d'intégrer ces nouvelles méthodes de travail dans nos routines, en faisant de la production de contenus digitaux un réflexe partagé par tous. Un calendrier éditorial commun et un système de "briefs digitaux" clairs permettront d'optimiser la collaboration et de garantir une production fluide et efficace.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -1106,6 +1143,7 @@
         setupModal('phygital-modal-trigger', 'phygital-modal');
         setupModal('gemini-modal-trigger', 'gemini-modal');
         setupModal('remix-modal-trigger', 'remix-modal');
+        setupModal('hub-digital-trigger', 'hub-digital-modal');
 
         
         const skillDetailModal = document.getElementById('skill-detail-modal');
@@ -1719,10 +1757,9 @@
         });
     });
 </script>
-<div class="modal-overlay" id="intro-video-modal">
+<div class="modal-overlay active" id="intro-video-modal">
   <div class="modal-content intro-content">
     <span class="modal-close">×</span>
-<div style="text-align: center;">
     <h3 class="modal-title">Découvrez comment naviguer</h3>
     <p class="modal-desc">Cette courte vidéo vous montre comment explorer le site facilement.</p>
     <div class="video-wrapper">
@@ -1756,5 +1793,26 @@
         });
     });
 </script>
+<div class="modal-overlay" id="hub-digital-modal">
+    <div class="modal-content text-left">
+        <span class="modal-close">×</span>
+        <h2 class="text-3xl font-black neon-gradient-text mb-6">Hub Digital</h2>
+        <div class="space-y-6">
+            <p class="text-lg text-slate-300">
+                Le **Hub Digital** est conçu pour être un démonstrateur d’outils et d'innovations basés sur l'IA, spécifiquement pour les équipes de la RTBF.
+            </p>
+            <p class="text-lg text-slate-300">
+                Son objectif principal est de centraliser la veille technologique, de partager les meilleurs "prompts" et "workflows", et de documenter les cas d'usage par pôle d'activité. C'est un véritable espace collaboratif pour stimuler la créativité et l'efficacité.
+            </p>
+            <h3 class="text-xl font-bold text-cyan-400">Fonctionnalités clés :</h3>
+            <ul class="list-disc list-inside text-slate-300 space-y-2">
+                <li>**Veille et partage :** Un flux d'actualités sur les dernières innovations en matière d'IA et de marketing.</li>
+                <li>**Bibliothèque de prompts :** Une base de données de prompts optimisés pour différents outils (Stable Diffusion, Midjourney, etc.).</li>
+                <li>**Workflows automatisés :** Des guides étape par étape pour automatiser des tâches marketing (par ex., génération de campagnes, analyse de données).</li>
+                <li>**Cas d'usage :** Des exemples concrets de l'application de l'IA dans les différents services de la RTBF.</li>
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>
