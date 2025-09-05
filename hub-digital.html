@@ -91,9 +91,43 @@
     .tooltip-text::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
       border-width:6px;border-style:solid;border-color:rgba(2,6,23,.95) transparent transparent transparent}
 
+
+    /* Readability improvements */
+    @media (min-width: 1024px){
+      body{font-size: 17px; line-height: 1.6;}
+    }
+    .card p{line-height:1.6}
+    .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;font-weight:800;
+      padding:.25rem .5rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+    .badge.green{color:#22c55e;border-color:rgba(34,197,94,.35)}
+    .badge.amber{color:#f59e0b;border-color:rgba(245,158,11,.35)}
+    .badge.sky{color:#38bdf8;border-color:rgba(56,189,248,.35)}
+    .badge.fuchsia{color:#e879f9;border-color:rgba(232,121,249,.35)}
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+    .filters{display:flex;flex-wrap:wrap;gap:.5rem}
+    .filter-chip{cursor:pointer} .filter-chip.active{outline:2px solid #22d3ee}
+
 </style>
 </head>
 <body>
+
+  <!-- Disclaimer Prototype -->
+  <div id="hub-disclaimer" class="hidden fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mt-3 glass border-cyan-400/30 rounded-xl p-4 flex items-start gap-3 shadow-2xl">
+        <div class="text-cyan-300 text-xl">ℹ</div>
+        <div class="text-sm leading-6">
+          <strong class="font-extrabold">Prototype / Maquette :</strong>
+          cette version du Hub est une démonstration interactive. Certains liens ouvrent des
+          <em>exemples réalistes</em> (workflows n8n, templates, kits). L’outillage complet arrivera en production après validation.
+        </div>
+        <button id="dismiss-disclaimer" class="ml-auto shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/5">
+          J’ai compris
+        </button>
+      </div>
+    </div>
+  </div>
+
   <nav class="sticky top-0 z-50">
 <div class="max-w-screen-xl mx-auto px-4">
 <div class="flex items-start justify-between h-20">
@@ -166,6 +200,17 @@
       </div>
     </div>
   </section>
+
+      <div class="mt-6 filters justify-center">
+        <span class="chip filter-chip" data-filter="all">Tout</span>
+        <span class="chip filter-chip" data-filter="playbook">Playbooks</span>
+        <span class="chip filter-chip" data-filter="template">Templates</span>
+        <span class="chip filter-chip" data-filter="workflow">Workflows</span>
+        <span class="chip filter-chip" data-filter="ai">IA</span>
+        <span class="chip filter-chip" data-filter="kpi">KPI</span>
+        <span class="chip filter-chip" data-filter="formation">Formations</span>
+      </div>
+
 </header>
 
 
@@ -206,25 +251,25 @@
             <div class="text-fuchsia-400 font-extrabold">Innovations</div>
             <div class="font-black text-lg mt-1">Live Communities — F1 / Cactus / Info</div>
             <p class="text-sm text-slate-300 mt-1">Sondages, modération, triage & insights temps réel.</p>
-            <div class="mt-3 text-xs text-emerald-400 font-bold">En production</div>
+            <div class="mt-3 text-xs text-emerald-400 font-bold">En production</div><div class="tags"><span class="badge green">Actif</span><span class="badge">Live</span></div>
           </a>
           <a href="#workflows" class="card p-4 block">
             <div class="text-cyan-400 font-extrabold">Workflows n8n</div>
             <div class="font-black text-lg mt-1">Veille IA & Marketing → Email + veille.json</div>
             <p class="text-sm text-slate-300 mt-1">Résumé auto + injection dans #veille-articles-grid.</p>
-            <div class="mt-3 text-xs text-emerald-400 font-bold">Actif</div>
+            <div class="mt-3 text-xs text-emerald-400 font-bold">Actif</div><div class="tags"><span class="badge green">Prod</span><span class="badge sky">n8n</span></div>
           </a>
           <a href="#workflows" class="card p-4 block">
             <div class="text-orange-400 font-extrabold">Partenariats</div>
             <div class="font-black text-lg mt-1">Convention auto · TVA 7% · e-sign</div>
             <p class="text-sm text-slate-300 mt-1">Form → PDF → calcul → DiliTrust.</p>
-            <div class="mt-3 text-xs text-yellow-400 font-bold">Pilotage</div>
+            <div class="mt-3 text-xs text-yellow-400 font-bold">Pilotage</div><div class="tags"><span class="badge amber">Pilotage</span><span class="badge">Partenariats</span></div>
           </a>
           <a href="#workflows" class="card p-4 block">
             <div class="text-emerald-400 font-extrabold">R&D</div>
             <div class="font-black text-lg mt-1">TIP YouTube → JSON strict</div>
             <p class="text-sm text-slate-300 mt-1">Validation FR/public/IA+outil → OpenAI → JSON.</p>
-            <div class="mt-3 text-xs text-sky-400 font-bold">Bêta</div>
+            <div class="mt-3 text-xs text-sky-400 font-bold">Bêta</div><div class="tags"><span class="badge sky">Bêta</span><span class="badge">R&D</span></div>
           </a>
         </div>
       </section>
@@ -263,7 +308,7 @@
     <section class="lg:col-span-9 space-y-12">
 
       <!-- Playbooks -->
-      <section id="playbooks" data-aos="fade-up">
+      <section id="playbooks" data-section="playbook" data-aos="fade-up">
         <div class="flex items-end justify-between mb-4">
           <h2 class="text-3xl font-black neon">Playbooks Réseaux Sociaux</h2>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
@@ -300,7 +345,7 @@
       </section>
 
       <!-- Templates & Kits -->
-      <section id="templates" data-aos="fade-up">
+      <section id="templates" data-section="template" data-aos="fade-up">
         <h2 class="text-3xl font-black neon">Templates & Kits de production</h2>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
@@ -318,6 +363,7 @@
               <span class="chip">Starter</span>
               <a href="/mnt/data/kit-newsletter.html" class="btn">Ouvrir</a>
             </div>
+            <div class="mt-3 text-xs text-slate-400">Ressources liées : <a class="underline" href="/mnt/data/prompt-campagne-360.txt">Prompt objet</a> · <a class="underline" href="/mnt/data/template-analyse-rs.md">Checklist QA</a></div>
           </article>
           <article class="card p-6">
             <h3 class="font-black text-xl">Brief Social Media<span class="ml-2 text-slate-400 cursor-help" title="Explications détaillées et guide associé.">?</span><span class="tooltip ml-2">ℹ<span class="tooltip-text">Plus d'infos sur « Brief Social Media<span class="ml-2 text-slate-400 cursor-help" title="Explications détaillées et guide associé.">?</span> » et comment l'utiliser.</span></span> <span class="tooltip" aria-label="info">ℹ<span class="tooltip-text">One-pager: objectifs, cibles, messages, assets, KPI.</span></span></h3>
@@ -331,7 +377,7 @@
       </section>
 
       <!-- Workflows n8n -->
-      <section id="workflows" data-aos="fade-up">
+      <section id="workflows" data-section="workflow" data-aos="fade-up">
         <div class="flex items-end justify-between mb-2">
           <h2 class="text-3xl font-black neon">Workflows n8n — prêts à cloner</h2>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Galerie</a>
@@ -372,7 +418,7 @@
       </section>
 
       <!-- IA -->
-      <section id="ai" data-aos="fade-up">
+      <section id="ai" data-section="ai" data-aos="fade-up">
         <h2 class="text-3xl font-black neon">IA — Prompts & Outils</h2>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
@@ -403,7 +449,7 @@
       </section>
 
       <!-- KPI -->
-      <section id="kpi" data-aos="fade-up">
+      <section id="kpi" data-section="kpi" data-aos="fade-up">
         <h2 class="text-3xl font-black neon">KPI & Tableaux de bord</h2>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
@@ -434,7 +480,7 @@
       </section>
 
       <!-- Formations -->
-      <section id="formations" data-aos="fade-up">
+      <section id="formations" data-section="formation" data-aos="fade-up">
         <h2 class="text-3xl font-black neon">Formations & calendrier</h2>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
@@ -513,6 +559,23 @@
           </details>
         </div>
       </section>
+
+      
+      <!-- CHANGELOG -->
+      <section id="changelog" class="glass rounded-2xl p-6" data-aos="fade-up">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl md:text-3xl font-black neon">Changelog</h2>
+          <span class="badge">auto</span>
+        </div>
+        <ul class="mt-4 text-sm text-slate-300 space-y-2">
+          <li><span class="badge green">Nouveau</span> Tooltips ℹ unifiés sur toutes les cartes</li>
+          <li><span class="badge green">Nouveau</span> Boutons reliés à des assets réels (.json, .zip, .html, .pdf)</li>
+          <li><span class="badge sky">Amélioration</span> Header synchronisé avec index.html</li>
+          <li><span class="badge sky">Amélioration</span> Filtres rapides par catégorie + recherche live</li>
+          <li><span class="badge amber">Proto</span> Bandeau “Prototype / Maquette” au chargement</li>
+        </ul>
+      </section>
+
 
       <!-- CTA -->
       <section class="glass rounded-2xl p-8 text-center" data-aos="fade-up">
