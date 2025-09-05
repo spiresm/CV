@@ -84,6 +84,33 @@
     cursor: pointer;
     border:none;
   }
+  
+  /* Style pour les exemples de formes */
+  .shape-example {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    border-radius: 6px;
+  }
+  .shape-audience {
+    width: 24px;
+    height: 18px;
+    background-color: #173b2b;
+    border: 2px solid #2bd17e;
+  }
+  .shape-competitor {
+    width: 24px;
+    height: 18px;
+    background-color: #3a1618;
+    border: 2px solid #ff4d4f;
+  }
+  .shape-bomb {
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%; /* Cercle */
+  }
 </style>
 </head>
 <body>
@@ -109,9 +136,9 @@
     <p>Incarnez le service Auvio ! Collectez un maximum d’audience tout en évitant les concurrents.</p>
     <ul style="list-style-type: '👉 '; text-align:left; padding-left:2.5rem; margin-top:1rem; line-height:1.6; max-width:500px">
         <li>Déplacez votre curseur pour guider le logo Auvio.</li>
-        <li>Les pastilles vertes représentent **l'audience**. Collectez-les pour faire grandir votre "queue" et augmenter votre score.</li>
-        <li>Les pastilles rouges sont les **concurrents**. Évitez-les ! Chaque contact vous fera perdre de l'audience.</li>
-        <li>Le bonus "bombe" permet de détruire tous les concurrents à l'écran.</li>
+        <li>Les <span class="shape-example shape-audience"></span> pastilles vertes avec des bordures claires représentent **l'audience**. Collectez-les pour faire grandir votre "queue" et augmenter votre score.</li>
+        <li>Les <span class="shape-example shape-competitor"></span> pastilles rouges avec des bordures sombres sont les **concurrents**. Évitez-les ! Chaque contact vous fera perdre de l'audience.</li>
+        <li>Le <span class="shape-example shape-bomb"></span> bonus "bombe" permet de détruire tous les concurrents à l'écran.</li>
     </ul>
     <button id="startGame" class="primary" style="margin-top:1.5rem">Commencer</button>
   </div>
