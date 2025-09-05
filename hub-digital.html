@@ -79,10 +79,18 @@
     </div>
   </div>
 
-  <!-- HEADER (copié d'index.html) -->
+  <!-- HEADER — même structure/liens que index.html + icône "maison" à gauche -->
   <nav class="sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-      <a href="index.html" class="text-3xl font-black neon">SPM.</a>
+      <div class="flex items-center gap-3">
+        <!-- Maison blanche (retour accueil) -->
+        <a href="index.html" aria-label="Accueil" class="p-2 rounded-lg hover:bg-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"/>
+          </svg>
+        </a>
+        <a href="index.html" class="text-3xl font-black neon">SPM.</a>
+      </div>
       <div class="hidden md:flex items-center gap-6 text-slate-300 font-medium">
         <a href="dashboard.html" class="hover:text-pink-400">Dashboard</a>
         <a href="hub-digital.html" class="text-cyan-400 font-bold hover:text-pink-400">Hub Digital</a>
@@ -557,7 +565,7 @@
   <script>
     AOS.init({duration:700, once:true, offset:100});
 
-    // Modale disclaimer: montrer au chargement, fermer via bouton / ESC / clic backdrop
+    // Modale disclaimer: ouvrir au chargement; fermer via bouton / ESC / clic backdrop
     const modal = document.getElementById('hub-modal');
     const modalClose = document.getElementById('hub-modal-close');
     function openModal(){ modal.classList.remove('hidden'); document.body.style.overflow='hidden'; }
