@@ -894,94 +894,90 @@
 </div>
 </div>
 <div class="modal-overlay" id="profile-modal">
-<div class="modal-content border-indigo-500 max-w-4xl h-[90vh] overflow-y-auto">
-<span class="modal-close">×</span>
-<h2 class="text-3xl font-black neon-gradient-text mb-4 text-center">Mon Profil & Parcours</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-8">
-    <div>
-        <h3 class="text-2xl font-bold text-fuchsia-400 mb-4">Compétences</h3>
-        <p class="text-slate-300 mb-4">
-            Voici une vue synthétique de mes compétences clés. Survolez ou cliquez sur les points pour découvrir des exemples concrets.
-        </p>
-        <div class="max-w-xl mx-auto">
-            <canvas id="skillsRadarChartModal"></canvas>
-        </div>
-    </div>
-    <div>
-        <h3 class="text-2xl font-bold text-cyan-400 mb-4">Mon Parcours Détaillé</h3>
-        <div class="text-left bg-black/20 p-8 md:p-12 rounded-2xl border border-white/10 space-y-10">
-            <div>
-                <h4 class="text-xl font-bold neon-gradient-text mb-4">Profil Professionnel</h4>
-                <p class="text-lg text-slate-300">
-                    Professionnel du graphisme et du multimédia avec plus de 25 ans d'expérience à la RTBF. Spécialiste du motion design, de l'animation 2D/3D et de la production vidéo. Acteur de la transition de l'entreprise vers le digital, je suis aujourd'hui un contributeur clé dans l'intégration de l'intelligence artificielle au sein des équipes marketing.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-xl font-bold neon-gradient-text mb-4">Expérience Professionnelle</h4>
-                <div class="space-y-8 text-slate-300">
-                    <p class="font-bold text-xl">RTBF - Reyers, Bruxelles</p>
-                    <div class="pl-4 border-l-2 border-fuchsia-400/50">
-                        <p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital & Motion Designer</p>
-                        <ul class="list-disc list-inside mt-2 space-y-1">
-                            <li>Conception et réalisation de formats digitaux originaux et de nouveaux habillages d'antenne (La Une et Auvio Kids TV).</li>
-                            <li>Pionnier de l'intégration de l'IA, avec la mise en place d'un groupe de travail et la participation au comité IA.</li>
-                            <li>Conception et réalisation d'une plateforme interne : <a href="https://iamarketing.netlify.app" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">iamarketing.netlify.app</a>, une preuve de concept pour agréger les prompts, workflows et la veille sur l'IA, avec un projet d'extension à l'ensemble de l'entreprise.</li>
-                        </ul>
-                    </div>
-                    <div class="pl-4 border-l-2 border-cyan-400/50">
-                        <p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p>
-                        <ul class="list-disc list-inside mt-2 space-y-1">
-                            <li>Rôle de pionnier dans le virage digital de l'entreprise.</li>
-                            <li>Création et gestion de la chaîne YouTube RTBF.</li>
-                            <li>Conception et réalisation de "No Limit", un format court sur les tendances numériques.</li>
-                        </ul>
-                    </div>
-                    <div class="pl-4 border-l-2 border-violet-400/50">
-                        <p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D & Opérateur Graphique</p>
-                        <ul class="list-disc list-inside mt-2 space-y-1">
-                            <li>Création de graphisme et d'habillage pour de nombreuses émissions, notamment : Fort en tête, Quelques chose en nous de..., Seul contre tous, Matière grise, Le Dan Late Show, Dites-moi, Ici BlaBla, Les 50 ans de la TV.</li>
-                            <li>Réalisation de l'habillage du JT et des météos.</li>
-                            <li>Expérience sur des technologies de pointe de l'époque : Quantel (HAL), moteur 3D Orad.</li>
-                            <li>Création de la première météo 3D et de l'affichage électoral (2000).</li>
-                            <li>Création d'habillages pour de grands événements, comme la Coupe du monde au Japon.</li>
-                        </ul>
+    <div class="modal-content border-indigo-500 max-w-5xl h-[90vh] overflow-y-auto p-8">
+        <span class="modal-close">×</span>
+        <h2 class="text-3xl font-black neon-gradient-text mb-8 text-center">Mon Profil & Parcours</h2>
+
+        <div class="grid grid-cols-1 gap-8 text-left mt-8">
+            <div class="text-left bg-black/20 p-8 md:p-12 rounded-2xl border border-white/10 space-y-10">
+                <div>
+                    <h4 class="text-xl font-bold neon-gradient-text mb-4">Profil Professionnel</h4>
+                    <p class="text-lg text-slate-300">
+                        Professionnel du graphisme et du multimédia avec plus de 25 ans d'expérience à la RTBF. Spécialiste du motion design, de l'animation 2D/3D et de la production vidéo. Acteur de la transition de l'entreprise vers le digital, je suis aujourd'hui un contributeur clé dans l'intégration de l'intelligence artificielle au sein des équipes marketing.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xl font-bold neon-gradient-text mb-4">Expérience Professionnelle</h4>
+                    <div class="space-y-8 text-slate-300">
+                        <p class="font-bold text-xl">RTBF - Reyers, Bruxelles</p>
+                        <div class="pl-4 border-l-2 border-fuchsia-400/50">
+                            <p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital & Motion Designer</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Conception et réalisation de formats digitaux originaux et de nouveaux habillages d'antenne (La Une et Auvio Kids TV).</li>
+                                <li>Pionnier de l'intégration de l'IA, avec la mise en place d'un groupe de travail et la participation au comité IA.</li>
+                                <li>Conception et réalisation d'une plateforme interne : <a href="https://iamarketing.netlify.app" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">iamarketing.netlify.app</a>, une preuve de concept pour agréger les prompts, workflows et la veille sur l'IA, avec un projet d'extension à l'ensemble de l'entreprise.</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4 border-l-2 border-cyan-400/50">
+                            <p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Rôle de pionnier dans le virage digital de l'entreprise.</li>
+                                <li>Création et gestion de la chaîne <a href="https://www.youtube.com/user/RTBF" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">YouTube RTBF</a>.</li>
+                                <li>Conception et réalisation de "No Limit", un format court sur les tendances numériques.</li>
+                            </ul>
+                        </div>
+                        <div class="pl-4 border-l-2 border-violet-400/50">
+                            <p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D & Opérateur Graphique</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Création de graphisme et d'habillage pour de nombreuses émissions, notamment : Fort en tête, Quelques chose en nous de..., Seul contre tous, Matière grise, Le Dan Late Show, Dites-moi, Ici BlaBla, Les 50 ans de la TV.</li>
+                                <li>Réalisation de l'habillage du JT et des météos.</li>
+                                <li>Expérience sur des technologies de pointe de l'époque : <a href="https://en.wikipedia.org/wiki/Quantel" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Quantel (HAL)</a>, moteur 3D <a href="https://en.wikipedia.org/wiki/Orad_Hi-Tec_Systems" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Orad</a>.</li>
+                                <li>Création de la première météo 3D et de l'affichage électoral (2000).</li>
+                                <li>Création d'habillages pour de grands événements, comme la Coupe du monde au Japon.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <h4 class="text-xl font-bold neon-gradient-text mb-4">Formation</h4>
-                <ul class="list-disc list-inside text-lg text-slate-300 space-y-1">
-                    <li>**1995 :** Études Supérieures en arts graphiques, Institut Saint-Luc, Bruxelles & Liège.</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-xl font-bold neon-gradient-text mb-4">Compétences Techniques</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-300">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <p class="font-bold text-lg text-fuchsia-400">Logiciels</p>
-                        <ul class="list-disc list-inside mt-2">
-                            <li>Suite Adobe (Premiere Pro, After Effects, Photoshop)</li>
-                            <li>3dsmax, Quantel (HAL), Orad</li>
+                        <h4 class="text-xl font-bold neon-gradient-text mb-4">Formation</h4>
+                        <ul class="list-disc list-inside text-lg text-slate-300 space-y-1">
+                            <li>**1995 :** Études Supérieures en arts graphiques, Institut Saint-Luc, Bruxelles & Liège.</li>
                         </ul>
                     </div>
                     <div>
-                        <p class="font-bold text-lg text-cyan-400">Outils IA</p>
-                        <ul class="list-disc list-inside mt-2">
-                            <li>Stable Diffusion, Midjourney, Runway, N8N</li>
-                        </ul>
-                    </div>
-                    <div class="md:col-span-2">
-                        <p class="font-bold text-lg text-violet-400">Domaines d'Expertise</p>
-                        <ul class="list-disc list-inside mt-2">
-                            <li>Motion design, animation 2D/3D</li>
-                            <li>Montage vidéo, gestion de projet, marketing digital</li>
-                            <li>Habillage d'antenne, décors virtuels, développement web</li>
-                        </ul>
+                        <h4 class="text-xl font-bold neon-gradient-text mb-4">Compétences Techniques</h4>
+                        <div class="grid grid-cols-1 gap-4 text-slate-300">
+                            <div>
+                                <p class="font-bold text-lg text-fuchsia-400">Logiciels</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Suite Adobe (Premiere Pro, After Effects, Photoshop)</li>
+                                    <li>3dsmax, Quantel (HAL), Orad</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg text-cyan-400">Outils IA</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li><a href="https://stablediffusionweb.com/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Stable Diffusion</a>, <a href="https://www.midjourney.com/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Midjourney</a>, <a href="https://runwayml.com/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">Runway</a>, <a href="https://n8n.io/" target="_blank" class="text-cyan-400 font-bold underline hover:text-pink-400">N8N</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-bold text-lg text-violet-400">Domaines d'Expertise</p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li>Motion design, animation 2D/3D</li>
+                                    <li>Montage vidéo, gestion de projet, marketing digital</li>
+                                    <li>Habillage d'antenne, décors virtuels, développement web</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 </div>
