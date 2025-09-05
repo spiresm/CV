@@ -1,0 +1,71 @@
+{
+  "name": "Convention Partenariat — Form→PDF→Extraction→TVA 7%→e-sign",
+  "nodes": [
+    {
+      "id": "webhook1",
+      "name": "Form submission",
+      "type": "webhook"
+    },
+    {
+      "id": "pdf1",
+      "name": "Lire PDF",
+      "type": "pdfExtractText"
+    },
+    {
+      "id": "code1",
+      "name": "Calcul TVA 7%",
+      "type": "code",
+      "params": {
+        "language": "js",
+        "code": "// net = brut * 0.93"
+      }
+    },
+    {
+      "id": "doc1",
+      "name": "Remplir modèle",
+      "type": "docTemplate",
+      "params": {
+        "template": "convention.docx"
+      }
+    },
+    {
+      "id": "dilitrust1",
+      "name": "DiliTrust — e-sign",
+      "type": "httpRequest",
+      "params": {
+        "method": "POST",
+        "url": "https://api.dilitrust.com/sign"
+      }
+    }
+  ],
+  "connections": {
+    "webhook1": {
+      "main": [
+        [
+          "pdf1"
+        ]
+      ]
+    },
+    "pdf1": {
+      "main": [
+        [
+          "code1"
+        ]
+      ]
+    },
+    "code1": {
+      "main": [
+        [
+          "doc1"
+        ]
+      ]
+    },
+    "doc1": {
+      "main": [
+        [
+          "dilitrust1"
+        ]
+      ]
+    }
+  }
+}

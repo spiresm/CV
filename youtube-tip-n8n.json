@@ -1,0 +1,46 @@
+{
+  "name": "YouTube → TIP structuré (validation FR/public/IA+outil)",
+  "nodes": [
+    {
+      "id": "yt1",
+      "name": "Find FR video",
+      "type": "youtubeSearch",
+      "params": {
+        "q": "site:youtube.com IA outil rubrique FR"
+      }
+    },
+    {
+      "id": "check1",
+      "name": "Validation critères",
+      "type": "code",
+      "params": {
+        "language": "js",
+        "code": "// vérifier FR/public/IA+outil"
+      }
+    },
+    {
+      "id": "openai2",
+      "name": "TIP JSON",
+      "type": "openaiChat",
+      "params": {
+        "prompt": "Retourne strictement un JSON structuré du TIP."
+      }
+    }
+  ],
+  "connections": {
+    "yt1": {
+      "main": [
+        [
+          "check1"
+        ]
+      ]
+    },
+    "check1": {
+      "main": [
+        [
+          "openai2"
+        ]
+      ]
+    }
+  }
+}

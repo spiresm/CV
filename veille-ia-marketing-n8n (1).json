@@ -1,0 +1,75 @@
+{
+  "name": "Veille IA & Marketing → Email + veille.json",
+  "nodes": [
+    {
+      "id": "rss1",
+      "name": "RSS Feed",
+      "type": "rssFeedRead",
+      "params": {
+        "urls": [
+          "https://news.google.com/rss/search?q=IA%20marketing&hl=fr&gl=BE&ceid=BE:fr"
+        ]
+      }
+    },
+    {
+      "id": "openai1",
+      "name": "Résumé OpenAI",
+      "type": "openaiChat",
+      "params": {
+        "prompt": "Résume ces articles en FR en 5 puces claires + liens."
+      }
+    },
+    {
+      "id": "function1",
+      "name": "Build newsletter HTML",
+      "type": "code",
+      "params": {
+        "language": "js",
+        "code": "// build simple HTML string"
+      }
+    },
+    {
+      "id": "email1",
+      "name": "Send Email",
+      "type": "emailSend",
+      "params": {
+        "to": "team@rtbf.be",
+        "subject": "Veille IA & Marketing",
+        "html": "={{$json.html}}"
+      }
+    },
+    {
+      "id": "file1",
+      "name": "Écrire veille.json",
+      "type": "fileWrite",
+      "params": {
+        "path": "/data/veille.json",
+        "data": "={{$json}}"
+      }
+    }
+  ],
+  "connections": {
+    "rss1": {
+      "main": [
+        [
+          "openai1"
+        ]
+      ]
+    },
+    "openai1": {
+      "main": [
+        [
+          "function1"
+        ]
+      ]
+    },
+    "function1": {
+      "main": [
+        [
+          "email1",
+          "file1"
+        ]
+      ]
+    }
+  }
+}
