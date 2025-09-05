@@ -1,34 +1,52 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hub Digital — RTBF · Steeve Pires Madeira</title>
+
+  <!-- Fonts & Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Animations -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
   <style>
     :root{
       --bg:#0b0e17; --surface:#14182b; --muted:#9aa4b2; --text:#f1f5f9;
       --pink:#d946ef; --cyan:#22d3ee; --violet:#8b5cf6; --lime:#84cc16; --orange:#f97316;
     }
-    body{font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text);}
+    html, body { height: 100%; }
+    body{
+      font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(216,70,239,.10), transparent 60%),
+                  radial-gradient(1200px 600px at 90% -20%, rgba(34,211,238,.10), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+    nav{backdrop-filter:blur(10px);background:rgba(11,14,23,.6);border-bottom:1px solid rgba(255,255,255,.08);}
     .glass{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);}
+    .neon{background-image:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
     .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .7rem;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(2,6,23,.45);font-weight:800;font-size:.8rem;}
+    .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;font-weight:800;padding:.25rem .5rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+    .badge.green{color:#22c55e;border-color:rgba(34,197,94,.35)}
+    .badge.amber{color:#f59e0b;border-color:rgba(245,158,11,.35)}
+    .badge.sky{color:#38bdf8;border-color:rgba(56,189,248,.35)}
+    .badge.fuchsia{color:#e879f9;border-color:rgba(232,121,249,.35)}
+    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
     .card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);border-radius:18px;transition:transform .25s ease, box-shadow .25s ease;}
     .card:hover{transform:translateY(-6px);box-shadow:0 10px 35px rgba(0,0,0,.35)}
-    .neon{background-image:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
-    nav{backdrop-filter:blur(10px);background:rgba(11,14,23,.6);border-bottom:1px solid rgba(255,255,255,.1);}
-    .side{position:sticky;top:96px;align-self:start}
     .kbd{display:inline-flex;align-items:center;justify-content:center;min-width:2rem;padding:.25rem .5rem;border-radius:.5rem;border:1px solid rgba(148,163,184,.25);background:rgba(15,23,42,.6);box-shadow:inset 0 -2px 0 rgba(255,255,255,.05);font-weight:700;font-size:.9rem;color:#e5e7eb}
+    .btn{padding:.6rem 1rem;border:1px solid rgba(255,255,255,.14);border-radius:12px;}
+    .btn:hover{background:rgba(255,255,255,.07)}
+    .btn-primary{background:linear-gradient(90deg, var(--pink), var(--cyan)); color:#0b1020; font-weight:900;}
+    .btn-done{color:#22c55e !important;font-weight:800;background:transparent !important}
+    .side{position:sticky;top:96px;align-self:start}
 
-    /* Lisibilité */
-    @media (min-width:1024px){ body{font-size:17px; line-height:1.6;} }
-    .card p{line-height:1.6}
-
-    /* Tooltips — UNE seule bulle ℹ par carte */
+    /* Tooltips - UNE seule bulle ℹ par carte */
     .tooltip{position:relative;display:inline-flex;align-items:center;justify-content:center;
       font-size:.75rem;background:#1e293b;color:#fff;border-radius:50%;width:20px;height:20px;
       margin-left:.5rem;cursor:help;font-weight:800;border:1px solid rgba(255,255,255,.15)}
@@ -39,58 +57,77 @@
     .tooltip-text::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
       border-width:6px;border-style:solid;border-color:#0f172a transparent transparent transparent}
 
-    /* Feedback bouton ✓ visible */
-    .btn-done{color:#22c55e !important;font-weight:800;background:transparent !important}
+    /* Readability */
+    @media (min-width:1024px){ body{font-size:17px; line-height:1.6;} }
+    .card p{line-height:1.6}
 
-    /* Badges / tags */
-    .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;font-weight:800;
-      padding:.25rem .5rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
-    .badge.green{color:#22c55e;border-color:rgba(34,197,94,.35)}
-    .badge.amber{color:#f59e0b;border-color:rgba(245,158,11,.35)}
-    .badge.sky{color:#38bdf8;border-color:rgba(56,189,248,.35)}
-    .badge.fuchsia{color:#e879f9;border-color:rgba(232,121,249,.35)}
-    .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
+    /* Tables */
+    table{width:100%;border-collapse:collapse}
+    th, td{padding:.75rem;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}
+    th{color:#cbd5e1;font-weight:800}
+    tr:hover td{background:rgba(255,255,255,.03)}
+
+    /* Sections separators */
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:.75rem}
+    .section-title h2{font-size:clamp(24px,2.5vw,32px);font-weight:900}
+
+    /* Hero Background */
+    .hero-bg{
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-bg:before{
+      content:"";
+      position:absolute;inset:-40%;
+      background:
+        radial-gradient(800px 300px at 20% -10%, rgba(216,70,239,.14), transparent 60%),
+        radial-gradient(800px 300px at 80% -20%, rgba(34,211,238,.14), transparent 60%);
+      filter: blur(40px);
+      z-index:-1;
+      opacity:.9;
+    }
+
+    /* Pills in filters */
+    .filters{display:flex;flex-wrap:wrap;gap:.5rem}
+    .filter-chip{cursor:pointer;user-select:none}
+    .filter-chip.active{outline:2px solid #22d3ee}
   </style>
 </head>
 <body>
 
-  <!-- MODALE DISCLAIMER (s'ouvre au chargement) -->
-  <div id="hub-modal" class="fixed inset-0 z-50 hidden">
-    <div class="absolute inset-0 bg-black/70"></div>
-    <div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title"
-         class="relative mx-auto max-w-2xl mt-24 glass rounded-2xl p-6 border border-cyan-400/30 text-slate-200">
-      <div class="flex items-start gap-3">
-        <div class="text-cyan-300 text-2xl">ℹ</div>
-        <div>
-          <h2 id="hub-modal-title" class="text-xl font-extrabold">Prototype / Maquette</h2>
-          <p class="mt-2 text-sm leading-6">
-            Cette version du Hub est une démonstration interactive. Certains liens ouvrent des
-            <em>exemples réalistes</em> (workflows n8n, templates, kits). L’outillage complet arrivera en production
-            après validation. Merci pour vos retours — utilisez “Soumettre une ressource” pour proposer des contenus.
-          </p>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-400">
-            <span class="chip">n8n</span><span class="chip">Templates</span><span class="chip">KPI</span><span class="chip">RTBF</span>
+  <!-- =========================
+       MODALE DISCLAIMER (centrée, opaque, backdrop flou)
+       ========================= -->
+  <div id="hub-modal" class="fixed inset-0 z-50">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title"
+           class="w-full max-w-xl rounded-2xl border border-white/15 bg-slate-900/95 shadow-2xl p-6 md:p-8">
+        <div class="flex items-start gap-3">
+          <div class="text-cyan-300 text-2xl">ℹ</div>
+          <div class="grow">
+            <h2 id="hub-modal-title" class="text-xl font-extrabold">Prototype / Maquette</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-200">
+              Cette version du Hub est une démonstration interactive. Certains liens ouvrent des
+              <em>exemples réalistes</em> (workflows n8n, templates, kits). L’outillage complet arrivera en production
+              après validation. Merci pour vos retours — utilisez “Soumettre une ressource” pour proposer des contenus.
+            </p>
           </div>
+          <button id="hub-modal-close"
+                  class="ml-2 shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/10">
+            J’ai compris
+          </button>
         </div>
-        <button id="hub-modal-close" class="ml-auto shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/5">
-          J’ai compris
-        </button>
       </div>
     </div>
   </div>
 
-  <!-- HEADER — même structure/liens que index.html + icône "maison" à gauche -->
+  <!-- =========================
+       HEADER (sera remplacé par celui d'index.html au chargement)
+       ========================= -->
   <nav class="sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <!-- Maison blanche (retour accueil) -->
-        <a href="index.html" aria-label="Accueil" class="p-2 rounded-lg hover:bg-white/10">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"/>
-          </svg>
-        </a>
-        <a href="index.html" class="text-3xl font-black neon">SPM.</a>
-      </div>
+      <a href="index.html" class="text-3xl font-black neon">SPM.</a>
       <div class="hidden md:flex items-center gap-6 text-slate-300 font-medium">
         <a href="dashboard.html" class="hover:text-pink-400">Dashboard</a>
         <a href="hub-digital.html" class="text-cyan-400 font-bold hover:text-pink-400">Hub Digital</a>
@@ -103,8 +140,10 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="max-w-7xl mx-auto px-4 pt-14 pb-10">
+  <!-- =========================
+       HERO
+       ========================= -->
+  <header class="max-w-7xl mx-auto px-4 pt-14 pb-10 hero-bg">
     <div class="glass rounded-2xl p-8 md:p-12 text-center" data-aos="fade-up">
       <h1 class="text-4xl md:text-5xl font-black">
         Le <span class="neon">Hub Digital</span> — clair, actionnable, collectif
@@ -112,11 +151,18 @@
       <p class="mt-4 text-lg text-slate-300">
         Centre opérationnel pour les équipes RTBF : playbooks, templates, workflows n8n, kits IA, KPI et formations.
       </p>
+
       <div class="mt-6 flex flex-wrap gap-2 justify-center">
-        <span class="chip">Playbooks RS</span><span class="chip">Templates</span><span class="chip">Workflows</span><span class="chip">Kits IA</span><span class="chip">Formations</span>
+        <span class="chip">Playbooks RS</span>
+        <span class="chip">Templates</span>
+        <span class="chip">Workflows</span>
+        <span class="chip">Kits IA</span>
+        <span class="chip">KPI</span>
+        <span class="chip">Formations</span>
       </div>
+
       <div class="mt-8 max-w-2xl mx-auto flex gap-2">
-        <input type="search" placeholder="Rechercher… (ex: YouTube, n8n, newsletter)"
+        <input id="searchInput" type="search" placeholder="Rechercher… (ex: YouTube, n8n, newsletter)"
                class="w-full rounded-xl bg-slate-900/50 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-cyan-400">
         <button class="px-4 py-3 rounded-xl font-bold bg-gradient-to-r from-pink-500 to-cyan-400 text-slate-900">Chercher</button>
       </div>
@@ -157,12 +203,30 @@
         </div>
       </div>
     </section>
+
+    <!-- Filtres rapides -->
+    <section class="max-w-7xl mx-auto px-4">
+      <div class="filters justify-center">
+        <span class="chip filter-chip active" data-filter="all">Tout</span>
+        <span class="chip filter-chip" data-filter="playbook">Playbooks</span>
+        <span class="chip filter-chip" data-filter="template">Templates</span>
+        <span class="chip filter-chip" data-filter="workflow">Workflows</span>
+        <span class="chip filter-chip" data-filter="ai">IA</span>
+        <span class="chip filter-chip" data-filter="kpi">KPI</span>
+        <span class="chip filter-chip" data-filter="formation">Formations</span>
+      </div>
+    </section>
   </header>
 
+  <!-- =========================
+       LAYOUT
+       ========================= -->
   <main class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 pb-20">
+
     <!-- Sidebar -->
     <aside class="lg:col-span-3 side hidden md:block">
       <nav class="space-y-2 glass rounded-xl p-4 text-sm text-slate-300">
+        <a href="#recents" class="block px-3 py-2 rounded-lg hover:bg-white/5">Derniers ajouts</a>
         <a href="#playbooks" class="block px-3 py-2 rounded-lg hover:bg-white/5">Playbooks Réseaux Sociaux</a>
         <a href="#templates" class="block px-3 py-2 rounded-lg hover:bg-white/5">Templates & Kits</a>
         <a href="#workflows" class="block px-3 py-2 rounded-lg hover:bg-white/5">Workflows n8n</a>
@@ -172,6 +236,7 @@
         <a href="#cas" class="block px-3 py-2 rounded-lg hover:bg-white/5">Cas d’usage</a>
         <a href="#faq" class="block px-3 py-2 rounded-lg hover:bg-white/5">FAQ</a>
       </nav>
+
       <div class="mt-4 glass rounded-xl p-4">
         <h4 class="font-extrabold text-slate-100">Accès rapides</h4>
         <div class="mt-3 grid grid-cols-2 gap-2 text-sm">
@@ -180,6 +245,12 @@
           <a href="#workflows" class="card p-3 text-center">n8n — Import</a>
           <a href="#kpi" class="card p-3 text-center">SEO — Dashboard</a>
         </div>
+      </div>
+
+      <div class="mt-4 glass rounded-xl p-4">
+        <h4 class="font-extrabold text-slate-100">Contact</h4>
+        <p class="text-sm text-slate-300">Une ressource à ajouter ? Un besoin ?</p>
+        <a href="mailto:steeve.pires@gmail.com" class="mt-3 inline-flex btn btn-primary">Proposer une ressource</a>
       </div>
     </aside>
 
@@ -193,28 +264,28 @@
           <div class="text-xs text-slate-400">généré automatiquement</div>
         </div>
         <div class="mt-4 grid md:grid-cols-2 gap-4">
-          <a href="index.html#innovations" class="card p-4 block">
-            <div class="text-fuchsia-400 font-extrabold">Innovations</div>
-            <div class="font-black text-lg mt-1">Live Communities — F1 / Cactus / Info</div>
-            <p class="text-sm text-slate-300 mt-1">Sondages, modération, triage & insights temps réel.</p>
-            <div class="mt-3 text-xs text-emerald-400 font-bold">En production</div>
-            <div class="tags"><span class="badge green">Actif</span><span class="badge">Live</span></div>
-          </a>
-          <a href="#workflows" class="card p-4 block">
+          <a href="#workflows" class="card p-4 block" data-category="workflow">
             <div class="text-cyan-400 font-extrabold">Workflows n8n</div>
             <div class="font-black text-lg mt-1">Veille IA & Marketing → Email + veille.json</div>
             <p class="text-sm text-slate-300 mt-1">Résumé auto + injection dans #veille-articles-grid.</p>
             <div class="mt-3 text-xs text-emerald-400 font-bold">Actif</div>
             <div class="tags"><span class="badge green">Prod</span><span class="badge sky">n8n</span></div>
           </a>
-          <a href="#workflows" class="card p-4 block">
+          <a href="index.html#innovations" class="card p-4 block" data-category="playbook">
+            <div class="text-fuchsia-400 font-extrabold">Innovations</div>
+            <div class="font-black text-lg mt-1">Live Communities — F1 / Cactus / Info</div>
+            <p class="text-sm text-slate-300 mt-1">Sondages, modération, triage & insights temps réel.</p>
+            <div class="mt-3 text-xs text-emerald-400 font-bold">En production</div>
+            <div class="tags"><span class="badge green">Actif</span><span class="badge">Live</span></div>
+          </a>
+          <a href="#workflows" class="card p-4 block" data-category="workflow">
             <div class="text-orange-400 font-extrabold">Partenariats</div>
             <div class="font-black text-lg mt-1">Convention auto · TVA 7% · e-sign</div>
             <p class="text-sm text-slate-300 mt-1">Form → PDF → calcul → DiliTrust.</p>
             <div class="mt-3 text-xs text-yellow-400 font-bold">Pilotage</div>
             <div class="tags"><span class="badge amber">Pilotage</span><span class="badge">Partenariats</span></div>
           </a>
-          <a href="#workflows" class="card p-4 block">
+          <a href="#workflows" class="card p-4 block" data-category="workflow">
             <div class="text-emerald-400 font-extrabold">R&D</div>
             <div class="font-black text-lg mt-1">TIP YouTube → JSON strict</div>
             <p class="text-sm text-slate-300 mt-1">Validation FR/public/IA+outil → OpenAI → JSON.</p>
@@ -225,12 +296,13 @@
       </section>
 
       <!-- Playbooks -->
-      <section id="playbooks" data-aos="fade-up">
-        <div class="flex items-end justify-between mb-4">
-          <h2 class="text-3xl font-black neon">Playbooks Réseaux Sociaux</h2>
+      <section id="playbooks" data-section="playbook" data-aos="fade-up">
+        <div class="section-title">
+          <h2 class="font-black neon">Playbooks Réseaux Sociaux</h2>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
         </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <!-- TikTok -->
           <article class="card p-6">
             <div class="text-orange-400 font-extrabold">TikTok</div>
             <h3 class="mt-1 font-black text-xl flex items-center">
@@ -243,6 +315,7 @@
               <a href="#" class="btn">Ouvrir</a>
             </div>
           </article>
+          <!-- YouTube -->
           <article class="card p-6">
             <div class="text-cyan-400 font-extrabold">YouTube</div>
             <h3 class="mt-1 font-black text-xl flex items-center">
@@ -255,6 +328,7 @@
               <a href="pack-miniatures-youtube.zip" class="btn">.zip</a>
             </div>
           </article>
+          <!-- Instagram -->
           <article class="card p-6">
             <div class="text-fuchsia-400 font-extrabold">Instagram</div>
             <h3 class="mt-1 font-black text-xl flex items-center">
@@ -267,12 +341,76 @@
               <a href="#" class="btn">Ouvrir</a>
             </div>
           </article>
+
+          <!-- + 6 autres playbooks pour étoffer -->
+          <article class="card p-6">
+            <div class="text-emerald-400 font-extrabold">LinkedIn</div>
+            <h3 class="mt-1 font-black text-xl flex items-center">
+              Thought leadership · formats carousel
+              <span class="tooltip">ℹ<span class="tooltip-text">Angles experts, structure carousel, CTA, retours internes.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Approche éditoriale, templates carrousel, mesure de la portée et de l’engagement.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">B2B</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <div class="text-yellow-300 font-extrabold">Facebook</div>
+            <h3 class="mt-1 font-black text-xl flex items-center">
+              Optimisation de la distribution
+              <span class="tooltip">ℹ<span class="tooltip-text">Formats, timing, crosspost, modération, AB tests.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Règles de format, timing par persona, reciblage et réutilisation multi-marques RTBF.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Distribution</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <div class="text-sky-400 font-extrabold">X / Twitter</div>
+            <h3 class="mt-1 font-black text-xl flex items-center">
+              Live coverage & threads
+              <span class="tooltip">ℹ<span class="tooltip-text">Préparation, éléments visuels, threads, mesure.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Grille d’événements live, threads, monitoring et suivi post-événement.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Live</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <div class="text-red-400 font-extrabold">Podcast</div>
+            <h3 class="mt-1 font-black text-xl flex items-center">
+              De l’épisode au short social
+              <span class="tooltip">ℹ<span class="tooltip-text">Chapitres, clips, sous-titres, diffusion multi-plateformes.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Pipeline d’extraction multi-formats et diffusion synchronisée.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Audio</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <div class="text-lime-400 font-extrabold">Auvio</div>
+            <h3 class="mt-1 font-black text-xl flex items-center">
+              Trailer & mise en avant
+              <span class="tooltip">ℹ<span class="tooltip-text">Sélection d’extraits, montage, textes promo, SEO interne.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Boîte à outils pour créer des trailers impactants et mesurables.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Video</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <div class="text-cyan-300 font-extrabold">Newsletter</div>
+            <h3 class="mt-1 font-black text-xl flex items-center">
+              Du brief au HTML responsive
+              <span class="tooltip">ℹ<span class="tooltip-text">Brief, design, HTML, QA, tracking, opt-in.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Process complet, snippets objets/préheader, checklist QA.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Email</span><a href="kit-newsletter.html" class="btn">Ouvrir</a></div>
+          </article>
         </div>
       </section>
 
       <!-- Templates & Kits -->
-      <section id="templates" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">Templates & Kits de production</h2>
+      <section id="templates" data-section="template" data-aos="fade-up">
+        <div class="section-title">
+          <h2 class="font-black neon">Templates & Kits de production</h2>
+          <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
+        </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -285,6 +423,7 @@
               <a href="pack-miniatures-youtube.zip" class="btn">.zip</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Kit Newsletter
@@ -300,6 +439,7 @@
               <a class="underline" href="template-analyse-rs.md">Checklist QA</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Brief Social Media
@@ -311,16 +451,72 @@
               <a href="brief-social.pdf" class="btn">Ouvrir</a>
             </div>
           </article>
+
+          <!-- +9 autres templates pour étoffer -->
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Modèle de calendrier éditorial
+              <span class="tooltip">ℹ<span class="tooltip-text">Mensuel/hebdo, responsables, deadlines.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Fichier base avec vues mensuelles/hebdo, propriétaires et jalons.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Sheet</span><a href="#" class="btn">Copier</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Kit “Annonce partenaire”
+              <span class="tooltip">ℹ<span class="tooltip-text">Brief légal, assets, validations.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Modèles d’annonce partenaire multi-canaux + check legal.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Pack</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Template “Poste un format pilote”
+              <span class="tooltip">ℹ<span class="tooltip-text">Hypothèses, risques, KPI, go/no-go.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Formulaire structuré pour cadrer un pilote et son évaluation.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Form</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Gabarit “Fiche format vidéo”
+              <span class="tooltip">ℹ<span class="tooltip-text">Cible, angle, durée, habillages.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Gabarit complet pour documenter un format récurrent.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Notion</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Charte “Titres & miniatures”
+              <span class="tooltip">ℹ<span class="tooltip-text">Règles locales RTBF + exemples.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Règles de copie et design adaptées aux marques RTBF.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">PDF</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              “Pack lancement émission”
+              <span class="tooltip">ℹ<span class="tooltip-text">Kit RS + Auvio + site.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Checklist + templates pluri-canaux pour un lancement propre.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Pack</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
         </div>
       </section>
 
       <!-- Workflows n8n -->
-      <section id="workflows" data-aos="fade-up">
-        <div class="flex items-end justify-between mb-2">
-          <h2 class="text-3xl font-black neon">Workflows n8n — prêts à cloner</h2>
+      <section id="workflows" data-section="workflow" data-aos="fade-up">
+        <div class="section-title">
+          <h2 class="font-black neon">Workflows n8n — prêts à cloner</h2>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Galerie</a>
         </div>
         <p class="text-slate-300">Automatisations utiles au quotidien (veille, génération de posts, analytics, export & envoi).</p>
+
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -335,6 +531,7 @@
               <a href="veille-ia-marketing-n8n.json" class="btn">Importer</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Générer une convention de partenariat
@@ -348,6 +545,7 @@
               <a href="convention-auto-n8n.json" class="btn">Importer</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               YouTube → TIP structuré (JSON)
@@ -361,12 +559,43 @@
               <a href="youtube-tip-n8n.json" class="btn">Importer</a>
             </div>
           </article>
+
+          <!-- +6 workflows pour étoffer -->
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Export Analytics → Sheet hebdo
+              <span class="tooltip">ℹ<span class="tooltip-text">GA4 → Sheet → email.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Collecte GA4/YouTube Analytics, mise en forme, partage.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Reporting</span><a href="#" class="btn">Importer</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Auto-clip Podcast → Shorts
+              <span class="tooltip">ℹ<span class="tooltip-text">Transcription → détection highlights.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Chaîne de transformation audio → vidéo court sous-titrée.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Audio→Vidéo</span><a href="#" class="btn">Importer</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Curateur d’actus locales
+              <span class="tooltip">ℹ<span class="tooltip-text">Flux hyperlocaux → résumé quotidien.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Agrégation et envoi quotidien vers une liste rédaction.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Local</span><a href="#" class="btn">Importer</a></div>
+          </article>
         </div>
       </section>
 
       <!-- IA -->
-      <section id="ai" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">IA — Prompts & Outils</h2>
+      <section id="ai" data-section="ai" data-aos="fade-up">
+        <div class="section-title">
+          <h2 class="font-black neon">IA — Prompts & Outils</h2>
+          <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
+        </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -379,6 +608,7 @@
               <a href="prompt-campagne-360.txt" class="btn">Copier</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Template — Analyse de performance RS
@@ -390,6 +620,7 @@
               <a href="template-analyse-rs.md" class="btn">Ouvrir</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Kit — Sous-titres & doublage
@@ -401,12 +632,43 @@
               <a href="kit-soustitres-doublage.md" class="btn">Guide</a>
             </div>
           </article>
+
+          <!-- +3 cartes IA supplémentaires -->
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Prompt — Titrage YouTube (10 variantes)
+              <span class="tooltip">ℹ<span class="tooltip-text">Génère 10 variantes style RTBF.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Structure de prompt pour obtenir des titres testables rapidement.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Prompt</span><a href="#" class="btn">Copier</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Prompt — Résumé d’émission en 5 points
+              <span class="tooltip">ℹ<span class="tooltip-text">Sorties prêtes RS/Newsletter.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Génère 5 bullets propres + 1 CTA + 3 hashtags pertinents.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Prompt</span><a href="#" class="btn">Copier</a></div>
+          </article>
+
+          <article class="card p-6">
+            <h3 class="font-black text-xl flex items-center">
+              Kit — “Garde-fous IA”
+              <span class="tooltip">ℹ<span class="tooltip-text">RGPD, audit prompt, traçabilité.</span></span>
+            </h3>
+            <p class="mt-2 text-sm text-slate-300">Cadre d’usage IA interne, exemples de logs et de process.</p>
+            <div class="mt-4 flex justify-between items-center text-sm"><span class="chip">Gouvernance</span><a href="#" class="btn">Ouvrir</a></div>
+          </article>
         </div>
       </section>
 
       <!-- KPI -->
-      <section id="kpi" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">KPI & Tableaux de bord</h2>
+      <section id="kpi" data-section="kpi" data-aos="fade-up">
+        <div class="section-title">
+          <h2 class="font-black neon">KPI & Tableaux de bord</h2>
+          <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
+        </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -419,6 +681,7 @@
               <a href="dashboard.html" class="btn">Voir</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               SEO — Task force évènements
@@ -430,6 +693,7 @@
               <a href="#" class="btn">Ouvrir</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Engagement Auvio & RS
@@ -445,8 +709,11 @@
       </section>
 
       <!-- Formations -->
-      <section id="formations" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">Formations & calendrier</h2>
+      <section id="formations" data-section="formation" data-aos="fade-up">
+        <div class="section-title">
+          <h2 class="font-black neon">Formations & calendrier</h2>
+          <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Catalogue</a>
+        </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -459,6 +726,7 @@
               <a href="#" class="btn">S’inscrire</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               YouTube — storytelling & SEO
@@ -470,6 +738,7 @@
               <a href="#" class="btn">S’inscrire</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               n8n — de 0 à 1
@@ -484,9 +753,12 @@
         </div>
       </section>
 
-      <!-- Cas d'usage -->
+      <!-- Cas d’usage -->
       <section id="cas" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">Cas d’usage inspirants</h2>
+        <div class="section-title">
+          <h2 class="font-black neon">Cas d’usage inspirants</h2>
+          <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
+        </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -499,6 +771,7 @@
               <a href="#" class="btn">Ouvrir</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Phygital — Jardin Extraordinaire
@@ -510,6 +783,7 @@
               <a href="#" class="btn">Voir</a>
             </div>
           </article>
+
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Live Communities — F1 / Cactus / Info
@@ -526,7 +800,9 @@
 
       <!-- FAQ -->
       <section id="faq" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">FAQ</h2>
+        <div class="section-title">
+          <h2 class="font-black neon">FAQ</h2>
+        </div>
         <div class="mt-4 space-y-3">
           <details class="card p-4">
             <summary class="font-bold cursor-pointer">Qui peut publier dans le Hub ?</summary>
@@ -543,7 +819,22 @@
         </div>
       </section>
 
-      <!-- CTA -->
+      <!-- Changelog -->
+      <section id="changelog" class="glass rounded-2xl p-6" data-aos="fade-up">
+        <div class="flex items-center justify-between">
+          <h2 class="text-2xl md:text-3xl font-black neon">Changelog</h2>
+          <span class="badge">auto</span>
+        </div>
+        <ul class="mt-4 text-sm text-slate-300 space-y-2">
+          <li><span class="badge green">Nouveau</span> Tooltips ℹ unifiés sur toutes les cartes</li>
+          <li><span class="badge green">Nouveau</span> Boutons reliés à des assets réalistes (.json, .zip, .html, .pdf)</li>
+          <li><span class="badge sky">Amélioration</span> Header synchronisé avec index.html (+ icône maison)</li>
+          <li><span class="badge sky">Amélioration</span> Filtres rapides par catégorie + recherche live</li>
+          <li><span class="badge amber">Proto</span> Modale “Prototype / Maquette” centrée & backdrop flou</li>
+        </ul>
+      </section>
+
+      <!-- CTA final -->
       <section class="glass rounded-2xl p-8 text-center" data-aos="fade-up">
         <h3 class="text-2xl md:text-3xl font-black">Une idée, un besoin, un outil à partager ?</h3>
         <p class="mt-2 text-slate-300">Le Hub vit par et pour les équipes. Proposez un guide, un template ou un workflow.</p>
@@ -556,62 +847,143 @@
     </section>
   </main>
 
+  <!-- =========================
+       FOOTER
+       ========================= -->
   <footer class="text-center text-sm py-10 bg-black/30 text-gray-400 border-t border-white/10">
     <p>© 2025 Steeve Pires Madeira. Tous droits réservés.</p>
-    <p class="mt-2"><a href="https://www.linkedin.com/in/steeve-pires-madeira-7328971a/" target="_blank" class="underline hover:text-white">LinkedIn</a> • <a href="mailto:steeve.pires@gmail.com" class="underline hover:text-white">Me Contacter</a></p>
+    <p class="mt-2">
+      <a href="https://www.linkedin.com/in/steeve-pires-madeira-7328971a/" target="_blank" class="underline hover:text-white">LinkedIn</a>
+      •
+      <a href="mailto:steeve.pires@gmail.com" class="underline hover:text-white">Me Contacter</a>
+    </p>
   </footer>
 
+  <!-- =========================
+       SCRIPTS
+       ========================= -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init({duration:700, once:true, offset:100});
 
-    // Modale disclaimer: ouvrir au chargement; fermer via bouton / ESC / clic backdrop
-    const modal = document.getElementById('hub-modal');
-    const modalClose = document.getElementById('hub-modal-close');
-    function openModal(){ modal.classList.remove('hidden'); document.body.style.overflow='hidden'; }
-    function closeModal(){ modal.classList.add('hidden'); document.body.style.overflow=''; }
-    window.addEventListener('load', openModal);
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !modal.classList.contains('hidden')) closeModal(); });
+    // Modale disclaimer (open on load; ESC/backdrop/btn to close)
+    (function(){
+      const modal = document.getElementById('hub-modal');
+      const btn = document.getElementById('hub-modal-close');
+      function close(){ modal.classList.add('hidden'); document.body.style.overflow=''; }
+      function open(){ modal.classList.remove('hidden'); document.body.style.overflow='hidden'; }
+      window.addEventListener('load', open);
+      btn?.addEventListener('click', close);
+      modal?.addEventListener('click', (e)=>{
+        const dialog = modal.querySelector('[role="dialog"]');
+        if(dialog && !dialog.contains(e.target)) close();
+      });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+    })();
 
     // Horodatage "Dernière sync"
-    const lastSyncEl = document.getElementById('lastSync');
-    const now = new Date(); const pad=n=>n.toString().padStart(2,'0');
-    const ts = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-    if(lastSyncEl){ lastSyncEl.textContent = ts; }
+    (function(){
+      const el = document.getElementById('lastSync');
+      if(!el) return;
+      const now=new Date(); const pad=n=>n.toString().padStart(2,'0');
+      el.textContent=`${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    })();
 
     // Raccourci clavier recherche
-    const searchInput = document.querySelector('input[type="search"]');
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === '/' && document.activeElement !== searchInput){
-        e.preventDefault(); searchInput.focus();
-      }
-    });
+    (function(){
+      const input = document.getElementById('searchInput');
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='/' && document.activeElement!==input){ e.preventDefault(); input?.focus(); }
+      });
+    })();
 
-    // Filtre live sur les cartes
-    const searchableSections = ['#playbooks','#templates','#workflows','#ai','#kpi','#formations','#cas','#recents'];
-    const getCards = () => searchableSections.flatMap(sel => Array.from(document.querySelectorAll(sel + ' .card')));
-    if(searchInput){
-      searchInput.addEventListener('input', (e)=>{
+    // Filtre live par texte
+    (function(){
+      const input = document.getElementById('searchInput');
+      const sections = ['#recents','#playbooks','#templates','#workflows','#ai','#kpi','#formations','#cas'];
+      const getCards = () => sections.flatMap(sel => Array.from(document.querySelectorAll(sel+' .card')));
+      input?.addEventListener('input', (e)=>{
         const q = e.target.value.trim().toLowerCase();
         getCards().forEach(card => {
           const text = card.innerText.toLowerCase();
           card.style.display = q && !text.includes(q) ? 'none' : '';
         });
       });
-    }
+    })();
+
+    // Filtres rapides (par section)
+    (function(){
+      const chips=[...document.querySelectorAll('.filter-chip')];
+      const sections=[...document.querySelectorAll('section[data-section]')];
+      function apply(filter){
+        sections.forEach(sec=>{
+          if(filter==='all'|| sec.dataset.section===filter){ sec.style.display=''; }
+          else{ sec.style.display='none'; }
+        });
+        chips.forEach(c=>c.classList.toggle('active', c.dataset.filter===filter));
+        const main=document.querySelector('main');
+        if(main) window.scrollTo({top:main.offsetTop-40, behavior:'smooth'});
+      }
+      chips.forEach(c=>c.addEventListener('click',()=>apply(c.dataset.filter)));
+      apply('all');
+    })();
 
     // Feedback visuel sur les boutons (✓)
-    document.addEventListener('click', (ev)=>{
-      const t = ev.target;
-      if(t && t.classList.contains('btn')){
-        const label = t.innerText;
-        t.classList.add('btn-done');
-        t.innerText = '✓';
-        setTimeout(()=>{ t.innerText = label; t.classList.remove('btn-done'); }, 1200);
+    (function(){
+      document.addEventListener('click', (ev)=>{
+        const t = ev.target;
+        if(t && t.classList.contains('btn')){
+          const label = t.innerText;
+          t.classList.add('btn-done'); t.innerText = '✓';
+          setTimeout(()=>{ t.innerText = label; t.classList.remove('btn-done'); }, 1200);
+        }
+      });
+    })();
+  </script>
+
+  <!-- =========================
+       HEADER SYNC -> récupère EXACTEMENT le <nav> de index.html
+       + ajoute la petite maison blanche tout à gauche
+       + réécrit les liens "#..." en "index.html#..."
+       ========================= -->
+  <script>
+  (async () => {
+    try {
+      const res = await fetch("index.html", {cache: "no-cache"});
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const srcNav = doc.querySelector("nav");
+      if (!srcNav) return;
+
+      // Clone le nav de l'index
+      const nav = srcNav.cloneNode(true);
+
+      // Les liens ancrés doivent cibler index.html depuis le hub
+      nav.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.setAttribute("href", "index.html" + a.getAttribute("href"));
+      });
+
+      // Petite maison blanche insérée avant le 1er lien
+      const firstLink = nav.querySelector("a");
+      if (firstLink && firstLink.parentNode) {
+        const home = document.createElement("a");
+        home.href = "index.html";
+        home.setAttribute("aria-label", "Accueil");
+        home.className = "mr-2 p-2 rounded-lg inline-flex items-center justify-center hover:bg-white/10";
+        home.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"/>
+          </svg>`;
+        firstLink.parentNode.insertBefore(home, firstLink);
       }
-    });
+
+      // Remplace le nav courant par celui de l'index (1:1)
+      const hubNav = document.querySelector("nav");
+      if (hubNav) hubNav.replaceWith(nav);
+    } catch(e) {
+      console.error("Sync header failed:", e);
+    }
+  })();
   </script>
 </body>
 </html>
