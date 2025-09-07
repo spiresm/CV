@@ -238,47 +238,7 @@
               <span class="tooltip">ℹ<span class="tooltip-text">Pitch → tournage mobile → montage CapCut → sous-titres → publication.</span></span>
             </h3>
             <p class="mt-2 text-slate-300 text-sm">Checklist pour pitcher un format, tournage mobile, montage, sous-titres, publication, métriques.</p>
-            
-
-<details class="mt-3 card p-4">
-  <summary class="font-bold cursor-pointer">Détails — Besoins d'analyse stratégique</summary>
-  <ul class="mt-2 list-disc list-inside text-sm text-slate-300 space-y-1">
-    <li>Rédaction de briefs marketing, analyse concurrentielle, interrogation d'experts/personas.</li>
-    <li><strong>Connecter des API de LLM (ex. GPT‑4)</strong> : générer des ébauches de briefs, analyser des textes, synthétiser interviews/personas.</li>
-    <li><strong>Intégrer des outils de scraping web</strong> : collecte sur sites concurrents, profils sociaux, etc.</li>
-    <li><strong>Utiliser des bases de données / systèmes de fichiers</strong> : accès à des documents internes (études, audiences) et analyses précédentes.</li>
-    <li><strong>Recherches internet en temps réel</strong> : API de moteurs de recherche pour enrichir l’analyse.</li>
-    <li><strong>Documents internes & externes</strong> : lecture de PDF/Word/Excel, requêtes sur BDD internes, outils de GED.</li>
-  </ul>
-</details>
-
-
-<details class="mt-3 card p-4">
-  <summary class="font-bold cursor-pointer">Détails — Aide au reporting</summary>
-  <ul class="mt-2 list-disc list-inside text-sm text-slate-300 space-y-1">
-    <li><strong>Analyse Excel (GRP, audiences, etc.)</strong> : lecture/traitement de feuilles, transformations et calculs (pourcentages, comparaisons).</li>
-    <li><strong>Génération de rapports structurés</strong> : export CSV/JSON/PDF (via intégration) ou envoi vers Data Studio / Power BI.</li>
-    <li><strong>Comparaison des performances</strong> : % obtenu vs % demandé, mise en évidence des écarts.</li>
-    <li><strong>Analyse de campagnes passées & actuelles</strong> : performances médias, assets créatifs.</li>
-    <li><strong>Centralisation des données</strong> : emails, Excel, PowerPoint (extraction de texte/données si possible).</li>
-    <li><strong>LLM pour analyse qualitative</strong> : premières conclusions & suggestions d’amélioration à partir des données et assets.</li>
-  </ul>
-</details>
-
-
-<details class="mt-3 card p-4">
-  <summary class="font-bold cursor-pointer">Détails — Veille concurrentielle & analyse marketing</summary>
-  <ul class="mt-2 list-disc list-inside text-sm text-slate-300 space-y-1">
-    <li><strong>Absorption de veille concurrentielle</strong> : emails Nielsen, actions marketing par marque.</li>
-    <li><strong>Intégration d'e-mails (IMAP)</strong> : lecture d’emails spécifiques, extraction de contenu & traitement.</li>
-    <li><strong>Scraping web & API</strong> : collecte de campagnes/publicités/messages clés depuis plateformes et bases publiques.</li>
-    <li><strong>Identification du positionnement, messages, éléments visuels</strong> :</li>
-    <li>— <em>NLP avec LLM</em> : synthèse du positionnement et des messages principaux.</li>
-    <li>— <em>Vision par ordinateur</em> : logos, couleurs dominantes, éléments récurrents (via Google Vision / OpenAI, etc.).</li>
-  </ul>
-</details>
-
-<div class="mt-4 flex justify-between items-center text-sm">
+            <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Guide + modèles</span>
               <a href="#" class="btn">Ouvrir</a>
             </div>
@@ -698,38 +658,5 @@
       }
     });
   </script>
-<script>
-// Filtre par menu de gauche : n'afficher QUE la section demandée et fermer les <details>
-(function () {
-  const sections = Array.from(document.querySelectorAll('main section[id]'));
-  function showOnly(targetId){
-    sections.forEach(sec => { sec.style.display = (sec.id === targetId) ? '' : 'none'; });
-    document.querySelectorAll('details').forEach(d => d.open = false);
-    const el = document.getElementById(targetId);
-    if(el) window.scrollTo({top: el.offsetTop - 80, behavior: 'smooth'});
-  }
-  function showAll(){
-    sections.forEach(sec => sec.style.display = '');
-    document.querySelectorAll('details').forEach(d => d.open = false);
-  }
-  document.querySelectorAll('aside nav a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = a.getAttribute('href').slice(1);
-      showOnly(id);
-      history.replaceState(null, '', '#' + id);
-    });
-  });
-  if(location.hash){
-    const id = location.hash.slice(1);
-    if(document.getElementById(id)) showOnly(id);
-  } else {
-    showAll();
-  }
-  // Expose showAll if needed later
-  window.hubShowAll = showAll;
-})();
-</script>
-
 </body>
 </html>
