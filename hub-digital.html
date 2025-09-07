@@ -99,43 +99,6 @@ aside nav a[href="#faq"]{color:#c084fc;}
 aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid currentColor; color:#e2e8f0;}
 
 
-/* --- Card Hover Description Overlay --- */
-.card { position: relative; overflow: hidden; }
-.card .card-desc {
-  position: absolute; inset: 0;
-  background: rgba(2,6,23,.9); /* slate-950/90 */
-  color: #e2e8f0;
-  padding: 1.25rem 1.25rem 1rem 1.25rem;
-  display: flex; flex-direction: column; gap: .5rem;
-  opacity: 0; pointer-events: none; transform: translateY(8px);
-  transition: opacity .18s ease, transform .18s ease;
-  border: 1px solid rgba(255,255,255,.08);
-}
-/* subtle top accent using section color */
-section[id] .card .card-desc::before {
-  content:""; position:absolute; left:0; top:0; height:3px; width:100%;
-  background: var(--cat, #22d3ee);
-}
-/* reveal on hover or keyboard focus */
-.card:hover .card-desc, .card:focus-within .card-desc, .card.card--showdesc .card-desc {
-  opacity: 1; pointer-events: auto; transform: translateY(0);
-}
-.card .card-desc h4 { font-size: 1rem; font-weight: 900; margin: 0 0 .25rem 0; color: #e2e8f0;}
-.card .card-desc p, .card .card-desc ul { color:#cbd5e1; font-size: .9rem; }
-.card .card-desc ul { list-style: disc; padding-left: 1.1rem; margin: .25rem 0 0 0; }
-.card .card-desc .mini { font-size: .8rem; opacity: .85; }
-.card .card-desc .close {
-  position:absolute; right:.5rem; top:.35rem;
-  border:1px solid rgba(255,255,255,.15); border-radius:.5rem;
-  padding:.15rem .4rem; font-size:.75rem; background:rgba(255,255,255,.04);
-}
-/* Don't block clicks on primary actions area at the very bottom */
-.card .card-desc.safe-bottom { padding-bottom: 4.5rem; }
-/* On very small screens, make text slightly bigger for readability */
-@media (max-width: 480px){
-  .card .card-desc p, .card .card-desc ul { font-size: .95rem; }
-}
-
 </style>
 </head>
 <body>
@@ -341,17 +304,6 @@ section[id] .card .card-desc::before {
               Formats courts — de l’idée au post
               </span>
             \1
-<div class="card-desc safe-bottom">
-  <button class="close" aria-label="Fermer">×</button>
-  <h4>Analyse stratégique — Description</h4>
-  <p>Orchestre la collecte et la synthèse : <strong>LLM (ex. GPT‑4)</strong>, <strong>scraping web</strong>, <strong>docs internes (PDF/Word/Excel)</strong>, et <strong>recherche en temps réel</strong> (SERP API) pour produire un <em>brief</em> et un <em>bench</em> exploitables.</p>
-  <ul>
-    <li>Interviews/personas → synthèse structurée</li>
-    <li>Sites & réseaux concurrents → extraction</li>
-    <li>Intégration BDD & GED → consolidation</li>
-  </ul>
-  <p class="mini">Astuce : importe le workflow .json n8n et renseigne tes clés API.</p>
-</div>
             <p class="mt-2 text-slate-300 text-sm">Checklist pour pitcher un format, tournage mobile, montage, sous-titres, publication, métriques.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Guide + modèles</span>
@@ -364,16 +316,6 @@ section[id] .card .card-desc::before {
               Thumbnails & Titres qui cliquent
               </span>
             \1
-<div class="card-desc safe-bottom">
-  <button class="close" aria-label="Fermer">×</button>
-  <h4>Aide au reporting — Description</h4>
-  <p>Lit tes <strong>Excel (GRP, audiences…)</strong>, calcule <strong>% obtenu vs % demandé</strong>, met en évidence les écarts et génère un <strong>rapport</strong> (CSV/JSON/HTML/PDF via intégration). Option : <em>commentaire auto</em> par LLM.</p>
-  <ul>
-    <li>Nettoyage & agrégations (Spreadsheet)</li>
-    <li>Calculs d’écarts & indicateurs</li>
-    <li>Exports & envoi (Drive / Data Studio / Email)</li>
-  </ul>
-</div>
             <p class="mt-2 text-slate-300 text-sm">Système de variantes A/B, 10 formules de titres, 6 règles de composition visuelle.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Kit créa</span>
@@ -386,16 +328,6 @@ section[id] .card .card-desc::before {
               Calendrier éditorial · Stories & Reels
               </span>
             \1
-<div class="card-desc safe-bottom">
-  <button class="close" aria-label="Fermer">×</button>
-  <h4>Veille marketing — Description</h4>
-  <p>Absorbe la veille (ex. <strong>emails Nielsen via IMAP</strong>), <strong>scrape</strong> sites/RS des marques, identifie <strong>messages clés & positionnement</strong> avec LLM. Option : <strong>vision</strong> (logos, couleurs dominantes) via API.</p>
-  <ul>
-    <li>Emails & pièces jointes → extraction</li>
-    <li>Scraping campagnes & publicités</li>
-    <li>Synthèse NLP & (option) Vision</li>
-  </ul>
-</div>
             <p class="mt-2 text-slate-300 text-sm">Templates Notion/Sheet, idées hebdo, rituels de publication, highlights.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Template</span>
@@ -414,6 +346,9 @@ section[id] .card .card-desc::before {
               Pack Miniatures YouTube
               </span>
             </h3>
+<p class="mt-2 text-sm text-slate-300">Absorbe la veille (ex. emails Nielsen via IMAP), scrape les sites/RS des marques et synthétise messages clés & positionnement avec LLM. Option : vision (logos, couleurs dominantes) via API.</p>
+<p class="mt-2 text-sm text-slate-300">Lit tes Excel (GRP, audiences, etc.), calcule % obtenu vs % demandé, met en évidence les écarts et génère un rapport (CSV/JSON/HTML/PDF via intégration). Option : commentaire auto par LLM.</p>
+<p class="mt-2 text-sm text-slate-300">Orchestre la collecte et la synthèse : LLM (ex. GPT‑4), scraping web, documents internes (PDF/Word/Excel), recherches en temps réel. Produit un brief exploitable et un bench concurrentiel.</p>
             <p class="mt-2 text-sm text-slate-300">Figma/PSD : 6 layouts modulaires, grilles, styles de texte, safe zones.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Télécharger</span>
@@ -463,8 +398,11 @@ section[id] .card .card-desc::before {
               </span>
             </h3>
             <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
-              <li>Recherche RSS/Google News</li><li>Résumé OpenAI</li><li>HTML newsletter + veille.json</li>
-            </ul>
+    <li>IMAP: lecture d’emails ciblés & pièces jointes</li>
+    <li>Scraping campagnes/publicités, extraction de texte</li>
+    <li>Synthèse NLP (positionnement, messages)</li>
+    <li>Vision (option): logos/couleurs récurrents</li>
+  </ul>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">.json n8n</span>
               <a href="veille-ia-marketing-n8n.json" class="btn">Importer</a>
