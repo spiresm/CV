@@ -54,69 +54,54 @@
 </head>
 <body>
 
-  
-<!-- MODALE DISCLAIMER (centrée, opaque, backdrop flou) -->
-<div id="hub-modal" class="fixed inset-0 z-50">
-  <!-- Fond sombre + flou -->
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-
-  <!-- Conteneur centré -->
-  <div class="absolute inset-0 flex items-center justify-center p-4">
+  <!-- MODALE DISCLAIMER (s'ouvre au chargement) -->
+  <div id="hub-modal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/70"></div>
     <div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title"
-         class="w-full max-w-xl rounded-2xl border border-white/15 bg-slate-900 shadow-2xl p-6 md:p-8">
+         class="relative mx-auto max-w-2xl mt-24 glass rounded-2xl p-6 border border-cyan-400/30 text-slate-200">
       <div class="flex items-start gap-3">
         <div class="text-cyan-300 text-2xl">ℹ</div>
-        <div class="grow">
+        <div>
           <h2 id="hub-modal-title" class="text-xl font-extrabold">Prototype / Maquette</h2>
-          <p class="mt-2 text-sm leading-6 text-slate-200">
+          <p class="mt-2 text-sm leading-6">
             Cette version du Hub est une démonstration interactive. Certains liens ouvrent des
-            <em>exemples réalistes</em> (workflows n8n, templates, kits).
-            L’outillage complet arrivera en production après validation.
+            <em>exemples réalistes</em> (workflows n8n, templates, kits). L’outillage complet arrivera en production
+            après validation. Merci pour vos retours — utilisez “Soumettre une ressource” pour proposer des contenus.
           </p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-400">
+            <span class="chip">n8n</span><span class="chip">Templates</span><span class="chip">KPI</span><span class="chip">RTBF</span>
+          </div>
         </div>
-        <button id="hub-modal-close"
-                class="ml-2 shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/10">
+        <button id="hub-modal-close" class="ml-auto shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/5">
           J’ai compris
         </button>
       </div>
     </div>
   </div>
-</div>
-
 
   <!-- HEADER — même structure/liens que index.html + icône "maison" à gauche -->
-  
-<!-- HEADER (statique, identique à index + maison) -->
-<nav class="sticky top-0 z-40">
-  <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <!-- Maison blanche (retour accueil) -->
-      <a href="index.html" aria-label="Accueil" class="p-2 rounded-lg inline-flex items-center justify-center hover:bg-white/10">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-          <path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"/>
-        </svg>
-      </a>
-      <!-- Marque -->
-      <a href="index.html" id="logo-trigger" class="text-3xl font-black">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-400 to-cyan-300">SPM.</span>
-      </a>
+  <nav class="sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Maison blanche (retour accueil) -->
+        <a href="index.html" aria-label="Accueil" class="p-2 rounded-lg hover:bg-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"/>
+          </svg>
+        </a>
+        <a href="index.html" class="text-3xl font-black neon">SPM.</a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-slate-300 font-medium">
+        <a href="dashboard.html" class="hover:text-pink-400">Dashboard</a>
+        <a href="hub-digital.html" class="text-cyan-400 font-bold hover:text-pink-400">Hub Digital</a>
+        <a href="index.html#section-synthese" class="hover:text-pink-400">Piliers</a>
+        <a href="index.html#section-ecosysteme" class="hover:text-pink-400">Écosystème</a>
+        <a href="index.html#section-plan-action" class="hover:text-pink-400">Plan 90j</a>
+        <a href="index.html#innovations" class="hover:text-pink-400">Innovations</a>
+        <a href="mailto:steeve.pires@gmail.com" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 shadow-lg shadow-fuchsia-500/20">Me Contacter</a>
+      </div>
     </div>
-
-    <div class="hidden md:flex items-center gap-8 text-slate-300 font-medium">
-      <a href="dashboard.html" class="hover:text-pink-400">Dashboard</a>
-      <a href="index.html#section-synthese" class="hover:text-pink-400">Piliers</a>
-      <a href="index.html#section-ecosysteme" class="hover:text-pink-400">Écosystème</a>
-      <a href="index.html#section-plan-action" class="hover:text-pink-400">Plan 90j</a>
-      <a href="index.html#innovations" class="hover:text-pink-400">Innovations</a>
-      <a href="hub-digital.html" class="text-cyan-400 font-bold hover:text-pink-400">Hub Digital</a>
-      <a id="vision-modal-trigger" href="index.html#vision-detaillee" class="hover:text-pink-400">Vision détaillée</a>
-      <a id="profile-modal-trigger" href="index.html#profil" class="hover:text-pink-400">Mon Profil</a>
-      <a href="mailto:steeve.pires@gmail.com"
-         class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 shadow-lg shadow-fuchsia-500/20">Me Contacter</a>
-    </div>
-  </div>
-</nav>
-
+  </nav>
 
   <!-- HERO -->
   <header class="max-w-7xl mx-auto px-4 pt-14 pb-10">
@@ -253,7 +238,47 @@
               <span class="tooltip">ℹ<span class="tooltip-text">Pitch → tournage mobile → montage CapCut → sous-titres → publication.</span></span>
             </h3>
             <p class="mt-2 text-slate-300 text-sm">Checklist pour pitcher un format, tournage mobile, montage, sous-titres, publication, métriques.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            
+
+<details class="mt-3 card p-4">
+  <summary class="font-bold cursor-pointer">Détails — Besoins d'analyse stratégique</summary>
+  <ul class="mt-2 list-disc list-inside text-sm text-slate-300 space-y-1">
+    <li>Rédaction de briefs marketing, analyse concurrentielle, interrogation d'experts/personas.</li>
+    <li><strong>Connecter des API de LLM (ex. GPT‑4)</strong> : générer des ébauches de briefs, analyser des textes, synthétiser interviews/personas.</li>
+    <li><strong>Intégrer des outils de scraping web</strong> : collecte sur sites concurrents, profils sociaux, etc.</li>
+    <li><strong>Utiliser des bases de données / systèmes de fichiers</strong> : accès à des documents internes (études, audiences) et analyses précédentes.</li>
+    <li><strong>Recherches internet en temps réel</strong> : API de moteurs de recherche pour enrichir l’analyse.</li>
+    <li><strong>Documents internes & externes</strong> : lecture de PDF/Word/Excel, requêtes sur BDD internes, outils de GED.</li>
+  </ul>
+</details>
+
+
+<details class="mt-3 card p-4">
+  <summary class="font-bold cursor-pointer">Détails — Aide au reporting</summary>
+  <ul class="mt-2 list-disc list-inside text-sm text-slate-300 space-y-1">
+    <li><strong>Analyse Excel (GRP, audiences, etc.)</strong> : lecture/traitement de feuilles, transformations et calculs (pourcentages, comparaisons).</li>
+    <li><strong>Génération de rapports structurés</strong> : export CSV/JSON/PDF (via intégration) ou envoi vers Data Studio / Power BI.</li>
+    <li><strong>Comparaison des performances</strong> : % obtenu vs % demandé, mise en évidence des écarts.</li>
+    <li><strong>Analyse de campagnes passées & actuelles</strong> : performances médias, assets créatifs.</li>
+    <li><strong>Centralisation des données</strong> : emails, Excel, PowerPoint (extraction de texte/données si possible).</li>
+    <li><strong>LLM pour analyse qualitative</strong> : premières conclusions & suggestions d’amélioration à partir des données et assets.</li>
+  </ul>
+</details>
+
+
+<details class="mt-3 card p-4">
+  <summary class="font-bold cursor-pointer">Détails — Veille concurrentielle & analyse marketing</summary>
+  <ul class="mt-2 list-disc list-inside text-sm text-slate-300 space-y-1">
+    <li><strong>Absorption de veille concurrentielle</strong> : emails Nielsen, actions marketing par marque.</li>
+    <li><strong>Intégration d'e-mails (IMAP)</strong> : lecture d’emails spécifiques, extraction de contenu & traitement.</li>
+    <li><strong>Scraping web & API</strong> : collecte de campagnes/publicités/messages clés depuis plateformes et bases publiques.</li>
+    <li><strong>Identification du positionnement, messages, éléments visuels</strong> :</li>
+    <li>— <em>NLP avec LLM</em> : synthèse du positionnement et des messages principaux.</li>
+    <li>— <em>Vision par ordinateur</em> : logos, couleurs dominantes, éléments récurrents (via Google Vision / OpenAI, etc.).</li>
+  </ul>
+</details>
+
+<div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Guide + modèles</span>
               <a href="#" class="btn">Ouvrir</a>
             </div>
@@ -383,18 +408,64 @@
       <section id="ai" data-aos="fade-up">
         <h2 class="text-3xl font-black neon">IA — Prompts & Outils</h2>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
-          <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Prompt — Générateur de campagne 360°
-              <span class="tooltip">ℹ<span class="tooltip-text">Brief → déclinaisons multi-canaux → planning → KPI.</span></span>
-            </h3>
-            <p class="mt-2 text-sm text-slate-300">Objectif, audience, messages, déclinaisons par canal, planning & KPI.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
-              <span class="chip">Prompt</span>
-              <a href="prompt-campagne-360.txt" class="btn">Copier</a>
-            </div>
-          </article>
-          <article class="card p-6">
+<article class="card p-6" data-category="ai">
+  <div class="text-cyan-400 font-extrabold">Analyse stratégique</div>
+  <h3 class="font-black text-xl mt-1 flex items-center">
+    Briefs, bench concurrents, interviews (personas)
+    <span class="tooltip">ℹ<span class="tooltip-text">LLM + scraping + docs internes : synthèse d’insights en un clic.</span></span>
+  </h3>
+  <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
+    <li>Collecte : docs internes, web, interviews</li>
+    <li>Synthèse structurée (brief, bench, risques/opportunités)</li>
+    <li>Export markdown/PDF + partage</li>
+  </ul>
+  <div class="mt-4 flex flex-wrap gap-2 text-sm">
+    <a href="analyse-strategique-n8n.json" class="btn">Importer .json n8n</a>
+    <a href="rapport-exemple.html" class="btn">Voir exemple</a>
+    <a href="#" class="btn">Guide</a>
+  </div>
+  <div class="tags mt-3"><span class="badge sky">n8n</span><span class="badge">LLM</span><span class="badge">Scraping</span></div>
+</article>
+
+<article class="card p-6" data-category="ai">
+  <div class="text-cyan-400 font-extrabold">Aide au reporting</div>
+  <h3 class="font-black text-xl mt-1 flex items-center">
+    Excel → calculs (GRP, % obtenu vs demandé) → rapport
+    <span class="tooltip">ℹ<span class="tooltip-text">Lecture Excel, comparaisons, export CSV/JSON/HTML.</span></span>
+  </h3>
+  <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
+    <li>Import Excel, nettoyage & agrégations</li>
+    <li>Écarts vs objectifs + commentaire auto (option)</li>
+    <li>Export CSV/JSON/HTML</li>
+  </ul>
+  <div class="mt-4 flex flex-wrap gap-2 text-sm">
+    <a href="reporting-n8n.json" class="btn">Importer .json n8n</a>
+    <a href="rapport-exemple.html" class="btn">Exemple rapport</a>
+    <a href="#" class="btn">Connecter Data Studio</a>
+  </div>
+  <div class="tags mt-3"><span class="badge sky">n8n</span><span class="badge">Excel</span><span class="badge">KPIs</span></div>
+</article>
+
+<article class="card p-6" data-category="ai">
+  <div class="text-cyan-400 font-extrabold">Veille & analyse marketing</div>
+  <h3 class="font-black text-xl mt-1 flex items-center">
+    Emails Nielsen + scraping → messages/positionnement
+    <span class="tooltip">ℹ<span class="tooltip-text">Texte via LLM, images via API vision (logos/couleurs).</span></span>
+  </h3>
+  <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
+    <li>IMAP (Nielsen) + scraping sites/RS</li>
+    <li>Synthèse des messages clés & positionnement</li>
+    <li>(Option) Vision API : logos & couleurs</li>
+  </ul>
+  <div class="mt-4 flex flex-wrap gap-2 text-sm">
+    <a href="veille-marketing-n8n.json" class="btn">Importer .json n8n</a>
+    <a href="rapport-exemple.html" class="btn">Exemple synthèse</a>
+    <a href="#" class="btn">Paramétrer sources</a>
+  </div>
+  <div class="tags mt-3"><span class="badge sky">n8n</span><span class="badge">LLM</span><span class="badge">Vision</span></div>
+</article>
+
+<article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Template — Analyse de performance RS
               <span class="tooltip">ℹ<span class="tooltip-text">API → tableau synthèse → recommandations actionnables.</span></span>
@@ -405,7 +476,7 @@
               <a href="template-analyse-rs.md" class="btn">Ouvrir</a>
             </div>
           </article>
-          <article class="card p-6">
+<article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Kit — Sous-titres & doublage
               <span class="tooltip">ℹ<span class="tooltip-text">Whisper → traduction → SRT → contrôle qualité.</span></span>
@@ -415,8 +486,7 @@
               <span class="chip">How-to</span>
               <a href="kit-soustitres-doublage.md" class="btn">Guide</a>
             </div>
-          </article>
-        </div>
+          </article></div>
       </section>
 
       <!-- KPI -->
@@ -628,5 +698,38 @@
       }
     });
   </script>
+<script>
+// Filtre par menu de gauche : n'afficher QUE la section demandée et fermer les <details>
+(function () {
+  const sections = Array.from(document.querySelectorAll('main section[id]'));
+  function showOnly(targetId){
+    sections.forEach(sec => { sec.style.display = (sec.id === targetId) ? '' : 'none'; });
+    document.querySelectorAll('details').forEach(d => d.open = false);
+    const el = document.getElementById(targetId);
+    if(el) window.scrollTo({top: el.offsetTop - 80, behavior: 'smooth'});
+  }
+  function showAll(){
+    sections.forEach(sec => sec.style.display = '');
+    document.querySelectorAll('details').forEach(d => d.open = false);
+  }
+  document.querySelectorAll('aside nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      showOnly(id);
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+  if(location.hash){
+    const id = location.hash.slice(1);
+    if(document.getElementById(id)) showOnly(id);
+  } else {
+    showAll();
+  }
+  // Expose showAll if needed later
+  window.hubShowAll = showAll;
+})();
+</script>
+
 </body>
 </html>
