@@ -98,6 +98,44 @@ aside nav a[href="#cas"]{color:#84cc16;}
 aside nav a[href="#faq"]{color:#c084fc;}
 aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid currentColor; color:#e2e8f0;}
 
+
+/* --- Card Hover Description Overlay --- */
+.card { position: relative; overflow: hidden; }
+.card .card-desc {
+  position: absolute; inset: 0;
+  background: rgba(2,6,23,.9); /* slate-950/90 */
+  color: #e2e8f0;
+  padding: 1.25rem 1.25rem 1rem 1.25rem;
+  display: flex; flex-direction: column; gap: .5rem;
+  opacity: 0; pointer-events: none; transform: translateY(8px);
+  transition: opacity .18s ease, transform .18s ease;
+  border: 1px solid rgba(255,255,255,.08);
+}
+/* subtle top accent using section color */
+section[id] .card .card-desc::before {
+  content:""; position:absolute; left:0; top:0; height:3px; width:100%;
+  background: var(--cat, #22d3ee);
+}
+/* reveal on hover or keyboard focus */
+.card:hover .card-desc, .card:focus-within .card-desc, .card.card--showdesc .card-desc {
+  opacity: 1; pointer-events: auto; transform: translateY(0);
+}
+.card .card-desc h4 { font-size: 1rem; font-weight: 900; margin: 0 0 .25rem 0; color: #e2e8f0;}
+.card .card-desc p, .card .card-desc ul { color:#cbd5e1; font-size: .9rem; }
+.card .card-desc ul { list-style: disc; padding-left: 1.1rem; margin: .25rem 0 0 0; }
+.card .card-desc .mini { font-size: .8rem; opacity: .85; }
+.card .card-desc .close {
+  position:absolute; right:.5rem; top:.35rem;
+  border:1px solid rgba(255,255,255,.15); border-radius:.5rem;
+  padding:.15rem .4rem; font-size:.75rem; background:rgba(255,255,255,.04);
+}
+/* Don't block clicks on primary actions area at the very bottom */
+.card .card-desc.safe-bottom { padding-bottom: 4.5rem; }
+/* On very small screens, make text slightly bigger for readability */
+@media (max-width: 480px){
+  .card .card-desc p, .card .card-desc ul { font-size: .95rem; }
+}
+
 </style>
 </head>
 <body>
@@ -301,8 +339,19 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
             <div class="text-orange-400 font-extrabold">TikTok</div>
             <h3 class="mt-1 font-black text-xl flex items-center">
               Formats courts — de l’idée au post
-              <span class="tooltip">ℹ<span class="tooltip-text">Pitch → tournage mobile → montage CapCut → sous-titres → publication.</span></span>
-            </h3>
+              </span>
+            \1
+<div class="card-desc safe-bottom">
+  <button class="close" aria-label="Fermer">×</button>
+  <h4>Analyse stratégique — Description</h4>
+  <p>Orchestre la collecte et la synthèse : <strong>LLM (ex. GPT‑4)</strong>, <strong>scraping web</strong>, <strong>docs internes (PDF/Word/Excel)</strong>, et <strong>recherche en temps réel</strong> (SERP API) pour produire un <em>brief</em> et un <em>bench</em> exploitables.</p>
+  <ul>
+    <li>Interviews/personas → synthèse structurée</li>
+    <li>Sites & réseaux concurrents → extraction</li>
+    <li>Intégration BDD & GED → consolidation</li>
+  </ul>
+  <p class="mini">Astuce : importe le workflow .json n8n et renseigne tes clés API.</p>
+</div>
             <p class="mt-2 text-slate-300 text-sm">Checklist pour pitcher un format, tournage mobile, montage, sous-titres, publication, métriques.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Guide + modèles</span>
@@ -313,8 +362,18 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
             <div class="text-cyan-400 font-extrabold">YouTube</div>
             <h3 class="mt-1 font-black text-xl flex items-center">
               Thumbnails & Titres qui cliquent
-              <span class="tooltip">ℹ<span class="tooltip-text">Règles visuelles + formules de titres + A/B tests miniatures.</span></span>
-            </h3>
+              </span>
+            \1
+<div class="card-desc safe-bottom">
+  <button class="close" aria-label="Fermer">×</button>
+  <h4>Aide au reporting — Description</h4>
+  <p>Lit tes <strong>Excel (GRP, audiences…)</strong>, calcule <strong>% obtenu vs % demandé</strong>, met en évidence les écarts et génère un <strong>rapport</strong> (CSV/JSON/HTML/PDF via intégration). Option : <em>commentaire auto</em> par LLM.</p>
+  <ul>
+    <li>Nettoyage & agrégations (Spreadsheet)</li>
+    <li>Calculs d’écarts & indicateurs</li>
+    <li>Exports & envoi (Drive / Data Studio / Email)</li>
+  </ul>
+</div>
             <p class="mt-2 text-slate-300 text-sm">Système de variantes A/B, 10 formules de titres, 6 règles de composition visuelle.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Kit créa</span>
@@ -325,8 +384,18 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
             <div class="text-fuchsia-400 font-extrabold">Instagram</div>
             <h3 class="mt-1 font-black text-xl flex items-center">
               Calendrier éditorial · Stories & Reels
-              <span class="tooltip">ℹ<span class="tooltip-text">Templates Stories/Reels + rituels de publication + highlights.</span></span>
-            </h3>
+              </span>
+            \1
+<div class="card-desc safe-bottom">
+  <button class="close" aria-label="Fermer">×</button>
+  <h4>Veille marketing — Description</h4>
+  <p>Absorbe la veille (ex. <strong>emails Nielsen via IMAP</strong>), <strong>scrape</strong> sites/RS des marques, identifie <strong>messages clés & positionnement</strong> avec LLM. Option : <strong>vision</strong> (logos, couleurs dominantes) via API.</p>
+  <ul>
+    <li>Emails & pièces jointes → extraction</li>
+    <li>Scraping campagnes & publicités</li>
+    <li>Synthèse NLP & (option) Vision</li>
+  </ul>
+</div>
             <p class="mt-2 text-slate-300 text-sm">Templates Notion/Sheet, idées hebdo, rituels de publication, highlights.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
               <span class="chip">Template</span>
@@ -343,7 +412,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Pack Miniatures YouTube
-              <span class="tooltip">ℹ<span class="tooltip-text">Télécharge un pack Figma/PSD prêt à décliner.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Figma/PSD : 6 layouts modulaires, grilles, styles de texte, safe zones.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -354,7 +423,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Kit Newsletter
-              <span class="tooltip">ℹ<span class="tooltip-text">Starter HTML responsive + snippets objet/pré-header + QA.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">HTML responsive + snippets d’objets & pré-headers + check QA.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -369,7 +438,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Brief Social Media
-              <span class="tooltip">ℹ<span class="tooltip-text">One-pager: objectifs, cibles, messages, assets, KPI.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">One-pager pour cadrer objectifs, cibles, message, assets, KPI.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -391,7 +460,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Veille IA & Marketing → Email + JSON
-              <span class="tooltip">ℹ<span class="tooltip-text">Automatise: agrégation → résumé → email + veille.json.</span></span>
+              </span>
             </h3>
             <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
               <li>Recherche RSS/Google News</li><li>Résumé OpenAI</li><li>HTML newsletter + veille.json</li>
@@ -404,7 +473,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Générer une convention de partenariat
-              <span class="tooltip">ℹ<span class="tooltip-text">Form → PDF → extraction → TVA 7% → e-signature DiliTrust.</span></span>
+              </span>
             </h3>
             <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
               <li>Form → PDF → Extraction</li><li>Calcul TVA 7%</li><li>Remplissage modèle + e-signature</li>
@@ -417,7 +486,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               YouTube → TIP structuré (JSON)
-              <span class="tooltip">ℹ<span class="tooltip-text">Valide FR/public/IA+outil → extraction → JSON strict.</span></span>
+              </span>
             </h3>
             <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
               <li>Validation FR/public/IA+outil</li><li>Extraction chapitres</li><li>Prompt strict → JSON</li>
@@ -438,7 +507,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
   <div class="text-cyan-400 font-extrabold">Analyse stratégique</div>
   <h3 class="font-black text-xl mt-1 flex items-center">
     Briefs, bench concurrents, interviews (personas)
-    <span class="tooltip">ℹ<span class="tooltip-text">LLM + scraping + docs internes : synthèse d’insights en un clic.</span></span>
+    </span>
   </h3>
   <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
     <li>Collecte : docs internes, web, interviews</li>
@@ -457,7 +526,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
   <div class="text-cyan-400 font-extrabold">Aide au reporting</div>
   <h3 class="font-black text-xl mt-1 flex items-center">
     Excel → calculs (GRP, % obtenu vs demandé) → rapport
-    <span class="tooltip">ℹ<span class="tooltip-text">Lecture Excel, comparaisons, export CSV/JSON/HTML.</span></span>
+    </span>
   </h3>
   <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
     <li>Import Excel, nettoyage & agrégations</li>
@@ -476,7 +545,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
   <div class="text-cyan-400 font-extrabold">Veille & analyse marketing</div>
   <h3 class="font-black text-xl mt-1 flex items-center">
     Emails Nielsen + scraping → messages/positionnement
-    <span class="tooltip">ℹ<span class="tooltip-text">Texte via LLM, images via API vision (logos/couleurs).</span></span>
+    </span>
   </h3>
   <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
     <li>IMAP (Nielsen) + scraping sites/RS</li>
@@ -494,7 +563,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
 <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Template — Analyse de performance RS
-              <span class="tooltip">ℹ<span class="tooltip-text">API → tableau synthèse → recommandations actionnables.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Brief → requêtes API → tableau synthèse + recommandations.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -505,7 +574,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
 <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Kit — Sous-titres & doublage
-              <span class="tooltip">ℹ<span class="tooltip-text">Whisper → traduction → SRT → contrôle qualité.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Pipeline Whisper → traduction → SRT → QC.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -522,7 +591,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Trafic 360° (SEO/Direct/Social/Email)
-              <span class="tooltip">ℹ<span class="tooltip-text">Vue consolidée + coût d’acquisition par canal.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Vue consolidée + coût d’acquisition par canal.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -533,7 +602,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               SEO — Task force évènements
-              <span class="tooltip">ℹ<span class="tooltip-text">Clusters, SERP features, suivi priorisé.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Sujets, clusters, SERP features, suivi avancé.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -544,7 +613,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Engagement Auvio & RS
-              <span class="tooltip">ℹ<span class="tooltip-text">Watch-time, complétion, mentions, partages.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Temps de visionnage, complétion, mentions & partages.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -562,7 +631,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Initiation IA générative
-              <span class="tooltip">ℹ<span class="tooltip-text">2h — fondamentaux, cas RTBF, gouvernance.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">2h — fondamentaux, cas RTBF, sécurité & gouvernance.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -573,7 +642,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               YouTube — storytelling & SEO
-              <span class="tooltip">ℹ<span class="tooltip-text">Titres, chapitres, watch-time, analytics.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Titres, chapitres, watch-time, analytics.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -584,7 +653,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               n8n — de 0 à 1
-              <span class="tooltip">ℹ<span class="tooltip-text">Noeuds, erreurs, secrets, déploiement.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Noeuds, erreurs, secrets, déploiement.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -602,7 +671,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               #RTBFRemix — archives → audience 18–34
-              <span class="tooltip">ℹ<span class="tooltip-text">Archives → short-form 18–34: droits, distribution, impact.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Pipeline short-form, droits, distribution, mesure d’impact.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -613,7 +682,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Phygital — Jardin Extraordinaire
-              <span class="tooltip">ℹ<span class="tooltip-text">AR sans app, partenaires, gamification.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">AR sans app, partenaires terrain, gamification.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -624,7 +693,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Live Communities — F1 / Cactus / Info
-              <span class="tooltip">ℹ<span class="tooltip-text">Sondages, modération, triage, insights en direct.</span></span>
+              </span>
             </h3>
             <p class="mt-2 text-sm text-slate-300">Chats, sondages, modération, triage, insights.</p>
             <div class="mt-4 flex justify-between items-center text-sm">
@@ -785,6 +854,34 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
     if(dialog && !dialog.contains(e.target)) close();
   });
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script>
+
+
+<script>
+// Tap-to-toggle for touch devices: tap card to show overlay, tap X or outside to close.
+(function(){
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      const desc = card.querySelector('.card-desc');
+      if(!desc) return;
+      // if clicking on a button/link, do nothing
+      if (e.target.closest('a,button')) return;
+      // toggle
+      card.classList.toggle('card--showdesc');
+    });
+  });
+  document.addEventListener('click', (e)=>{
+    if(!e.target.closest('.card')){
+      document.querySelectorAll('.card.card--showdesc').forEach(c=>c.classList.remove('card--showdesc'));
+    }
+    if(e.target.classList.contains('close')){
+      e.preventDefault();
+      const c = e.target.closest('.card');
+      c && c.classList.remove('card--showdesc');
+    }
+  });
 })();
 </script>
 
