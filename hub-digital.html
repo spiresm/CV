@@ -99,6 +99,30 @@ aside nav a[href="#faq"]{color:#c084fc;}
 aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid currentColor; color:#e2e8f0;}
 
 
+
+/* === Cartes équilibrées & lisibles === */
+.grid.cards-balanced{display:grid; gap:1.25rem}
+@media (min-width: 768px){ .grid.cards-balanced{grid-template-columns:repeat(2,1fr);} }
+@media (min-width: 1024px){ .grid.cards-balanced{grid-template-columns:repeat(3,1fr);} }
+
+article.card{display:flex; flex-direction:column; min-height:260px; padding:1.1rem}
+article.card h3{font-size:1.05rem; line-height:1.3; margin-bottom:.35rem}
+article.card .subtitle{font-size:.9rem; color:#9fb0c6}
+/* clamp first paragraph to 2 lines */
+article.card > p:first-of-type{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+/* show only first 3 bullets to avoid vertical walls of text */
+article.card ul li:nth-child(n+4){display:none;}
+/* keep actions stuck to bottom */
+article.card > .mt-4, article.card .card-actions{margin-top:auto;}
+/* soften badge/btn sizes */
+article.card .btn{padding:.35rem .65rem; border-radius:.6rem; font-size:.8rem}
+article.card .badge{padding:.2rem .45rem; font-size:.7rem}
+/* compact playbooks header text */
+section#playbooks .card h3{font-size:1rem;}
+section#playbooks .card p, section#playbooks .card li{font-size:.9rem}
+/* uniform card borders & radius */
+article.card{border-radius:14px}
+
 </style>
 </head>
 <body>
@@ -192,7 +216,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
 
     <!-- Statut / Intégrations / KPI -->
     <section class="max-w-7xl mx-auto px-4 -mt-4 pb-6">
-      <div class="grid md:grid-cols-3 gap-4">
+      <div class="grid md:grid-cols-3 gap-4 cards-balanced">
         <div class="glass rounded-xl p-4 flex items-center justify-between">
           <div>
             <div class="text-sm text-slate-400">État du Hub</div>
@@ -216,7 +240,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
         </div>
         <div class="glass rounded-xl p-4">
           <div class="text-sm text-slate-400">KPIs sur 7 jours</div>
-          <div class="grid grid-cols-3 gap-2 mt-2 text-center">
+          <div class="grid grid-cols-3 gap-2 mt-2 text-center cards-balanced">
             <div><div class="text-2xl font-black">18</div><div class="text-xs text-slate-400">guides</div></div>
             <div><div class="text-2xl font-black">9</div><div class="text-xs text-slate-400">workflows</div></div>
             <div><div class="text-2xl font-black">4</div><div class="text-xs text-slate-400">dashboards</div></div>
@@ -297,7 +321,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <div class="section-head"><div><div class="section-kicker">Playbooks RS</div><h2 class="section-title">Playbooks Réseaux Sociaux</h2></div></div>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
         </div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 cards-balanced">
           <article class="card p-6">
             <div class="text-orange-400 font-extrabold">TikTok</div>
             <h3 class="mt-1 font-black text-xl flex items-center">
@@ -340,7 +364,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
       <!-- Templates & Kits -->
       <section id="templates" data-aos="fade-up" class="section-block">
         <div class="section-head"><div><div class="section-kicker">Templates & Kits</div><h2 class="section-title">Templates & Kits de production</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Pack Miniatures YouTube
@@ -391,7 +415,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Galerie</a>
         </div>
         <p class="text-slate-300">Automatisations utiles au quotidien (veille, génération de posts, analytics, export & envoi).</p>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Veille IA & Marketing → Email + JSON
@@ -440,7 +464,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
       <!-- IA -->
       <section id="ai" data-aos="fade-up" class="section-block">
         <div class="section-head"><div><div class="section-kicker">IA — Outils & Prompts</div><h2 class="section-title">IA — Prompts & Outils</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
 <article class="card p-6" data-category="ai">
   <div class="text-cyan-400 font-extrabold">Analyse stratégique</div>
   <h3 class="font-black text-xl mt-1 flex items-center">
@@ -525,7 +549,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
       <!-- KPI -->
       <section id="kpi" data-aos="fade-up" class="section-block">
         <div class="section-head"><div><div class="section-kicker">KPI & Dashboards</div><h2 class="section-title">KPI & Tableaux de bord</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Trafic 360° (SEO/Direct/Social/Email)
@@ -565,7 +589,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
       <!-- Formations -->
       <section id="formations" data-aos="fade-up" class="section-block">
         <div class="section-head"><div><div class="section-kicker">Apprentissage</div><h2 class="section-title">Formations & calendrier</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               Initiation IA générative
@@ -605,7 +629,7 @@ aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid curre
       <!-- Cas d'usage -->
       <section id="cas" data-aos="fade-up" class="section-block">
         <div class="section-head"><div><div class="section-kicker">Inspiration</div><h2 class="section-title">Cas d’usage inspirants</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
               #RTBFRemix — archives → audience 18–34
