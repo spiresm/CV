@@ -50,142 +50,58 @@
     .badge.sky{color:#38bdf8;border-color:rgba(56,189,248,.35)}
     .badge.fuchsia{color:#e879f9;border-color:rgba(232,121,249,.35)}
     .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
-  
-/* --- UX Simplifiée / Segmentation --- */
-.section-block{position:relative; padding-top:1.25rem; margin-top:2.5rem;}
-.section-block::before{content:""; position:absolute; left:0; top:0; width:100%; height:1px; background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.02));}
-.section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:.75rem; margin-bottom:.5rem;}
-.section-kicker{font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:#93a3b8}
-h2.section-title{font-size:1.75rem; line-height:1.2; font-weight:900; color:#e2e8f0}
-.card h3{color:#e2e8f0}
-.card p, .card ul, .card li{color:#cbd5e1}
-/* Reduce visual noise on cards */
-.card .chip, .card .badge{opacity:.9}
-/* Left menu active state */
-aside nav a.active{background:rgba(255,255,255,.08); color:#e2e8f0; border-left:3px solid #22d3ee}
-/* Focus mode toggle */
-.focus-toggle{display:inline-flex; align-items:center; gap:.5rem; padding:.4rem .7rem; border:1px solid rgba(255,255,255,.15); border-radius:.65rem; background:rgba(2,6,23,.5); font-weight:700; font-size:.85rem}
-/* Tooltips: slightly larger and easier to read */
-.tooltip-text{font-size:.8rem; max-width:320px; white-space:normal}
-
-
-/* === Catégories: couleurs propres par rubrique === */
-section#recents{--cat:#a78bfa;}      /* violet */
-section#playbooks{--cat:#f472b6;}    /* rose */
-section#templates{--cat:#60a5fa;}    /* bleu */
-section#workflows{--cat:#34d399;}    /* vert */
-section#ai{--cat:#22d3ee;}           /* cyan */
-section#kpi{--cat:#f59e0b;}          /* amber */
-section#formations{--cat:#f43f5e;}   /* rouge rose */
-section#cas{--cat:#84cc16;}          /* lime */
-section#faq{--cat:#c084fc;}          /* violet clair */
-
-/* Cartes colorées par section */
-section[id] .card{border:1px solid color-mix(in srgb, var(--cat) 45%, rgba(255,255,255,.15));}
-section[id] .card h3{color:var(--cat);}
-/* Badges/accents à l'intérieur des cartes */
-section[id] .badge.sky{background:color-mix(in srgb, var(--cat) 20%, rgba(255,255,255,.08)); border-color:var(--cat);}
-
-/* Menu gauche: teinte par lien de section + état actif lisible */
-aside nav a[href="#recents"]{color:#a78bfa;}
-aside nav a[href="#playbooks"]{color:#f472b6;}
-aside nav a[href="#templates"]{color:#60a5fa;}
-aside nav a[href="#workflows"]{color:#34d399;}
-aside nav a[href="#ai"]{color:#22d3ee;}
-aside nav a[href="#kpi"]{color:#f59e0b;}
-aside nav a[href="#formations"]{color:#f43f5e;}
-aside nav a[href="#cas"]{color:#84cc16;}
-aside nav a[href="#faq"]{color:#c084fc;}
-aside nav a.active{background:rgba(255,255,255,.06); border-left:3px solid currentColor; color:#e2e8f0;}
-
-
-
-/* === Cartes équilibrées & lisibles === */
-.grid.cards-balanced{display:grid; gap:1.25rem}
-@media (min-width: 768px){ .grid.cards-balanced{grid-template-columns:repeat(2,1fr);} }
-@media (min-width: 1024px){ .grid.cards-balanced{grid-template-columns:repeat(3,1fr);} }
-
-article.card{display:flex; flex-direction:column; min-height:260px; padding:1.1rem}
-article.card h3{font-size:1.05rem; line-height:1.3; margin-bottom:.35rem}
-article.card .subtitle{font-size:.9rem; color:#9fb0c6}
-/* clamp first paragraph to 2 lines */
-article.card > p:first-of-type{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
-/* show only first 3 bullets to avoid vertical walls of text */
-article.card ul li:nth-child(n+4){display:none;}
-/* keep actions stuck to bottom */
-article.card > .mt-4, article.card .card-actions{margin-top:auto;}
-/* soften badge/btn sizes */
-article.card .btn{padding:.35rem .65rem; border-radius:.6rem; font-size:.8rem}
-article.card .badge{padding:.2rem .45rem; font-size:.7rem}
-/* compact playbooks header text */
-section#playbooks .card h3{font-size:1rem;}
-section#playbooks .card p, section#playbooks .card li{font-size:.9rem}
-/* uniform card borders & radius */
-article.card{border-radius:14px}
-
-</style>
+  </style>
 </head>
 <body>
 
-  
-<!-- MODALE DISCLAIMER (centrée, opaque, backdrop flou) -->
-<div id="hub-modal" class="fixed inset-0 z-50">
-  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-  <div class="absolute inset-0 flex items-center justify-center p-4">
+  <!-- MODALE DISCLAIMER (s'ouvre au chargement) -->
+  <div id="hub-modal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/70"></div>
     <div role="dialog" aria-modal="true" aria-labelledby="hub-modal-title"
-         class="w-full max-w-xl rounded-2xl border border-white/15 bg-slate-900 shadow-2xl p-6 md:p-8">
+         class="relative mx-auto max-w-2xl mt-24 glass rounded-2xl p-6 border border-cyan-400/30 text-slate-200">
       <div class="flex items-start gap-3">
         <div class="text-cyan-300 text-2xl">ℹ</div>
-        <div class="grow">
+        <div>
           <h2 id="hub-modal-title" class="text-xl font-extrabold">Prototype / Maquette</h2>
-          <p class="mt-2 text-sm leading-6 text-slate-200">
+          <p class="mt-2 text-sm leading-6">
             Cette version du Hub est une démonstration interactive. Certains liens ouvrent des
-            <em>exemples réalistes</em> (workflows n8n, templates, kits). L’outillage complet arrivera en production après validation.
+            <em>exemples réalistes</em> (workflows n8n, templates, kits). L’outillage complet arrivera en production
+            après validation. Merci pour vos retours — utilisez “Soumettre une ressource” pour proposer des contenus.
           </p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs text-slate-400">
+            <span class="chip">n8n</span><span class="chip">Templates</span><span class="chip">KPI</span><span class="chip">RTBF</span>
+          </div>
         </div>
-        <button id="hub-modal-close"
-                class="ml-2 shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/10">
+        <button id="hub-modal-close" class="ml-auto shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/5">
           J’ai compris
         </button>
       </div>
     </div>
   </div>
-</div>
-
 
   <!-- HEADER — même structure/liens que index.html + icône "maison" à gauche -->
-  
-<!-- HEADER (statique, identique à index + maison) -->
-<nav class="sticky top-0 z-40">
-  <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <!-- Maison blanche (retour accueil) -->
-      <a href="index.html" aria-label="Accueil" class="p-2 rounded-lg inline-flex items-center justify-center hover:bg-white/10">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-          <path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"/>
-        </svg>
-      </a>
-      <!-- Marque -->
-      <a href="index.html" id="logo-trigger" class="text-3xl font-black">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-400 to-cyan-300">SPM.</span>
-      </a>
+  <nav class="sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Maison blanche (retour accueil) -->
+        <a href="index.html" aria-label="Accueil" class="p-2 rounded-lg hover:bg-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"/>
+          </svg>
+        </a>
+        <a href="index.html" class="text-3xl font-black neon">SPM.</a>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-slate-300 font-medium">
+        <a href="dashboard.html" class="hover:text-pink-400">Dashboard</a>
+        <a href="hub-digital.html" class="text-cyan-400 font-bold hover:text-pink-400">Hub Digital</a>
+        <a href="index.html#section-synthese" class="hover:text-pink-400">Piliers</a>
+        <a href="index.html#section-ecosysteme" class="hover:text-pink-400">Écosystème</a>
+        <a href="index.html#section-plan-action" class="hover:text-pink-400">Plan 90j</a>
+        <a href="index.html#innovations" class="hover:text-pink-400">Innovations</a>
+        <a href="mailto:steeve.pires@gmail.com" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 shadow-lg shadow-fuchsia-500/20">Me Contacter</a>
+      </div>
     </div>
-
-    <div class="hidden md:flex items-center gap-8 text-slate-300 font-medium">
-      <a href="dashboard.html" class="hover:text-pink-400">Dashboard</a>
-      <a href="index.html#section-synthese" class="hover:text-pink-400">Piliers</a>
-      <a href="index.html#section-ecosysteme" class="hover:text-pink-400">Écosystème</a>
-      <a href="index.html#section-plan-action" class="hover:text-pink-400">Plan 90j</a>
-      <a href="index.html#innovations" class="hover:text-pink-400">Innovations</a>
-      <a href="hub-digital.html" class="text-cyan-400 font-bold hover:text-pink-400">Hub Digital</a>
-      <a id="vision-modal-trigger" href="index.html#vision-detaillee" class="hover:text-pink-400">Vision détaillée</a>
-      <a id="profile-modal-trigger" href="index.html#profil" class="hover:text-pink-400">Mon Profil</a>
-      <a href="mailto:steeve.pires@gmail.com"
-         class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 shadow-lg shadow-fuchsia-500/20">Me Contacter</a>
-    </div>
-  </div>
-</nav>
-
+  </nav>
 
   <!-- HERO -->
   <header class="max-w-7xl mx-auto px-4 pt-14 pb-10">
@@ -205,18 +121,11 @@ article.card{border-radius:14px}
         <button class="px-4 py-3 rounded-xl font-bold bg-gradient-to-r from-pink-500 to-cyan-400 text-slate-900">Chercher</button>
       </div>
       <p class="mt-2 text-sm text-slate-400">Astuce: presse <span class="kbd">/</span> pour activer la recherche.</p>
-<div class="mt-4 flex justify-center">
-  <button id="focusToggle" class="focus-toggle" aria-pressed="false" title="Afficher uniquement la rubrique sélectionnée dans le menu de gauche">
-    <span>Mode Focus</span>
-    <span class="text-xs text-slate-400">(désactivé)</span>
-  </button>
-</div>
-
     </div>
 
     <!-- Statut / Intégrations / KPI -->
     <section class="max-w-7xl mx-auto px-4 -mt-4 pb-6">
-      <div class="grid md:grid-cols-3 gap-4 cards-balanced">
+      <div class="grid md:grid-cols-3 gap-4">
         <div class="glass rounded-xl p-4 flex items-center justify-between">
           <div>
             <div class="text-sm text-slate-400">État du Hub</div>
@@ -240,7 +149,7 @@ article.card{border-radius:14px}
         </div>
         <div class="glass rounded-xl p-4">
           <div class="text-sm text-slate-400">KPIs sur 7 jours</div>
-          <div class="grid grid-cols-3 gap-2 mt-2 text-center cards-balanced">
+          <div class="grid grid-cols-3 gap-2 mt-2 text-center">
             <div><div class="text-2xl font-black">18</div><div class="text-xs text-slate-400">guides</div></div>
             <div><div class="text-2xl font-black">9</div><div class="text-xs text-slate-400">workflows</div></div>
             <div><div class="text-2xl font-black">4</div><div class="text-xs text-slate-400">dashboards</div></div>
@@ -278,9 +187,9 @@ article.card{border-radius:14px}
     <section class="lg:col-span-9 space-y-12">
 
       <!-- Derniers ajouts -->
-      <section id="recents" class="glass rounded-2xl p-6" data-aos="fade-up section-block">
+      <section id="recents" class="glass rounded-2xl p-6" data-aos="fade-up">
         <div class="flex items-center justify-between">
-          <div class="section-head"><div><div class="section-kicker">Nouveautés</div><h2 class="section-title">Derniers ajouts</h2></div></div>
+          <h2 class="text-2xl md:text-3xl font-black neon">Derniers ajouts</h2>
           <div class="text-xs text-slate-400">généré automatiquement</div>
         </div>
         <div class="mt-4 grid md:grid-cols-2 gap-4">
@@ -316,44 +225,38 @@ article.card{border-radius:14px}
       </section>
 
       <!-- Playbooks -->
-      <section id="playbooks" data-aos="fade-up" class="section-block">
+      <section id="playbooks" data-aos="fade-up">
         <div class="flex items-end justify-between mb-4">
-          <div class="section-head"><div><div class="section-kicker">Playbooks RS</div><h2 class="section-title">Playbooks Réseaux Sociaux</h2></div></div>
+          <h2 class="text-3xl font-black neon">Playbooks Réseaux Sociaux</h2>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
         </div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 cards-balanced">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           <article class="card p-6">
             <div class="text-orange-400 font-extrabold">TikTok</div>
-            <h3 class="mt-1 font-black text-xl flex items-center">
-              Formats courts — de l’idée au post
-              </span>
-            \1
+            <h3 class="mt-1 font-black text-xl flex items-center">Formats courts — de l’idée au post</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Pitch → tournage mobile → montage CapCut → sous-titres → publication.</div>
             <p class="mt-2 text-slate-300 text-sm">Checklist pour pitcher un format, tournage mobile, montage, sous-titres, publication, métriques.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Guide + modèles</span>
               <a href="#" class="btn">Ouvrir</a>
             </div>
           </article>
           <article class="card p-6">
             <div class="text-cyan-400 font-extrabold">YouTube</div>
-            <h3 class="mt-1 font-black text-xl flex items-center">
-              Thumbnails & Titres qui cliquent
-              </span>
-            \1
+            <h3 class="mt-1 font-black text-xl flex items-center">Thumbnails & Titres qui cliquent</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Règles visuelles + formules de titres + A/B tests miniatures.</div>
             <p class="mt-2 text-slate-300 text-sm">Système de variantes A/B, 10 formules de titres, 6 règles de composition visuelle.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Kit créa</span>
               <a href="pack-miniatures-youtube.zip" class="btn">.zip</a>
             </div>
           </article>
           <article class="card p-6">
             <div class="text-fuchsia-400 font-extrabold">Instagram</div>
-            <h3 class="mt-1 font-black text-xl flex items-center">
-              Calendrier éditorial · Stories & Reels
-              </span>
-            \1
+            <h3 class="mt-1 font-black text-xl flex items-center">Calendrier éditorial · Stories & Reels</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Templates Stories/Reels + rituels de publication + highlights.</div>
             <p class="mt-2 text-slate-300 text-sm">Templates Notion/Sheet, idées hebdo, rituels de publication, highlights.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Template</span>
               <a href="#" class="btn">Ouvrir</a>
             </div>
@@ -362,30 +265,23 @@ article.card{border-radius:14px}
       </section>
 
       <!-- Templates & Kits -->
-      <section id="templates" data-aos="fade-up" class="section-block">
-        <div class="section-head"><div><div class="section-kicker">Templates & Kits</div><h2 class="section-title">Templates & Kits de production</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
+      <section id="templates" data-aos="fade-up">
+        <h2 class="text-3xl font-black neon">Templates & Kits de production</h2>
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Pack Miniatures YouTube
-              </span>
-            </h3>
-<p class="mt-2 text-sm text-slate-300">Absorbe la veille (ex. emails Nielsen via IMAP), scrape les sites/RS des marques et synthétise messages clés & positionnement avec LLM. Option : vision (logos, couleurs dominantes) via API.</p>
-<p class="mt-2 text-sm text-slate-300">Lit tes Excel (GRP, audiences, etc.), calcule % obtenu vs % demandé, met en évidence les écarts et génère un rapport (CSV/JSON/HTML/PDF via intégration). Option : commentaire auto par LLM.</p>
-<p class="mt-2 text-sm text-slate-300">Orchestre la collecte et la synthèse : LLM (ex. GPT‑4), scraping web, documents internes (PDF/Word/Excel), recherches en temps réel. Produit un brief exploitable et un bench concurrentiel.</p>
+            <h3 class="font-black text-xl flex items-center">Pack Miniatures YouTube</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Télécharge un pack Figma/PSD prêt à décliner.</div>
             <p class="mt-2 text-sm text-slate-300">Figma/PSD : 6 layouts modulaires, grilles, styles de texte, safe zones.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Télécharger</span>
               <a href="pack-miniatures-youtube.zip" class="btn">.zip</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Kit Newsletter
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Kit Newsletter</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Starter HTML responsive + snippets objet/pré-header + QA.</div>
             <p class="mt-2 text-sm text-slate-300">HTML responsive + snippets d’objets & pré-headers + check QA.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Starter</span>
               <a href="kit-newsletter.html" class="btn">Ouvrir</a>
             </div>
@@ -395,12 +291,10 @@ article.card{border-radius:14px}
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Brief Social Media
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Brief Social Media</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">One-pager: objectifs, cibles, messages, assets, KPI.</div>
             <p class="mt-2 text-sm text-slate-300">One-pager pour cadrer objectifs, cibles, message, assets, KPI.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">PDF</span>
               <a href="brief-social.pdf" class="btn">Ouvrir</a>
             </div>
@@ -409,51 +303,42 @@ article.card{border-radius:14px}
       </section>
 
       <!-- Workflows n8n -->
-      <section id="workflows" data-aos="fade-up" class="section-block">
+      <section id="workflows" data-aos="fade-up">
         <div class="flex items-end justify-between mb-2">
-          <div class="section-head"><div><div class="section-kicker">Automatisations</div><h2 class="section-title">Workflows n8n — prêts à cloner</h2></div></div>
+          <h2 class="text-3xl font-black neon">Workflows n8n — prêts à cloner</h2>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Galerie</a>
         </div>
         <p class="text-slate-300">Automatisations utiles au quotidien (veille, génération de posts, analytics, export & envoi).</p>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Veille IA & Marketing → Email + JSON
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Veille IA & Marketing → Email + JSON</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Automatise: agrégation → résumé → email + veille.json.</div>
             <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
-    <li>IMAP: lecture d’emails ciblés & pièces jointes</li>
-    <li>Scraping campagnes/publicités, extraction de texte</li>
-    <li>Synthèse NLP (positionnement, messages)</li>
-    <li>Vision (option): logos/couleurs récurrents</li>
-  </ul>
-            <div class="mt-4 flex justify-between items-center text-sm">
+              <li>Recherche RSS/Google News</li><li>Résumé OpenAI</li><li>HTML newsletter + veille.json</li>
+            </ul>
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">.json n8n</span>
               <a href="veille-ia-marketing-n8n.json" class="btn">Importer</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Générer une convention de partenariat
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Générer une convention de partenariat</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Form → PDF → extraction → TVA 7% → e-signature DiliTrust.</div>
             <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
               <li>Form → PDF → Extraction</li><li>Calcul TVA 7%</li><li>Remplissage modèle + e-signature</li>
             </ul>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Workflow</span>
               <a href="convention-auto-n8n.json" class="btn">Importer</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              YouTube → TIP structuré (JSON)
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">YouTube → TIP structuré (JSON)</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Valide FR/public/IA+outil → extraction → JSON strict.</div>
             <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
               <li>Validation FR/public/IA+outil</li><li>Extraction chapitres</li><li>Prompt strict → JSON</li>
             </ul>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">R&D</span>
               <a href="youtube-tip-n8n.json" class="btn">Importer</a>
             </div>
@@ -462,15 +347,13 @@ article.card{border-radius:14px}
       </section>
 
       <!-- IA -->
-      <section id="ai" data-aos="fade-up" class="section-block">
-        <div class="section-head"><div><div class="section-kicker">IA — Outils & Prompts</div><h2 class="section-title">IA — Prompts & Outils</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
+      <section id="ai" data-aos="fade-up">
+        <h2 class="text-3xl font-black neon">IA — Prompts & Outils</h2>
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
 <article class="card p-6" data-category="ai">
   <div class="text-cyan-400 font-extrabold">Analyse stratégique</div>
-  <h3 class="font-black text-xl mt-1 flex items-center">
-    Briefs, bench concurrents, interviews (personas)
-    </span>
-  </h3>
+  <h3 class="font-black text-xl mt-1 flex items-center">Briefs, bench concurrents, interviews (personas)</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">LLM + scraping + docs internes : synthèse d’insights en un clic.</div>
   <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
     <li>Collecte : docs internes, web, interviews</li>
     <li>Synthèse structurée (brief, bench, risques/opportunités)</li>
@@ -486,10 +369,8 @@ article.card{border-radius:14px}
 
 <article class="card p-6" data-category="ai">
   <div class="text-cyan-400 font-extrabold">Aide au reporting</div>
-  <h3 class="font-black text-xl mt-1 flex items-center">
-    Excel → calculs (GRP, % obtenu vs demandé) → rapport
-    </span>
-  </h3>
+  <h3 class="font-black text-xl mt-1 flex items-center">Excel → calculs (GRP, % obtenu vs demandé) → rapport</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Lecture Excel, comparaisons, export CSV/JSON/HTML.</div>
   <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
     <li>Import Excel, nettoyage & agrégations</li>
     <li>Écarts vs objectifs + commentaire auto (option)</li>
@@ -505,10 +386,8 @@ article.card{border-radius:14px}
 
 <article class="card p-6" data-category="ai">
   <div class="text-cyan-400 font-extrabold">Veille & analyse marketing</div>
-  <h3 class="font-black text-xl mt-1 flex items-center">
-    Emails Nielsen + scraping → messages/positionnement
-    </span>
-  </h3>
+  <h3 class="font-black text-xl mt-1 flex items-center">Emails Nielsen + scraping → messages/positionnement</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Texte via LLM, images via API vision (logos/couleurs).</div>
   <ul class="mt-2 text-sm list-disc list-inside text-slate-300">
     <li>IMAP (Nielsen) + scraping sites/RS</li>
     <li>Synthèse des messages clés & positionnement</li>
@@ -523,23 +402,19 @@ article.card{border-radius:14px}
 </article>
 
 <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Template — Analyse de performance RS
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Template — Analyse de performance RS</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">API → tableau synthèse → recommandations actionnables.</div>
             <p class="mt-2 text-sm text-slate-300">Brief → requêtes API → tableau synthèse + recommandations.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Notion</span>
               <a href="template-analyse-rs.md" class="btn">Ouvrir</a>
             </div>
           </article>
 <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Kit — Sous-titres & doublage
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Kit — Sous-titres & doublage</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Whisper → traduction → SRT → contrôle qualité.</div>
             <p class="mt-2 text-sm text-slate-300">Pipeline Whisper → traduction → SRT → QC.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">How-to</span>
               <a href="kit-soustitres-doublage.md" class="btn">Guide</a>
             </div>
@@ -547,38 +422,32 @@ article.card{border-radius:14px}
       </section>
 
       <!-- KPI -->
-      <section id="kpi" data-aos="fade-up" class="section-block">
-        <div class="section-head"><div><div class="section-kicker">KPI & Dashboards</div><h2 class="section-title">KPI & Tableaux de bord</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
+      <section id="kpi" data-aos="fade-up">
+        <h2 class="text-3xl font-black neon">KPI & Tableaux de bord</h2>
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Trafic 360° (SEO/Direct/Social/Email)
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Trafic 360° (SEO/Direct/Social/Email)</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Vue consolidée + coût d’acquisition par canal.</div>
             <p class="mt-2 text-sm text-slate-300">Vue consolidée + coût d’acquisition par canal.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Demo</span>
               <a href="dashboard.html" class="btn">Voir</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              SEO — Task force évènements
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">SEO — Task force évènements</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Clusters, SERP features, suivi priorisé.</div>
             <p class="mt-2 text-sm text-slate-300">Sujets, clusters, SERP features, suivi avancé.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Board</span>
               <a href="#" class="btn">Ouvrir</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Engagement Auvio & RS
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Engagement Auvio & RS</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Watch-time, complétion, mentions, partages.</div>
             <p class="mt-2 text-sm text-slate-300">Temps de visionnage, complétion, mentions & partages.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Charts</span>
               <a href="#" class="btn">Voir</a>
             </div>
@@ -587,38 +456,32 @@ article.card{border-radius:14px}
       </section>
 
       <!-- Formations -->
-      <section id="formations" data-aos="fade-up" class="section-block">
-        <div class="section-head"><div><div class="section-kicker">Apprentissage</div><h2 class="section-title">Formations & calendrier</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
+      <section id="formations" data-aos="fade-up">
+        <h2 class="text-3xl font-black neon">Formations & calendrier</h2>
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Initiation IA générative
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Initiation IA générative</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">2h — fondamentaux, cas RTBF, gouvernance.</div>
             <p class="mt-2 text-sm text-slate-300">2h — fondamentaux, cas RTBF, sécurité & gouvernance.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Session</span>
               <a href="#" class="btn">S’inscrire</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              YouTube — storytelling & SEO
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">YouTube — storytelling & SEO</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Titres, chapitres, watch-time, analytics.</div>
             <p class="mt-2 text-sm text-slate-300">Titres, chapitres, watch-time, analytics.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Atelier</span>
               <a href="#" class="btn">S’inscrire</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              n8n — de 0 à 1
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">n8n — de 0 à 1</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Noeuds, erreurs, secrets, déploiement.</div>
             <p class="mt-2 text-sm text-slate-300">Noeuds, erreurs, secrets, déploiement.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Bootcamp</span>
               <a href="#" class="btn">S’inscrire</a>
             </div>
@@ -627,38 +490,32 @@ article.card{border-radius:14px}
       </section>
 
       <!-- Cas d'usage -->
-      <section id="cas" data-aos="fade-up" class="section-block">
-        <div class="section-head"><div><div class="section-kicker">Inspiration</div><h2 class="section-title">Cas d’usage inspirants</h2></div></div>
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 cards-balanced">
+      <section id="cas" data-aos="fade-up">
+        <h2 class="text-3xl font-black neon">Cas d’usage inspirants</h2>
+        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              #RTBFRemix — archives → audience 18–34
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">#RTBFRemix — archives → audience 18–34</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Archives → short-form 18–34: droits, distribution, impact.</div>
             <p class="mt-2 text-sm text-slate-300">Pipeline short-form, droits, distribution, mesure d’impact.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Guide</span>
               <a href="#" class="btn">Ouvrir</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Phygital — Jardin Extraordinaire
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Phygital — Jardin Extraordinaire</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">AR sans app, partenaires, gamification.</div>
             <p class="mt-2 text-sm text-slate-300">AR sans app, partenaires terrain, gamification.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Concept</span>
               <a href="#" class="btn">Voir</a>
             </div>
           </article>
           <article class="card p-6">
-            <h3 class="font-black text-xl flex items-center">
-              Live Communities — F1 / Cactus / Info
-              </span>
-            </h3>
+            <h3 class="font-black text-xl flex items-center">Live Communities — F1 / Cactus / Info</h3>
+<div class="subtitle mt-1 text-sm text-slate-400">Sondages, modération, triage, insights en direct.</div>
             <p class="mt-2 text-sm text-slate-300">Chats, sondages, modération, triage, insights.</p>
-            <div class="mt-4 flex justify-between items-center text-sm">
+            <div class="card-actions mt-4 flex justify-between items-center text-sm">
               <span class="chip">Démos</span>
               <a href="index.html#innovations" class="btn">Accéder</a>
             </div>
@@ -667,8 +524,8 @@ article.card{border-radius:14px}
       </section>
 
       <!-- FAQ -->
-      <section id="faq" data-aos="fade-up" class="section-block">
-        <div class="section-head"><div><div class="section-kicker">Aide</div><h2 class="section-title">FAQ</h2></div></div>
+      <section id="faq" data-aos="fade-up">
+        <h2 class="text-3xl font-black neon">FAQ</h2>
         <div class="mt-4 space-y-3">
           <details class="card p-4">
             <summary class="font-bold cursor-pointer">Qui peut publier dans le Hub ?</summary>
@@ -754,98 +611,6 @@ article.card{border-radius:14px}
         setTimeout(()=>{ t.innerText = label; t.classList.remove('btn-done'); }, 1200);
       }
     });
-  
-// --- Scrollspy & Mode Focus ---
-(function(){
-  const links = Array.from(document.querySelectorAll('aside nav a[href^="#"]'));
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-  // Scrollspy: highlight left nav link for section in viewport
-  const onScroll = () => {
-    const y = window.scrollY + 120;
-    let active = null;
-    for(const sec of sections){
-      const r = sec.getBoundingClientRect();
-      const top = sec.offsetTop;
-      if (y >= top) active = sec.id;
-    }
-    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
-  };
-  window.addEventListener('scroll', onScroll);
-  onScroll();
-
-  // Mode Focus: hide non-selected sections when enabled
-  let focus = false;
-  const toggle = document.getElementById('focusToggle');
-  if (toggle){
-    toggle.addEventListener('click', () => {
-      focus = !focus;
-      toggle.setAttribute('aria-pressed', String(focus));
-      toggle.querySelector('span:last-child').textContent = focus ? '(activé)' : '(désactivé)';
-      if (!focus) {
-        // show all
-        sections.forEach(s => s.style.display = '');
-      }
-    });
-  }
-
-  links.forEach(a => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href').slice(1);
-      const target = document.getElementById(id);
-      if (!target) return;
-      if (focus){
-        sections.forEach(s => s.style.display = (s === target) ? '' : 'none');
-      }
-    });
-  });
-})();
-
-</script>
-
-<script>
-(function(){
-  const modal = document.getElementById('hub-modal');
-  const btn = document.getElementById('hub-modal-close');
-  function close(){ modal.classList.add('hidden'); document.body.style.overflow=''; }
-  function open(){ modal.classList.remove('hidden'); document.body.style.overflow='hidden'; }
-  window.addEventListener('load', open);
-  btn?.addEventListener('click', close);
-  modal?.addEventListener('click', (e)=>{
-    const dialog = modal.querySelector('[role="dialog"]');
-    if(dialog && !dialog.contains(e.target)) close();
-  });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
-})();
-</script>
-
-
-<script>
-// Tap-to-toggle for touch devices: tap card to show overlay, tap X or outside to close.
-(function(){
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      const desc = card.querySelector('.card-desc');
-      if(!desc) return;
-      // if clicking on a button/link, do nothing
-      if (e.target.closest('a,button')) return;
-      // toggle
-      card.classList.toggle('card--showdesc');
-    });
-  });
-  document.addEventListener('click', (e)=>{
-    if(!e.target.closest('.card')){
-      document.querySelectorAll('.card.card--showdesc').forEach(c=>c.classList.remove('card--showdesc'));
-    }
-    if(e.target.classList.contains('close')){
-      e.preventDefault();
-      const c = e.target.closest('.card');
-      c && c.classList.remove('card--showdesc');
-    }
-  });
-})();
-</script>
-
+  </script>
 </body>
 </html>
