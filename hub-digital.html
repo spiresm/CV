@@ -50,7 +50,25 @@
     .badge.sky{color:#38bdf8;border-color:rgba(56,189,248,.35)}
     .badge.fuchsia{color:#e879f9;border-color:rgba(232,121,249,.35)}
     .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem}
-  </style>
+  
+/* --- UX Simplifiée / Segmentation --- */
+.section-block{position:relative; padding-top:1.25rem; margin-top:2.5rem;}
+.section-block::before{content:""; position:absolute; left:0; top:0; width:100%; height:1px; background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.02));}
+.section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:.75rem; margin-bottom:.5rem;}
+.section-kicker{font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:#93a3b8}
+h2.section-title{font-size:1.75rem; line-height:1.2; font-weight:900; color:#e2e8f0}
+.card h3{color:#e2e8f0}
+.card p, .card ul, .card li{color:#cbd5e1}
+/* Reduce visual noise on cards */
+.card .chip, .card .badge{opacity:.9}
+/* Left menu active state */
+aside nav a.active{background:rgba(255,255,255,.08); color:#e2e8f0; border-left:3px solid #22d3ee}
+/* Focus mode toggle */
+.focus-toggle{display:inline-flex; align-items:center; gap:.5rem; padding:.4rem .7rem; border:1px solid rgba(255,255,255,.15); border-radius:.65rem; background:rgba(2,6,23,.5); font-weight:700; font-size:.85rem}
+/* Tooltips: slightly larger and easier to read */
+.tooltip-text{font-size:.8rem; max-width:320px; white-space:normal}
+
+</style>
 </head>
 <body>
 
@@ -121,6 +139,13 @@
         <button class="px-4 py-3 rounded-xl font-bold bg-gradient-to-r from-pink-500 to-cyan-400 text-slate-900">Chercher</button>
       </div>
       <p class="mt-2 text-sm text-slate-400">Astuce: presse <span class="kbd">/</span> pour activer la recherche.</p>
+<div class="mt-4 flex justify-center">
+  <button id="focusToggle" class="focus-toggle" aria-pressed="false" title="Afficher uniquement la rubrique sélectionnée dans le menu de gauche">
+    <span>Mode Focus</span>
+    <span class="text-xs text-slate-400">(désactivé)</span>
+  </button>
+</div>
+
     </div>
 
     <!-- Statut / Intégrations / KPI -->
@@ -187,9 +212,9 @@
     <section class="lg:col-span-9 space-y-12">
 
       <!-- Derniers ajouts -->
-      <section id="recents" class="glass rounded-2xl p-6" data-aos="fade-up">
+      <section id="recents" class="glass rounded-2xl p-6" data-aos="fade-up section-block">
         <div class="flex items-center justify-between">
-          <h2 class="text-2xl md:text-3xl font-black neon">Derniers ajouts</h2>
+          <div class="section-head"><div><div class="section-kicker">Nouveautés</div><h2 class="section-title">Derniers ajouts</h2></div></div>
           <div class="text-xs text-slate-400">généré automatiquement</div>
         </div>
         <div class="mt-4 grid md:grid-cols-2 gap-4">
@@ -225,9 +250,9 @@
       </section>
 
       <!-- Playbooks -->
-      <section id="playbooks" data-aos="fade-up">
+      <section id="playbooks" data-aos="fade-up" class="section-block">
         <div class="flex items-end justify-between mb-4">
-          <h2 class="text-3xl font-black neon">Playbooks Réseaux Sociaux</h2>
+          <div class="section-head"><div><div class="section-kicker">Playbooks RS</div><h2 class="section-title">Playbooks Réseaux Sociaux</h2></div></div>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Tout voir</a>
         </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -271,8 +296,8 @@
       </section>
 
       <!-- Templates & Kits -->
-      <section id="templates" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">Templates & Kits de production</h2>
+      <section id="templates" data-aos="fade-up" class="section-block">
+        <div class="section-head"><div><div class="section-kicker">Templates & Kits</div><h2 class="section-title">Templates & Kits de production</h2></div></div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -315,9 +340,9 @@
       </section>
 
       <!-- Workflows n8n -->
-      <section id="workflows" data-aos="fade-up">
+      <section id="workflows" data-aos="fade-up" class="section-block">
         <div class="flex items-end justify-between mb-2">
-          <h2 class="text-3xl font-black neon">Workflows n8n — prêts à cloner</h2>
+          <div class="section-head"><div><div class="section-kicker">Automatisations</div><h2 class="section-title">Workflows n8n — prêts à cloner</h2></div></div>
           <a href="#" class="text-cyan-400 hover:text-pink-400 text-sm font-bold">Galerie</a>
         </div>
         <p class="text-slate-300">Automatisations utiles au quotidien (veille, génération de posts, analytics, export & envoi).</p>
@@ -365,8 +390,8 @@
       </section>
 
       <!-- IA -->
-      <section id="ai" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">IA — Prompts & Outils</h2>
+      <section id="ai" data-aos="fade-up" class="section-block">
+        <div class="section-head"><div><div class="section-kicker">IA — Outils & Prompts</div><h2 class="section-title">IA — Prompts & Outils</h2></div></div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
 <article class="card p-6" data-category="ai">
   <div class="text-cyan-400 font-extrabold">Analyse stratégique</div>
@@ -450,8 +475,8 @@
       </section>
 
       <!-- KPI -->
-      <section id="kpi" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">KPI & Tableaux de bord</h2>
+      <section id="kpi" data-aos="fade-up" class="section-block">
+        <div class="section-head"><div><div class="section-kicker">KPI & Dashboards</div><h2 class="section-title">KPI & Tableaux de bord</h2></div></div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -490,8 +515,8 @@
       </section>
 
       <!-- Formations -->
-      <section id="formations" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">Formations & calendrier</h2>
+      <section id="formations" data-aos="fade-up" class="section-block">
+        <div class="section-head"><div><div class="section-kicker">Apprentissage</div><h2 class="section-title">Formations & calendrier</h2></div></div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -530,8 +555,8 @@
       </section>
 
       <!-- Cas d'usage -->
-      <section id="cas" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">Cas d’usage inspirants</h2>
+      <section id="cas" data-aos="fade-up" class="section-block">
+        <div class="section-head"><div><div class="section-kicker">Inspiration</div><h2 class="section-title">Cas d’usage inspirants</h2></div></div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-4">
           <article class="card p-6">
             <h3 class="font-black text-xl flex items-center">
@@ -570,8 +595,8 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" data-aos="fade-up">
-        <h2 class="text-3xl font-black neon">FAQ</h2>
+      <section id="faq" data-aos="fade-up" class="section-block">
+        <div class="section-head"><div><div class="section-kicker">Aide</div><h2 class="section-title">FAQ</h2></div></div>
         <div class="mt-4 space-y-3">
           <details class="card p-4">
             <summary class="font-bold cursor-pointer">Qui peut publier dans le Hub ?</summary>
@@ -657,6 +682,53 @@
         setTimeout(()=>{ t.innerText = label; t.classList.remove('btn-done'); }, 1200);
       }
     });
-  </script>
+  
+// --- Scrollspy & Mode Focus ---
+(function(){
+  const links = Array.from(document.querySelectorAll('aside nav a[href^="#"]'));
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  // Scrollspy: highlight left nav link for section in viewport
+  const onScroll = () => {
+    const y = window.scrollY + 120;
+    let active = null;
+    for(const sec of sections){
+      const r = sec.getBoundingClientRect();
+      const top = sec.offsetTop;
+      if (y >= top) active = sec.id;
+    }
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Mode Focus: hide non-selected sections when enabled
+  let focus = false;
+  const toggle = document.getElementById('focusToggle');
+  if (toggle){
+    toggle.addEventListener('click', () => {
+      focus = !focus;
+      toggle.setAttribute('aria-pressed', String(focus));
+      toggle.querySelector('span:last-child').textContent = focus ? '(activé)' : '(désactivé)';
+      if (!focus) {
+        // show all
+        sections.forEach(s => s.style.display = '');
+      }
+    });
+  }
+
+  links.forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      if (focus){
+        sections.forEach(s => s.style.display = (s === target) ? '' : 'none');
+      }
+    });
+  });
+})();
+
+</script>
 </body>
 </html>
