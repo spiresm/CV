@@ -606,22 +606,23 @@
 <div class="content-wrapper">
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
-<nav class="sticky top-0 z-50">
-<div class="max-w-screen-xl mx-auto px-4">
-<div class="flex items-start justify-between h-20">
-<div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger"><a aria-label="Accueil" class="mr-2 p-2 rounded-lg inline-flex items-center justify-center hover:bg-white/10" href="index.html"><svg aria-hidden="true" fill="white" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"></path></svg></a>SPM.</div>
-<div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
-<a class="hover:text-pink-400 transition-colors duration-300" href="dashboard.html" id="nav-dashboard">Dashboard</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="#section-synthese">Piliers</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="#section-ecosysteme">Écosystème</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="#section-plan-action">Plan 90j</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="#innovations" id="nav-innovations">Innovations</a>
-<a href="#section-acq-fid" class="hover:text-pink-400 transition-colors duration-300">Acq. &amp; Fid.</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="hub-digital.html" id="nav-hub">Hub Digital</a>
-<a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
-<a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a></div>
-</div>
-</div>
+<nav class="sticky top-0 z-50 bg-bg-dark/70 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-screen-xl mx-auto px-4">
+        <div class="flex items-start justify-between h-20">
+            <div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
+            <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
+                <a class="hover:text-pink-400 transition-colors duration-300 font-bold" href="index.html">Retour au CV</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-synthese">Piliers</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-ecosysteme">Écosystème</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-plan-action">Plan 90j</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#innovations">Innovations</a>
+                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Hub Digital</a>
+                <a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Vision Détaillée</a>
+                <a class="font-bold hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Mon Profil</a>
+                <a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+            </div>
+        </div>
+    </div>
 </nav>
 <div class="main-content-wrapper">
 <section class="text-center pt-24 pb-32 md:pt-32 md:pb-40 relative" id="section-intro">
@@ -1761,7 +1762,22 @@
             }
         });
     });
-</script>
+</script><div class="modal-overlay active" id="welcome-modal">
+  <div class="modal-content intro-content text-center">
+    <span class="modal-close">×</span>
+    <h3 class="modal-title">Bienvenue 👋</h3>
+    <p class="modal-desc">
+      Ce site <strong>complète</strong> le document texte « Projet de Vision Stratégique ».
+      Le document pose la vision et le plan&nbsp;; ici, vous explorez les <strong>prototypes</strong>, le <strong>Dashboard d’impact</strong>
+      et le <strong>Hub d’outils</strong> qui les rendent concrets.<br/>
+      Ensemble, ils racontent la même histoire&nbsp;: <strong>passer de l’idée à la preuve par l’exemple</strong>.
+    </p>
+    <div class="modal-buttons">
+      <button class="start-btn" id="welcome-continue">Continuer</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay active" id="intro-video-modal">
   <div class="modal-content intro-content flex flex-col justify-center items-center">
     <span class="modal-close">×</span>
@@ -1770,11 +1786,24 @@
     <div class="video-wrapper w-full max-w-2xl">
       <iframe allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen="" frameborder="0" height="360" src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&amp;public_id=capture-ecran_qiek4t&amp;profile=cld-default&amp;autoplay=true&amp;muted=true" style="height:auto; width:100%; aspect-ratio:640/360; border-radius: 12px;" width="640"></iframe>
     </div></div>
-</div><script>
+</div>
+    <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
+      <a href="dashboard.html" class="btn text-center w-full">Aller au Dashboard</a>
+      <a href="#innovations" class="btn text-center w-full">Voir les Innovations</a>
+      <a href="hub-digital.html" class="btn text-center w-full">Ouvrir le Hub Digital</a>
+    </div>
+    <p class="mt-4 text-sm text-slate-400">
+      Astuce : ces trois sections concentrent l’essentiel de la démonstration.
+    </p>
+
+
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('intro-video-modal');
         const closeBtn = modal.querySelector('.modal-close');
         
+        modal.classList.add('active');
+
         closeBtn.addEventListener('click', () => {
             modal.classList.remove('active');
         });
