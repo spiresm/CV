@@ -1237,17 +1237,17 @@
         }
 
         const skillDetails = [
-            { title: "Stratégie d'acquisition (SEO/SEA/ASO)", text: "Exemple concret : J'ai piloté l'optimisation sémantique pour le lancement d'une nouvelle série sur Auvio, résultant en une augmentation de +25% du trafic organique qualifié." },
-            { title: "Management d'Équipe", text: "Exemple concret : J'ai mis en place des plans de développement individuels et des sprints d'innovation qui ont mené à une hausse de la polyvalence et une réduction de 15% du turnover." },
-            { title: "Analyse de Données", text: "Exemple concret : En analysant les parcours utilisateurs, j'ai identifié un point de friction dont la correction a permis d'augmenter le taux de conversion de 18%." },
-            { title: "Gestion de Projet Agile", text: "Exemple concret : J'ai orchestré le déploiement de la nouvelle charte de gouvernance Social Media en méthode agile, assurant une adoption à 100% dans les délais." },
-            { title: "Vision Créative & IA", text: "Exemple concret : J'ai initié et formé les équipes à l'utilisation d'outils d'IA générative, réduisant les coûts de production de 20%." },
-            { title: "Pilotage base de contacts", text: "Exemple concret : J'ai refondu la stratégie de segmentation des newsletters, ce qui a entraîné une augmentation du taux de clics de 22%." }
-        ];
+    { title: "Stratégie d'acquisition (SEO/SEA/ASO)", text: "Exemple : coordination sémantique et maillage pour améliorer la visibilité organique d’un programme." },
+    { title: "Management d'Équipe", text: "Exemple : plans de développement individuels et sprints d’innovation pour fluidifier la production." },
+    { title: "Analyse de Données", text: "Exemple : analyse de parcours pour identifier un point de friction et simplifier une étape clé." },
+    { title: "Gestion de Projet Agile", text: "Exemple : déploiement d’une charte de gouvernance Social Media en itérations courtes." },
+    { title: "Vision Créative & IA", text: "Exemple : initiation aux outils d’IA pour accélérer la production tout en gardant la qualité." },
+    { title: "Email & CRM", text: "Exemple : segmentation plus claire des envois (centres d’intérêt) et messages utiles." }
+];
         const createInteractiveRadar = (canvasId) => {
             const ctx = document.getElementById(canvasId);
             if (!ctx) return;
-            new Chart(ctx, { type: 'radar', data: { labels: [ 'Stratégie d\'acquisition', 'Management', 'Analyse de Données', 'Gestion de Projet', 'Vision Créative & IA', 'Pilotage base de contacts' ], datasets: [{ label: 'Compétences', data: [85, 80, 75, 90, 88, 70], fill: true, backgroundColor: 'rgba(217, 70, 239, 0.2)', borderColor: 'rgb(217, 70, 239)', pointBackgroundColor: 'rgb(217, 70, 239)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(217, 70, 239)', pointRadius: 5, pointHoverRadius: 8 }] },
+            new Chart(ctx, { type: 'radar', data: { labels: [ 'Stratégie d\'acquisition', 'Management', 'Analyse de Données', 'Gestion de Projet', 'Vision Créative & IA', 'Email & CRM' ], datasets: [{ label: 'Compétences', data: [85, 80, 75, 90, 88, 70], fill: true, backgroundColor: 'rgba(217, 70, 239, 0.2)', borderColor: 'rgb(217, 70, 239)', pointBackgroundColor: 'rgb(217, 70, 239)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(217, 70, 239)', pointRadius: 5, pointHoverRadius: 8 }] },
                 options: {
                     onClick: (event, elements) => { if (elements.length > 0) { const details = skillDetails[elements[0].index]; document.getElementById('skill-modal-title').textContent = details.title; document.getElementById('skill-modal-text').textContent = details.text; skillDetailModal.classList.add('active'); } },
                     scales: { r: { angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, grid: { color: 'rgba(255, 255, 255, 0.2)' }, pointLabels: { color: '#f0f2f5', font: { size: 14 } }, ticks: { display: false, backdropColor: 'transparent' } } },
@@ -1770,18 +1770,7 @@
     <div class="video-wrapper w-full max-w-2xl">
       <iframe allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen="" frameborder="0" height="360" src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&amp;public_id=capture-ecran_qiek4t&amp;profile=cld-default&amp;autoplay=true&amp;muted=true" style="height:auto; width:100%; aspect-ratio:640/360; border-radius: 12px;" width="640"></iframe>
     </div></div>
-</div>
-    <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
-      <a href="dashboard.html" class="btn text-center w-full">Aller au Dashboard</a>
-      <a href="#innovations" class="btn text-center w-full">Voir les Innovations</a>
-      <a href="hub-digital.html" class="btn text-center w-full">Ouvrir le Hub Digital</a>
-    </div>
-    <p class="mt-4 text-sm text-slate-400">
-      Astuce : ces trois sections concentrent l’essentiel de la démonstration.
-    </p>
-
-
-<script>
+</div><script>
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('intro-video-modal');
         const closeBtn = modal.querySelector('.modal-close');
