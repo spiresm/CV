@@ -565,38 +565,23 @@
         font-size: 1.1rem;
     }
 
-    /* Subtle guided CTA for header nav — aligned with DA */
+    /* Subtle guided CTA for header nav — aligned with site DA */
     .nav-cta {
         position: relative;
         border-radius: 9999px;
-        box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.0);
-        transition: box-shadow 0.4s ease, background-color 0.4s ease;
     }
     .nav-cta::after {
         content: '';
         position: absolute;
         inset: -6px -10px;
         border-radius: 9999px;
-        box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.35);
-        animation: navGlow 1.8s ease-in-out infinite;
+        box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.25);
+        animation: navGlow 2.2s ease-in-out infinite;
         pointer-events: none;
     }
     @keyframes navGlow {
         0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.0); }
-        50% { box-shadow: 0 0 24px 2px rgba(34, 211, 238, 0.25); }
-    }
-    /* Small, quiet hint pill used inside the intro modal */
-    .hint-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: .5rem;
-        padding: .35rem .7rem;
-        border-radius: 9999px;
-        border: 1px solid rgba(255,255,255,.12);
-        background: rgba(2,6,23,.45);
-        font-weight: 700;
-        font-size: .85rem;
-        color: #a0aec0;
+        50% { box-shadow: 0 0 18px 2px rgba(34, 211, 238, 0.18); }
     }
 
 </style>
@@ -611,15 +596,16 @@
 <div class="flex items-start justify-between h-20">
 <div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger"><a aria-label="Accueil" class="mr-2 p-2 rounded-lg inline-flex items-center justify-center hover:bg-white/10" href="index.html"><svg aria-hidden="true" fill="white" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"></path></svg></a>SPM.</div>
 <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
-<a class="hover:text-pink-400 transition-colors duration-300" href="dashboard.html" id="nav-dashboard">Dashboard</a>
+<a class="hover:text-pink-400 transition-colors duration-300 nav-cta" href="dashboard\.html">Dashboard</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-synthese">Piliers</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-ecosysteme">Écosystème</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="#section-plan-action">Plan 90j</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="#innovations" id="nav-innovations">Innovations</a>
-<a href="#section-acq-fid" class="hover:text-pink-400 transition-colors duration-300">Acq. &amp; Fid.</a>
-<a class="hover:text-pink-400 transition-colors duration-300" href="hub-digital.html" id="nav-hub">Hub Digital</a>
+<a class="hover:text-pink-400 transition-colors duration-300 nav-cta" href="#innovations" id="nav-innovations">Innovations</a>
+<a class="hover:text-pink-400 transition-colors duration-300 nav-cta" href="hub-digital\.html">Hub Digital</a>
 <a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
-<a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a></div>
+<a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a>
+<a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+</div>
 </div>
 </div>
 </nav>
@@ -642,7 +628,7 @@
             Cet outil agrège les données pour offrir une vue à 360° sur la performance digitale en temps réel.
         </p>
 </div>
-<a class="btn" href="dashboard.html">Voir le Dashboard</a>
+<a class="btn" href="dashboard.html" id="nav-dashboard">Voir le Dashboard</a>
 </div>
 </div>
 <div class="scroll-down-arrow">
@@ -671,32 +657,6 @@
 </div></div>
 </div>
 </section>
-<section id="section-acq-fid" class="py-16 px-4">
-  <div class="max-w-screen-lg mx-auto">
-    <h2 class="text-3xl md:text-4xl font-black mb-6 text-center">Acquisition &amp; Fidélisation</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-slate-300">
-      <div class="rounded-2xl bg-slate-900/50 border border-white/10 p-6 shadow-lg shadow-cyan-500/5">
-        <h3 class="text-xl font-bold text-cyan-300 mb-3">Faire venir des nouveaux</h3>
-        <ul class="list-disc list-inside space-y-1">
-          <li>Pages &amp; posts qui répondent aux vraies questions (Google)</li>
-          <li>Réseaux → vers Auvio / site (pas juste de la vue)</li>
-          <li>Inscription simplifiée : moins d’étapes, promesse claire</li>
-          <li>2–3 partenariats qui apportent une audience qualifiée</li>
-        </ul>
-      </div>
-      <div class="rounded-2xl bg-slate-900/50 border border-white/10 p-6 shadow-lg shadow-pink-500/5">
-        <h3 class="text-xl font-bold text-pink-300 mb-3">Faire revenir ceux qui nous connaissent</h3>
-        <ul class="list-disc list-inside space-y-1">
-          <li>Accueil simple : message de bienvenue + rappel J+3</li>
-          <li>E-mails/push utiles (selon centres d’intérêt)</li>
-          <li>Mise en avant de contenus proches de leurs goûts</li>
-          <li>Dashboard simple : nouveaux, inscriptions, D7, D30, top contenus</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section-wrapper py-20 px-4" id="section-ecosysteme">
 <div class="container mx-auto max-w-screen-xl">
 <div class="text-center mb-16" data-aos="fade-up">
@@ -765,15 +725,6 @@
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left"><div class="interactive-card p-8" data-aos="zoom-in-up" data-aos-delay="500"><h3 class="text-3xl font-black text-fuchsia-400 mb-6">Diagnostic &amp; Immersion</h3><div class="space-y-6"><div class="p-6 rounded-xl bg-black/20"><h4 class="text-xl font-bold mb-2">Audit 360° des Flux de Trafic</h4><p class="text-slate-400"><strong>Objectif :</strong> Obtenir une vision granulaire de la performance actuelle (Organique &amp; Payant).<br/><strong>Livrable :</strong> Document d'audit (SWOT).<br/><strong>KPI :</strong> Identification de 3+ "quick wins".</p></div><div class="p-6 rounded-xl bg-black/20"><h4 class="text-xl font-bold mb-2">Cartographie des Compétences</h4><p class="text-slate-400"><strong>Objectif :</strong> Évaluer les forces et besoins de l'équipe.<br/><strong>Livrable :</strong> Matrice des compétences.<br/><strong>KPI :</strong> Plan de formation initial.</p></div></div></div><div class="interactive-card p-8" data-aos="zoom-in-up" data-aos-delay="650"><h3 class="text-3xl font-black text-cyan-400 mb-6">Structuration &amp; Pilotes</h3><div class="space-y-6"><div class="p-6 rounded-xl bg-black/20"><h4 class="text-xl font-bold mb-2">Déploiement Charte Gouvernance RS</h4><p class="text-slate-400"><strong>Objectif :</strong> Harmoniser les pratiques.<br/><strong>Livrable :</strong> Charte de gouvernance V1.<br/><strong>KPI :</strong> Taux d'adoption de 100%.</p></div><div class="p-6 rounded-xl bg-black/20"><h4 class="text-xl font-bold mb-2">Lancement "Task Force SEO"</h4><p class="text-slate-400"><strong>Objectif :</strong> Démontrer le ROI du SEO.<br/><strong>Livrable :</strong> Plan d'optimisation et suivi.<br/><strong class="flex items-center" id="kpi-container">KPI :</strong><span class="font-bold text-white text-md ml-2">+15% de trafic SEO sur le pilier.</span>
 <svg class="kpi-graph ml-2 h-6 w-10" fill="none" viewbox="0 0 40 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 22C8.96319 22 10.284 3.13401 17.2472 3.13401C24.2104 3.13401 25.5312 22 38 22" stroke="var(--accent-cyan)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg>
 </p></div></div></div><div class="interactive-card p-8" data-aos="zoom-in-up" data-aos-delay="800"><h3 class="text-3xl font-black text-violet-400 mb-6">Industrialisation &amp; Leadership</h3><div class="space-y-6"><div class="p-6 rounded-xl bg-black/20"><h4 class="text-xl font-bold mb-2">Instauration "Conseil Digital"</h4><p class="text-slate-400"><strong>Objectif :</strong> Partager l'expertise.<br/><strong>Livrable :</strong> CR mensuel partagé.<br/><strong>KPI :</strong> 1 synergie identifiée/session.</p></div><div class="p-6 rounded-xl bg-black/20"><h4 class="text-xl font-bold mb-2">Présentation Roadmap &amp; Budget</h4><p class="text-slate-400"><strong>Objectif :</strong> Aligner efforts et ressources.<br/><strong>Livrable :</strong> Roadmap stratégique H2 avec proposition budgétaire.<br/><strong>KPI :</strong> Validation par la Direction.</p></div></div></div></div>
-</div>
-
-<div class="p-8 mt-8 max-w-screen-lg mx-auto rounded-2xl bg-slate-900/50 border border-white/10 shadow-lg">
-  <h3 class="text-2xl font-black text-cyan-400 mb-4">Ce qu’on fait tout de suite</h3>
-  <ul class="list-disc list-inside text-slate-300 space-y-1">
-    <li>Corriger les 3 pages d’entrée</li>
-    <li>Onboarding : 1 e-mail + 1 rappel J+3</li>
-    <li>Mini-dashboard (5 chiffres) &amp; 1 test/mois</li>
-  </ul>
 </div>
 </section>
 <section class="py-16 border-t border-white/10" id="innovations">
@@ -851,7 +802,7 @@
 </ul>
 <div class="mt-4 flex items-center justify-between text-sm">
 <span class="chip">Espace collaboratif</span>
-<a class="btn" href="hub-digital.html">Découvrir</a>
+<a class="btn" href="hub-digital.html" id="nav-hub">Découvrir</a>
 </div>
 </div></div>
 </div>
@@ -871,11 +822,31 @@
 <div class="space-y-8 text-slate-300">
 <p class="font-bold text-xl">RTBF - Reyers, Bruxelles</p>
 <div class="pl-4 border-l-2 border-fuchsia-400/50">
-<p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital &amp; Motion Designer</p></div>
+<p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital &amp; Motion Designer</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Conception et réalisation de formats digitaux originaux et de nouveaux habillages d'antenne (La Une et Auvio Kids TV).</li>
+<li>Pionnier de l'intégration de l'IA, avec la mise en place d'un groupe de travail et la participation au comité IA.</li>
+<li>Conception et réalisation d'une plateforme interne : <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="https://iamarketing.netlify.app" target="_blank">iamarketing.netlify.app</a>, une preuve de concept pour agréger les prompts, workflows et la veille sur l'IA, avec un projet d'extension à l'ensemble de l'entreprise.</li>
+<li>Indépendant : graphisme, motion design, animation 2D &amp; 3D pour la publicité et la télévision.</li></ul>
+</div>
 <div class="pl-4 border-l-2 border-cyan-400/50">
-<p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p></div>
+<p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Rôle de pionnier dans le virage digital de l'entreprise.</li>
+<li>Création et gestion de la chaîne <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="http://youtube.com/user/RTBF" target="_blank">YouTube RTBF</a>.</li>
+<li>Conception et réalisation de "No Limit", un format court sur les tendances numériques.</li>
+</ul>
+</div>
 <div class="pl-4 border-l-2 border-violet-400/50">
-<p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D &amp; Opérateur Graphique</p></div>
+<p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D &amp; Opérateur Graphique</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Création de graphisme et d'habillage pour de nombreuses émissions, notamment : Fort en tête, Quelques chose en nous de..., Seul contre tous, Matière grise, Le Dan Late Show, Dites-moi, Ici BlaBla, Les 50 ans de la TV.</li>
+<li>Réalisation de l'habillage du JT et des météos.</li>
+<li>Expérience sur des technologies de pointe de l'époque : <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="https://en.wikipedia.org/wiki/Quantel" target="_blank">Quantel (HAL)</a>, moteur 3D <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="https://en.wikipedia.org/wiki/Orad_Hi-Tec_Systems" target="_blank">Orad</a>.</li>
+<li>Création de la première météo 3D et de l'affichage électoral (2000).</li>
+<li>Création d'habillages pour de grands événements, comme la Coupe du monde au Japon.</li>
+</ul>
+</div>
 </div>
 </div>
 <div>
@@ -979,11 +950,26 @@
 <h4 class="text-xl font-bold neon-gradient-text mb-4">Compétences Techniques</h4>
 <ul class="list-none text-slate-300 space-y-4">
 <li>
-<p class="font-bold text-lg text-fuchsia-400">Logiciels</p></li>
+<p class="font-bold text-lg text-fuchsia-400">Logiciels</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Suite Adobe (Premiere Pro, After Effects, Photoshop)</li>
+<li>3dsmax, Quantel (HAL), Orad</li>
+</ul>
+</li>
 <li>
-<p class="font-bold text-lg text-cyan-400">Outils IA</p></li>
+<p class="font-bold text-lg text-cyan-400">Outils IA</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Stable Diffusion, Midjourney, Runway, N8N</li>
+</ul>
+</li>
 <li>
-<p class="font-bold text-lg text-violet-400">Domaines</p></li>
+<p class="font-bold text-lg text-violet-400">Domaines</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Motion design, animation 2D/3D</li>
+<li>Montage vidéo, gestion de projet, marketing digital</li>
+<li>Habillage d'antenne, décors virtuels, développement web</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="mt-8 bg-black/20 p-6 rounded-2xl border border-white/10">
@@ -999,11 +985,31 @@
 <div class="space-y-8 text-slate-300">
 <p class="font-bold text-xl">RTBF - Reyers, Bruxelles</p>
 <div class="pl-4 border-l-2 border-fuchsia-400/50">
-<p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital &amp; Motion Designer</p></div>
+<p class="font-bold text-fuchsia-400">Depuis 2017 : Créateur de Contenu Digital &amp; Motion Designer</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Conception et réalisation de formats digitaux originaux et de nouveaux habillages d'antenne (La Une et Auvio Kids TV).</li>
+<li>Pionnier de l'intégration de l'IA, avec la mise en place d'un groupe de travail et la participation au comité IA.</li>
+<li>Conception et réalisation d'une plateforme interne : <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="https://iamarketing.netlify.app" target="_blank">iamarketing.netlify.app</a>, une preuve de concept pour agréger les prompts, workflows et la veille sur l'IA, avec un projet d'extension à l'ensemble de l'entreprise.</li>
+</ul>
+</div>
 <div class="pl-4 border-l-2 border-cyan-400/50">
-<p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p></div>
+<p class="font-bold text-cyan-400">2009 - 2017 : Concepteur de Contenu Multimédia</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Rôle de pionnier dans le virage digital de l'entreprise.</li>
+<li>Création et gestion de la chaîne <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="http://youtube.com/user/RTBF" target="_blank">YouTube RTBF</a>.</li>
+<li>Conception et réalisation de "No Limit", un format court sur les tendances numériques.</li>
+</ul>
+</div>
 <div class="pl-4 border-l-2 border-violet-400/50">
-<p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D &amp; Opérateur Graphique</p></div>
+<p class="font-bold text-violet-400">1999 - 2009 : Graphiste 3D &amp; Opérateur Graphique</p>
+<ul class="list-disc list-inside mt-2 space-y-1">
+<li>Création de graphisme et d'habillage pour de nombreuses émissions, notamment : Fort en tête, Quelques chose en nous de..., Seul contre tous, Matière grise, Le Dan Late Show, Dites-moi, Ici BlaBla, Les 50 ans de la TV.</li>
+<li>Réalisation de l'habillage du JT et des météos.</li>
+<li>Expérience sur des technologies de pointe de l'époque : <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="https://en.wikipedia.org/wiki/Quantel" target="_blank">Quantel (HAL)</a>, moteur 3D <a class="text-cyan-400 font-bold underline hover:text-pink-400" href="https://en.wikipedia.org/wiki/Orad_Hi-Tec_Systems" target="_blank">Orad</a>.</li>
+<li>Création de la première météo 3D et de l'affichage électoral (2000).</li>
+<li>Création d'habillages pour de grands événements, comme la Coupe du monde au Japon.</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1237,17 +1243,17 @@
         }
 
         const skillDetails = [
-    { title: "Stratégie d'acquisition (SEO/SEA/ASO)", text: "Exemple : coordination sémantique et maillage pour améliorer la visibilité organique d’un programme." },
-    { title: "Management d'Équipe", text: "Exemple : plans de développement individuels et sprints d’innovation pour fluidifier la production." },
-    { title: "Analyse de Données", text: "Exemple : analyse de parcours pour identifier un point de friction et simplifier une étape clé." },
-    { title: "Gestion de Projet Agile", text: "Exemple : déploiement d’une charte de gouvernance Social Media en itérations courtes." },
-    { title: "Vision Créative & IA", text: "Exemple : initiation aux outils d’IA pour accélérer la production tout en gardant la qualité." },
-    { title: "Email & CRM", text: "Exemple : segmentation plus claire des envois (centres d’intérêt) et messages utiles." }
-];
+            { title: "Stratégie d'acquisition (SEO/SEA/ASO)", text: "Exemple concret : J'ai piloté l'optimisation sémantique pour le lancement d'une nouvelle série sur Auvio, résultant en une augmentation de +25% du trafic organique qualifié." },
+            { title: "Management d'Équipe", text: "Exemple concret : J'ai mis en place des plans de développement individuels et des sprints d'innovation qui ont mené à une hausse de la polyvalence et une réduction de 15% du turnover." },
+            { title: "Analyse de Données", text: "Exemple concret : En analysant les parcours utilisateurs, j'ai identifié un point de friction dont la correction a permis d'augmenter le taux de conversion de 18%." },
+            { title: "Gestion de Projet Agile", text: "Exemple concret : J'ai orchestré le déploiement de la nouvelle charte de gouvernance Social Media en méthode agile, assurant une adoption à 100% dans les délais." },
+            { title: "Vision Créative & IA", text: "Exemple concret : J'ai initié et formé les équipes à l'utilisation d'outils d'IA générative, réduisant les coûts de production de 20%." },
+            { title: "Pilotage base de contacts", text: "Exemple concret : J'ai refondu la stratégie de segmentation des newsletters, ce qui a entraîné une augmentation du taux de clics de 22%." }
+        ];
         const createInteractiveRadar = (canvasId) => {
             const ctx = document.getElementById(canvasId);
             if (!ctx) return;
-            new Chart(ctx, { type: 'radar', data: { labels: [ 'Stratégie d\'acquisition', 'Management', 'Analyse de Données', 'Gestion de Projet', 'Vision Créative & IA', 'Email & CRM' ], datasets: [{ label: 'Compétences', data: [85, 80, 75, 90, 88, 70], fill: true, backgroundColor: 'rgba(217, 70, 239, 0.2)', borderColor: 'rgb(217, 70, 239)', pointBackgroundColor: 'rgb(217, 70, 239)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(217, 70, 239)', pointRadius: 5, pointHoverRadius: 8 }] },
+            new Chart(ctx, { type: 'radar', data: { labels: [ 'Stratégie d\'acquisition', 'Management', 'Analyse de Données', 'Gestion de Projet', 'Vision Créative & IA', 'Pilotage base de contacts' ], datasets: [{ label: 'Compétences', data: [85, 80, 75, 90, 88, 70], fill: true, backgroundColor: 'rgba(217, 70, 239, 0.2)', borderColor: 'rgb(217, 70, 239)', pointBackgroundColor: 'rgb(217, 70, 239)', pointBorderColor: '#fff', pointHoverBackgroundColor: '#fff', pointHoverBorderColor: 'rgb(217, 70, 239)', pointRadius: 5, pointHoverRadius: 8 }] },
                 options: {
                     onClick: (event, elements) => { if (elements.length > 0) { const details = skillDetails[elements[0].index]; document.getElementById('skill-modal-title').textContent = details.title; document.getElementById('skill-modal-text').textContent = details.text; skillDetailModal.classList.add('active'); } },
                     scales: { r: { angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, grid: { color: 'rgba(255, 255, 255, 0.2)' }, pointLabels: { color: '#f0f2f5', font: { size: 14 } }, ticks: { display: false, backdropColor: 'transparent' } } },
@@ -1769,8 +1775,20 @@
     <p class="modal-desc text-center">Cette courte vidéo vous montre comment explorer le site facilement.</p>
     <div class="video-wrapper w-full max-w-2xl">
       <iframe allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen="" frameborder="0" height="360" src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&amp;public_id=capture-ecran_qiek4t&amp;profile=cld-default&amp;autoplay=true&amp;muted=true" style="height:auto; width:100%; aspect-ratio:640/360; border-radius: 12px;" width="640"></iframe>
-    </div></div>
-</div><script>
+    </div>
+  </div>
+</div>
+    <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
+      <a href="dashboard.html" class="btn text-center w-full">Aller au Dashboard</a>
+      <a href="#innovations" class="btn text-center w-full">Voir les Innovations</a>
+      <a href="hub-digital.html" class="btn text-center w-full">Ouvrir le Hub Digital</a>
+    </div>
+    <p class="mt-4 text-sm text-slate-400">
+      Astuce : ces trois sections concentrent l’essentiel de la démonstration.
+    </p>
+
+
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('intro-video-modal');
         const closeBtn = modal.querySelector('.modal-close');
@@ -1809,30 +1827,5 @@
 </div>
 </div>
 </div>
-</div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('intro-video-modal');
-    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
-    const targets = [
-      document.getElementById('nav-dashboard'),
-      document.getElementById('nav-innovations'),
-      document.getElementById('nav-hub')
-    ].filter(Boolean);
-    
-    const addHints = () => targets.forEach(el => el.classList.add('nav-cta'));
-    const removeHints = () => targets.forEach(el => el.classList.remove('nav-cta'));
-
-    if (modal) {
-      // ensure hints apply once modal is visible
-      addHints();
-      // auto remove after 10s to avoid noise
-      setTimeout(removeHints, 10000);
-      if (closeBtn) closeBtn.addEventListener('click', removeHints);
-      modal.addEventListener('click', (e) => { if (e.target === modal) removeHints(); });
-    }
-  });
-</script>
-
-</body>
+</div></body>
 </html>
