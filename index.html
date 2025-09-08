@@ -585,31 +585,27 @@
     }
 
 
-/* Fixed bottom-centered CTA bar */
-.bottom-cta { 
-  position: fixed; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  bottom: 1.25rem; 
-  z-index: 90; 
-  width: min(95vw, 900px);
 }
-.bottom-cta__inner {
+
+
+/* In-flow bottom CTA reminder */
+.cta-reminder { 
+  max-width: 900px; 
+  margin: 3rem auto 2rem; 
+  text-align: center; 
+  padding-top: 1rem; 
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.cta-reminder .buttons { 
   display: grid; 
   grid-template-columns: 1fr; 
   gap: .6rem; 
   justify-items: center;
-  padding: .75rem; 
-  border-radius: 14px; 
-  background: rgba(13, 12, 29, 0.65); 
-  backdrop-filter: blur(10px); 
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.12);
 }
-.bottom-cta__inner .btn { width: 100%; text-align: center; }
-.bottom-cta__hint { font-size: .9rem; color: var(--text-secondary); text-align: center; }
+.cta-reminder .buttons .btn { width: 100%; text-align: center; }
+.cta-reminder .hint { font-size: .9rem; color: var(--text-secondary); margin-top: .5rem; }
 @media (min-width: 640px) {
-  .bottom-cta__buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; width: 100%; }
+  .cta-reminder .buttons { grid-template-columns: repeat(3, 1fr); }
 }
 
 </style>
@@ -1845,17 +1841,13 @@
 </div>
 </div>
 </div>
-</div>
-<div class="bottom-cta">
-  <div class="bottom-cta__inner">
-    <div class="bottom-cta__buttons">
-      <a href="dashboard.html" class="btn">Aller au Dashboard</a>
-      <a href="#innovations" class="btn">Voir les Innovations</a>
-      <a href="hub-digital.html" class="btn">Ouvrir le Hub Digital</a>
-    </div>
-    <p class="bottom-cta__hint">Astuce&nbsp;: ces trois sections concentrent l’essentiel de la démonstration.</p>
+</div><section id="cta-reminder" class="cta-reminder">
+  <div class="buttons">
+    <a href="dashboard.html" class="btn">Aller au Dashboard</a>
+    <a href="#innovations" class="btn">Voir les Innovations</a>
+    <a href="hub-digital.html" class="btn">Ouvrir le Hub Digital</a>
   </div>
-</div>
-
+  <p class="hint">Astuce&nbsp;: ces trois sections concentrent l’essentiel de la démonstration.</p>
+</section>
 </body>
 </html>
