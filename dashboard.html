@@ -234,6 +234,31 @@
 </style>
 </head>
 <body class="relative min-h-screen">
+
+<!-- MODALE DISCLAIMER (Dashboard) -->
+<div class="fixed inset-0 z-50" id="dash-modal">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div role="dialog" aria-modal="true" aria-labelledby="dash-modal-title"
+         class="w-full max-w-xl rounded-2xl border border-white/15 bg-slate-900 shadow-2xl p-6 md:p-8">
+      <div class="flex items-start gap-3">
+        <div class="text-cyan-300 text-2xl">ℹ</div>
+        <div class="grow">
+          <h2 class="text-xl font-extrabold" id="dash-modal-title">Prototype / Maquette</h2>
+          <p class="mt-2 text-sm leading-6 text-slate-200">
+            Cette version du Dashboard est une maquette de démonstration. Les chiffres, noms et commentaires
+            sont des <em>exemples fictifs</em> destinés à l’illustration. L’outillage complet arrivera en production après validation.
+          </p>
+        </div>
+        <button id="dash-modal-close"
+                class="ml-2 shrink-0 px-3 py-1 text-sm font-bold rounded-lg border border-white/20 hover:bg-white/10">
+          J’ai compris
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="tsparticles-bg"></div>
 <div class="content-wrapper">
 
@@ -754,5 +779,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
+<script>
+(function(){
+  const modal = document.getElementById('dash-modal');
+  const btn = document.getElementById('dash-modal-close');
+  function close(){ modal.classList.add('hidden'); document.body.style.overflow=''; }
+  function open(){ modal.classList.remove('hidden'); document.body.style.overflow='hidden'; }
+  // open at page load
+  window.addEventListener('load', open);
+  // close on button
+  btn?.addEventListener('click', close);
+  // close on click outside dialog
+  modal?.addEventListener('click', (e)=>{
+    const dialog = modal.querySelector('[role="dialog"]');
+    if(dialog && !dialog.contains(e.target)) close();
+  });
+  // close on Escape
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+})();
+</script>
+
 </body>
 </html>
