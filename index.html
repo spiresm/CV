@@ -1785,10 +1785,8 @@
       le <strong>Dashboard d’impact</strong> et le <strong>Hub d’outils</strong> qui les rendent concrets.
       Ensemble, ils racontent la même histoire : passer de l’idée à la preuve par l’exemple.
     </p>
-    <div class="w-full max-w-xl mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <button id="welcome-continue" class="btn text-center w-full">Continuer</button>
-      <button id="welcome-skip" class="btn text-center w-full">Passer l’intro</button>
-    </div>
+    <div class="w-full max-w-xl mt-5 grid grid-cols-1 sm:grid-cols-1 gap-3">
+      <button id="welcome-continue" class="btn text-center w-full">Continuer</button></div>
   </div>
 </div>
 
@@ -1852,7 +1850,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const welcome = document.getElementById('welcome-modal');
   const video = document.getElementById('intro-video-modal');
   const cont = document.getElementById('welcome-continue');
-  const skip = document.getElementById('welcome-skip');
   const close = document.getElementById('welcome-close');
 
   // Ensure welcome shows first; video waits
@@ -1864,9 +1861,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const openVideo = () => { if (video) video.classList.add('active'); if (welcome) welcome.classList.remove('active'); };
   const closeAll = () => { if (video) video.classList.remove('active'); if (welcome) welcome.classList.remove('active'); };
 
-  if (cont) cont.addEventListener('click', openVideo);
-  if (skip) skip.addEventListener('click', closeAll);
-  if (close) close.addEventListener('click', closeAll);
+  if (cont) cont.addEventListener('click', openVideo);if (close) close.addEventListener('click', closeAll);
 });
 </script>
 
