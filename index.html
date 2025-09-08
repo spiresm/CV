@@ -584,6 +584,34 @@
         50% { box-shadow: 0 0 18px 2px rgba(34, 211, 238, 0.18); }
     }
 
+
+/* Fixed bottom-centered CTA bar */
+.bottom-cta { 
+  position: fixed; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  bottom: 1.25rem; 
+  z-index: 90; 
+  width: min(95vw, 900px);
+}
+.bottom-cta__inner {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: .6rem; 
+  justify-items: center;
+  padding: .75rem; 
+  border-radius: 14px; 
+  background: rgba(13, 12, 29, 0.65); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.bottom-cta__inner .btn { width: 100%; text-align: center; }
+.bottom-cta__hint { font-size: .9rem; color: var(--text-secondary); text-align: center; }
+@media (min-width: 640px) {
+  .bottom-cta__buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; width: 100%; }
+}
+
 </style>
 </head>
 <body class="relative min-h-screen">
@@ -1778,16 +1806,6 @@
     </div>
   </div>
 </div>
-    <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
-      <a href="dashboard.html" class="btn text-center w-full">Aller au Dashboard</a>
-      <a href="#innovations" class="btn text-center w-full">Voir les Innovations</a>
-      <a href="hub-digital.html" class="btn text-center w-full">Ouvrir le Hub Digital</a>
-    </div>
-    <p class="mt-4 text-sm text-slate-400">
-      Astuce : ces trois sections concentrent l’essentiel de la démonstration.
-    </p>
-
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('intro-video-modal');
@@ -1827,5 +1845,17 @@
 </div>
 </div>
 </div>
-</div></body>
+</div>
+<div class="bottom-cta">
+  <div class="bottom-cta__inner">
+    <div class="bottom-cta__buttons">
+      <a href="dashboard.html" class="btn">Aller au Dashboard</a>
+      <a href="#innovations" class="btn">Voir les Innovations</a>
+      <a href="hub-digital.html" class="btn">Ouvrir le Hub Digital</a>
+    </div>
+    <p class="bottom-cta__hint">Astuce&nbsp;: ces trois sections concentrent l’essentiel de la démonstration.</p>
+  </div>
+</div>
+
+</body>
 </html>
