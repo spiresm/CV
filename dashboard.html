@@ -237,23 +237,23 @@
 <div id="tsparticles-bg"></div>
 <div class="content-wrapper">
 
-<nav class="sticky top-0 z-50 bg-bg-dark/70 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-screen-xl mx-auto px-4">
-        <div class="flex items-start justify-between h-20">
-            <div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger">SPM.</div>
-            <div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
-                <a class="hover:text-pink-400 transition-colors duration-300 font-bold" href="index.html">Retour au CV</a>
-                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-synthese">Piliers</a>
-                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-ecosysteme">Écosystème</a>
-                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#section-plan-action">Plan 90j</a>
-                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled" href="index.html#innovations">Innovations</a>
-                <a class="hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Hub Digital</a>
-                <a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Vision Détaillée</a>
-                <a class="font-bold hover:text-pink-400 transition-colors duration-300 dashboard-nav-link-disabled">Mon Profil</a>
-                <a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
-            </div>
-        </div>
-    </div>
+<nav class="sticky top-0 z-50">
+<div class="max-w-screen-xl mx-auto px-4">
+<div class="flex items-start justify-between h-20">
+<div class="text-3xl font-black neon-gradient-text logo-animated" id="logo-trigger"><a aria-label="Accueil" class="mr-2 p-2 rounded-lg inline-flex items-center justify-center hover:bg-white/10" href="index.html"><svg aria-hidden="true" fill="white" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.172 3.172 12H5v8a1 1 0 0 0 1 1h5v-6h2v6h5a1 1 0 0 0 1-1v-8h1.828L12 3.172z"></path></svg></a>SPM.</div>
+<div class="hidden md:flex items-center space-x-6 text-lg font-medium text-slate-300">
+<a class="hover:text-pink-400 transition-colors duration-300 nav-cta" href="dashboard\.html">Dashboard</a>
+<a class="hover:text-pink-400 transition-colors duration-300" href="#section-synthese">Piliers</a>
+<a class="hover:text-pink-400 transition-colors duration-300" href="#section-ecosysteme">Écosystème</a>
+<a class="hover:text-pink-400 transition-colors duration-300" href="#section-plan-action">Plan 90j</a>
+<a class="hover:text-pink-400 transition-colors duration-300 nav-cta" href="#innovations" id="nav-innovations">Innovations</a>
+<a class="hover:text-pink-400 transition-colors duration-300 nav-cta" href="hub-digital\.html">Hub Digital</a>
+<a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
+<a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a>
+<a class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-colors shadow-lg shadow-fuchsia-500/20" href="mailto:steeve.pires@gmail.com">Me Contacter</a>
+</div>
+</div>
+</div>
 </nav>
 
 <main class="py-20 px-4">
@@ -739,6 +739,20 @@
             });
         }
     });
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const t = document.getElementById('vision-modal-trigger');
+  if (t) {
+    const a = t.cloneNode(true);
+    a.id = 'vision-pdf-link';
+    a.href = 'Projet%20de%20Vision%20Strat%C3%A9gique.pdf';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = 'Vision Détaillée';
+    t.replaceWith(a);
+  }
+});
 </script>
 </body>
 </html>
