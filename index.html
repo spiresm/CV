@@ -618,7 +618,7 @@
 <a class="hover:text-pink-400 transition-colors duration-300" href="#innovations" id="nav-innovations">Innovations</a>
 <a href="#section-acq-fid" class="hover:text-pink-400 transition-colors duration-300">Acq. &amp; Fid.</a>
 <a class="hover:text-pink-400 transition-colors duration-300" href="hub-digital.html" id="nav-hub">Hub Digital</a>
-<a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" id="vision-modal-trigger">Vision Détaillée</a>
+<a class="font-bold text-cyan-400 hover:text-pink-400 transition-colors duration-300" href="Projet de Vision Stratégique.pdf" target="_blank" rel="noopener">Vision Détaillée</a>
 <a class="font-bold hover:text-pink-400 transition-colors duration-300" id="profile-modal-trigger">Mon Profil</a></div>
 </div>
 </div>
@@ -935,9 +935,9 @@
 <section class="section-wrapper py-20 px-4" id="section-why">
 <div class="max-w-screen-lg mx-auto">
 <div class="modern-card" data-aos="fade-up">
-<h2 class="modern-card__title">Pourquoi je suis la bonne personne pour ce poste</h2>
-<p>Tout au long de mon parcours, j’ai su, dans les moments clés, concevoir et mettre en place des campagnes qui ont réellement fait parler d’elles. Que ce soit pour lancer un nouveau format, mettre en avant un événement ou soutenir une initiative stratégique, j’ai toujours trouvé les leviers et les idées créatives pour attirer l’attention du public.</p>
-<p>Ma force : savoir combiner une bonne compréhension des audiences avec des outils adaptés et un message clair, pour maximiser l’impact d’une campagne. Cela s’est traduit par une forte visibilité et un engagement mesurable, y inclus dans des contextes concurrentiels.</p>
+  <h2 class="modern-card__title">Pourquoi je suis la bonne personne pour ce poste</h2>
+  <p><strong>Pourquoi moi&nbsp;?</strong><br>
+  Parce que je sais <strong>faire simple, utile et visible</strong>. À la RTBF, j’ai appris à <strong>passer d’une idée à un format</strong> qui tourne vraiment&nbsp;: coordonner antenne/digital, clarifier le message, choisir les bons leviers et mesurer ce qui compte. Mon job&nbsp;: <strong>faire venir</strong> du monde sur nos plateformes, et <strong>leur donner envie de revenir</strong>.</p>
 </div>
 </div>
 </section>
@@ -1036,13 +1036,7 @@
 <h3 class="text-2xl font-bold text-cyan-400 mb-4" id="skill-modal-title">Titre de la compétence</h3>
 <p class="text-lg text-slate-300 leading-relaxed" id="skill-modal-text">Détail de la compétence et exemple concret ici.</p>
 </div>
-</div>
-<div class="modal-overlay" id="vision-modal">
-<div class="modal-content">
-<span class="modal-close">×</span>
-<div id="vision-document">
-<div class="cover-page"><h1 class="text-4xl font-black text-gray-800">Projet de Vision Stratégique</h1><p class="text-xl mt-2 text-gray-600">Poste de Responsable Marketing Digital</p><p class="text-2xl mt-12 font-bold text-violet-600">Steeve Pires Madeira</p></div>
-<div class="page-break"></div>
+</div><div class="page-break"></div>
 <h2>Introduction : Relever les défis du service public à l'ère numérique</h2>
 <p>Le paysage médiatique est en pleine mutation. Face à la fragmentation des audiences, la puissance des plateformes internationales et l'émergence de nouveaux usages, la mission du service public doit se réinventer pour rester pertinente et centrale. Mon projet pour la RTBF s'articule autour d'une conviction forte : nous devons passer d'une logique de simple diffusion à une stratégie de **connexion durable et personnalisée** avec nos publics.</p>
 <h3>L'enjeu : une mutation nécessaire des métiers</h3>
@@ -1226,8 +1220,7 @@
         }
         setupModal('secret-trigger', 'secret-modal');
         setupModal('profile-modal-trigger', 'profile-modal');
-        setupModal('vision-modal-trigger', 'vision-modal');
-        setupModal('logo-trigger', 'id-card-modal');
+setupModal('logo-trigger', 'id-card-modal');
         setupModal('live-demos-trigger', 'live-demos-modal');
         setupModal('phygital-modal-trigger', 'phygital-modal'); setupModal('remix-modal-trigger', 'remix-modal');const skillDetailModal = document.getElementById('skill-detail-modal');
         if(skillDetailModal) {
@@ -1770,18 +1763,7 @@
     <div class="video-wrapper w-full max-w-2xl">
       <iframe allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen="" frameborder="0" height="360" src="https://player.cloudinary.com/embed/?cloud_name=dh8taukjd&amp;public_id=capture-ecran_qiek4t&amp;profile=cld-default&amp;autoplay=true&amp;muted=true" style="height:auto; width:100%; aspect-ratio:640/360; border-radius: 12px;" width="640"></iframe>
     </div></div>
-</div>
-    <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3 w-full max-w-2xl">
-      <a href="dashboard.html" class="btn text-center w-full">Aller au Dashboard</a>
-      <a href="#innovations" class="btn text-center w-full">Voir les Innovations</a>
-      <a href="hub-digital.html" class="btn text-center w-full">Ouvrir le Hub Digital</a>
-    </div>
-    <p class="mt-4 text-sm text-slate-400">
-      Astuce : ces trois sections concentrent l’essentiel de la démonstration.
-    </p>
-
-
-<script>
+</div><script>
     document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('intro-video-modal');
         const closeBtn = modal.querySelector('.modal-close');
