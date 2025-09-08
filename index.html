@@ -588,24 +588,6 @@
 }
 
 
-/* In-flow bottom CTA reminder */
-.cta-reminder { 
-  width: 100%; 
-  margin: 3rem 0 2rem; 
-  text-align: center; 
-  padding-top: 1rem; 
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-.cta-reminder .buttons { 
-  display: grid; 
-  grid-template-columns: 1fr; 
-  gap: .6rem; 
-  justify-items: center;
-}
-.cta-reminder .buttons .btn { width: 100%; text-align: center; }
-.cta-reminder .hint { font-size: .9rem; color: var(--text-secondary); margin-top: .5rem; }
-@media (min-width: 640px) {
-  .cta-reminder .buttons { grid-template-columns: repeat(3, 1fr); }
 }
 
 </style>
@@ -1792,6 +1774,24 @@
         });
     });
 </script>
+
+<div class="modal-overlay active" id="welcome-modal">
+  <div class="modal-content intro-content flex flex-col justify-center items-center">
+    <span class="modal-close" id="welcome-close">×</span>
+    <h3 class="modal-title">Bienvenue 👋</h3>
+    <p class="modal-desc text-center">
+      Ce site <strong>complète</strong> le document texte « Projet de Vision Stratégique ».
+      Le document pose la vision et le plan ; ici, vous explorez les <strong>prototypes</strong>,
+      le <strong>Dashboard d’impact</strong> et le <strong>Hub d’outils</strong> qui les rendent concrets.
+      Ensemble, ils racontent la même histoire : passer de l’idée à la preuve par l’exemple.
+    </p>
+    <div class="w-full max-w-xl mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <button id="welcome-continue" class="btn text-center w-full">Continuer</button>
+      <button id="welcome-skip" class="btn text-center w-full">Passer l’intro</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay active" id="intro-video-modal">
   <div class="modal-content intro-content flex flex-col justify-center items-center">
     <span class="modal-close">×</span>
@@ -1846,5 +1846,43 @@
 \2
   </div>
 \3
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const welcome = document.getElementById('welcome-modal');
+  const video = document.getElementById('intro-video-modal');
+  const cont = document.getElementById('welcome-continue');
+  const skip = document.getElementById('welcome-skip');
+  const close = document.getElementById('welcome-close');
+
+  // Ensure welcome shows first; video waits
+  if (welcome) {
+    // If the video modal is forced active elsewhere, hide it until continue
+    if (video) video.classList.remove('active');
+  }
+
+  const openVideo = () => { if (video) video.classList.add('active'); if (welcome) welcome.classList.remove('active'); };
+  const closeAll = () => { if (video) video.classList.remove('active'); if (welcome) welcome.classList.remove('active'); };
+
+  if (cont) cont.addEventListener('click', openVideo);
+  if (skip) skip.addEventListener('click', closeAll);
+  if (close) close.addEventListener('click', closeAll);
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const t = document.getElementById('vision-modal-trigger');
+  if (t) {
+    const a = t.cloneNode(true);
+    a.id = 'vision-pdf-link';
+    a.href = 'Projet%20de%20Vision%20Strat%C3%A9gique.pdf';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = 'Vision Détaillée';
+    t.replaceWith(a);
+  }
+});
+</script>
 </body>
 </html>
