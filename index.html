@@ -1208,6 +1208,39 @@ Médias - Marketing & Communication</p>
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.tsParticles && document.getElementById('tsparticles-bg')) {
+    tsParticles.load("tsparticles-bg", {
+      background: { color: { value: "#0d0c1d" } },
+      fpsLimit: 60,
+      interactivity: {
+        detectsOn: "window",
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 140, links: { opacity: 0.5 } },
+          push: { quantity: 4 }
+        }
+      },
+      particles: {
+        number: { value: 65, density: { enable: true } },
+        color: { value: "#ffffff" },
+        links: { color: "#ffffff", distance: 150, enable: true, opacity: 0.15, width: 1 },
+        move: { direction: "none", enable: true, outModes: "out", speed: 0.5, straight: false },
+        opacity: { value: { min: 0.1, max: 0.5 } },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 2 } }
+      },
+      detectRetina: true
+    });
+  }
+});
+</script>
+
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
