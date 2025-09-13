@@ -548,14 +548,19 @@
         row.innerHTML = `<td>${idx+1}</td><td>${s.initials.toUpperCase()}</td><td>${s.score}</td>`;
     });
   }
-
-  startGameBtn.onclick = () => {
-    introScreen.style.display = 'none';
+  function startNewGame(){
+    resetGame();
     gameActive = true;
     startMusic();
-    resetGame();
-  };
-  restartBtn.onclick=()=>resetGame();
+  }
+
+
+
+  startGameBtn.onclick = () => {
+  introScreen.style.display = 'none';
+  startNewGame();
+};
+  restartBtn.onclick = () => { startNewGame(); };
   initialsForm.onsubmit=(e)=>{
     e.preventDefault();
     const initials = initialsInput.value.trim().toUpperCase();
